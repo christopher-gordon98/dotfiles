@@ -44,12 +44,16 @@ cleanup "bin"
 ln -s $DOTDIR/config ~/.config
 ln -s $DOTDIR/tmux ~/.tmux
 ln -s $DOTDIR/vim ~/.vim
+ln -s $DOTDIR/vifm ~/.vifm
 ln -s $DOTDIR/bin ~/bin
+
 ln -sFfiv $DOTDIR/bash/bash_profile.sh ~/.bash_profile
 ln -sFfiv $DOTDIR/tmux/.tmux.conf ~/.tmux.conf
 ln -sFfiv $DOTDIR/tmux/.tmux-osx.conf  ~/.tmux-osx.conf
 ln -sFfiv $DOTDIR/git/gitconfig.sh ~/.gitconfig
+
 ln -sFfiv $DOTDIR/xrc/curlrc.sh ~/.curlrc
+ln -sFfiv $DOTDIR/xrc/czrc.json ~/.czrc
 ln -sFfiv $DOTDIR/xrc/wgetrc.sh ~/.wgetrc
 ln -sFfiv $DOTDIR/xrc/pystartup.sh ~/.pystartup
 ln -sFfiv $DOTDIR/xrc/eslintrc.json ~/.eslintrc

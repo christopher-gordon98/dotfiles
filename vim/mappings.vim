@@ -102,6 +102,8 @@ nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>e :Explore<CR>
 nnoremap <silent> <leader>f :CtrlP<CR>
+
+" Format a json file with Python's built in json.tool.
 nnoremap <leader>fj :%!python -m json.tool<CR>
 
 " Highlight search word under cursor without jumping to next
@@ -132,10 +134,6 @@ nnoremap <silent> <leader>cul :normal "lyy"lpwvLr-^"lyyk"lP<cr>
 " Format the entire file
 nnoremap <leader>fef mx=ggG='x
 
-" Format a json file with Python's built in json.tool.
-" from https://github.com/spf13/spf13-vim/blob/3.0/.vimrc#L390
-nnoremap <leader>jt <Esc>:%!underscore print<CR><Esc>:set filetype=json<CR>
-nnoremap <leader>jts <Esc>:%!underscore print --strict<CR><Esc>:set filetype=json<CR>
 
 " Split window vertically or horizontally *and* switch to the new split!
 nnoremap <silent> <leader>hs :split<Bar>:wincmd j<CR>:wincmd =<CR>
@@ -153,17 +151,23 @@ iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
 " Insert a console statements
 iabbrev clg console.log
 iabbrev cld console.debug
-iabbrev clda console.debug(arguments)
+iabbrev clda console.debug(arguments
+" Insert a jsdoc block
+iabbrev jxx /** \r* \r* */
 
 " copy current file name (relative/absolute) to system clipboard
-" from http://stackoverflow.com/a/17096082/22423
+
 if has("mac") || has("gui_macvim") || has("gui_mac")
+
   " relative path  (src/foo.txt)
   nnoremap <silent> <leader>yp :let @*=expand("%")<CR>
+
   " absolute path  (/something/src/foo.txt)
   nnoremap <silent> <leader>yP :let @*=expand("%:p")<CR>
+
   " filename       (foo.txt)
   nnoremap <silent> <leader>yf :let @*=expand("%:t")<CR>
+
   " directory name (/something/src)
   nnoremap <silent> <leader>yd :let @*=expand("%:p:h")<CR>
 endif
@@ -177,3 +181,5 @@ nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
 
 
+nmap <silent> --s "=HaskellModuleSection()<CR>gp
+nmap <silent> --h "=HaskellModuleHeader()<CR>:0put =<CR>

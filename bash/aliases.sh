@@ -16,9 +16,14 @@ alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dx="cd ~/Dropbox"
-alias g="git"
+alias wk="cd ~/work"
+alias wkhu="cd ~/work/hara/hara-ui"
+
+alias gtl="git log --graph"
 alias gts="git status"
 alias gtm='git log --name-status'
+alias gtb="git branch"
+
 alias h="history"
 alias j="jobs"
 alias gh="cd ~/GITHUB"
@@ -131,9 +136,10 @@ alias todo='vim ~/.dotfiles/todo/'
 
 alias pass='vim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ebikh'
 alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
+alias pysrv='python -m SimpleHTTPServer 9000'
+alias psrv='php -S localhost:8000'
+
 alias srvr='python -m SimpleHTTPServer 9000'
-
-
 
 # Unix octal permision table, just a reminder.
 # if you intend to mix your own, just be careful
