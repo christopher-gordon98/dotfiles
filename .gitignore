@@ -1,0 +1,10 @@
+.DS_Store
+vim/bundle/*
+vim/sessions/*
+vim/.netrwhist
+spell/*
+vim/vundle_plugins/custom
+vim/.backup/*
+vim/.tmp/*
+vim/.undo/*
+bash/ssh.sh
