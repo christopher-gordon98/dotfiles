@@ -1,4 +1,14 @@
 
+
+echo '     /\ Welcom to the avengers RTFMP.'
+echo '    /  \__   _____ _ __   __ _  ___ _ __ ___ ';
+echo '   / /\ \ \ / / _ \ ._ \ / _| |/ _ \ |__/ __|'
+echo '  / ____ \ V /  __/ | | | (_| |  __/ |  \__ \'
+echo ' /_/    \_\_/ \___|_| |_|\__, |\___|_|  |___/'
+echo '                          __/ |'
+echo '                         |___/ '
+
+
 PS1='> [\W \[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[0m\] ]\[\e[1;32m\] --➤ \[\e[0m\]'
 
 # Make Tab autocomplete regardless of filename case
