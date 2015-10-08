@@ -13,9 +13,9 @@ endif
 " -----------------------------
 " File Locations
 " -----------------------------
-set backupdir=~/.vim/.backup// " Double // causes backups to use full file path
-set directory=~/.vim/.tmp//
-set spellfile=~/.vim/spell/custom.en.utf-8.add
+set backupdir=~/.vim/.backup " Double // causes backups to use full file path
+set directory=~/.vim/.temp
+set spellfile=~/.vim/.spell/custom.en.utf-8.add
 " Persistent Undo
 if has('persistent_undo')
   set undofile
@@ -28,7 +28,6 @@ endif
 set ruler          " Ruler on
 set showtabline=2  " Tabs styles"
 set number         " Line numbers on
-"set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
 set encoding=utf-8
@@ -53,7 +52,7 @@ set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
 set hidden             " Change buffer - without saving
-set history=768        " Number of things to remember in history.
+set history=1024        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
@@ -63,8 +62,8 @@ set nostartofline      " Don't go to the start of the line after some commands
 set scrolloff=3        " Keep three lines below the last line when scrolling
 set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
-set autochdir          " Switch vim to currnent working directory"
-set cm=blowfish2       " Better crypt"
+"set autochdir          " Switch vim to currnent working directory"
+set cryptmethod=blowfish2       " Better crypt"
 
 " ---------------
 " Text Format
@@ -104,7 +103,6 @@ set list
 " Show trailing spaces as dots and carrots for extended lines.
 " From Janus, http://git.io/PLbAlw
 
-" Reset the listchars
 set listchars=""
 " make tabs visible
 set listchars=tab:\|\ ,eol:¬

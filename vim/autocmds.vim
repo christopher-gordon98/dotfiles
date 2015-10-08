@@ -25,12 +25,6 @@ if has("autocmd")
           \*.hbs
           \ silent! :StripTrailingWhiteSpace
 
-    " Help mode bindings
-    " <enter> to follow tag, <bs> to go back, and q to quit.
-    " From http://ctoomey.com/posts/an-incremental-approach-to-vim/
-    autocmd filetype help nnoremap <buffer><cr> <c-]>
-    autocmd filetype help nnoremap <buffer><bs> <c-T>
-    autocmd filetype help nnoremap <buffer>q :q<CR>
 
     " Fix accidental indentation in html files
     " from http://morearty.com/blog/2013/01/22/fixing-vims-indenting-of-html-files.html
@@ -66,16 +60,12 @@ autocmd FileType javascript set ts=2 sts=2 sw=2 expandtab
 
 autocmd! FileType * call SetDictionary()
 autocmd! BufNewFile * call LoadTemplate()
-au FocusLost * :silent! wall
-au VimResized * :wincmd =
-
 "set current working directory automatically
 autocmd BufEnter * silent! lcd %:p:h
 
-let s:default_path = escape(&path, '\ ') " store default value of 'path'
-
 " Always add the current file's directory to the path and tags list if not
 " already there. Add it to the beginning to speed up searches.
+let s:default_path = escape(&path, '\ ') " store default value of 'path'
 autocmd BufRead *
       \ let s:tempPath=escape(escape(expand("%:p:h"), ' '), '\ ') |
       \ exec "set path-=".s:tempPath |
