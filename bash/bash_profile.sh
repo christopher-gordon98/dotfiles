@@ -1,14 +1,10 @@
 
-source ~/.dotfiles/bash/export.sh
-source ~/.dotfiles/bash/prompt.sh
-source ~/.dotfiles/bash/aliases.sh 
-source ~/.dotfiles/bash/functions.sh
-source ~/.dotfiles/bash/git-completion.sh
-source ~/.dotfiles/bash/config.sh
-source ~/.dotfiles/bash/ssh.sh
-
-
-
+source $HOME/.dotfiles/bash/export.sh
+source $HOME/.dotfiles/bash/prompt.sh
+source $HOME/.dotfiles/bash/aliases.sh 
+source $HOME/.dotfiles/bash/functions.sh
+source $HOME/.dotfiles/bash/git-completion.sh
+source $HOME/.dotfiles/bash/ssh.sh
 
 
 

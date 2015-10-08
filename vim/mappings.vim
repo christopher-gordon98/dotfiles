@@ -7,38 +7,29 @@
 let mapleader=","
 let maplocalleader = "\\"
 
-
-
-vnoremap < <gv
-vnoremap > >gv
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
 " ---------------
 " Regular Mappings
 " ---------------
-
 " Yank entire buffer with gy
-nnoremap gy :0,$ y<cr>
-
+nnoremap  <silent> gy :0,$ y<cr>
 " Select entire buffer
-nnoremap vy ggVG
+nnoremap  <silent> vy ggVG
 
 " Make Y behave like other capital commands.
 " Hat-tip http://vimbits.com/bits/11
-nnoremap Y y$
+nnoremap  <silent> Y y$
 
-" Just to beginning and end of lines easier. From http://vimbits.com/bits/16
-noremap H ^
-noremap L $
+" Just to beginning and end of lines easier.
+noremap  <silent> H ^
+noremap  <silent> L $
 
 " Create newlines without entering insert mode
-nnoremap go o<Esc>k
-nnoremap gO O<Esc>j
+nnoremap  <silent> go o<Esc>k
+nnoremap  <silent> gO O<Esc>j
 
 " remap U to <C-r> for easier redo
 " from http://vimbits.com/bits/356
-nnoremap U <C-r>
+nnoremap  <silent> U <C-r>
 
 
 " Don't move on *
@@ -100,9 +91,16 @@ inoremap JK <Esc>
 " ---------------
 
 nnoremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
-vnoremap <Leader>sg :sort<CR>
-nnoremap <leader>ls :set list!<CR>
-nnoremap <leader>ee :Explore<CR>
+nnoremap <silent> <leader>N <esc>:sbprevious<CR>
+nnoremap <silent> <leader>M <esc>:sbnext<CR>
+nnoremap <silent> <leader>n <esc>:bprevious<CR>
+nnoremap <silent> <leader>m <esc>:bnext<CR>
+nnoremap <silent> <leader>d <esc>:bdelete<CR>
+nnoremap <silent> <leader>b <esc>:ls<CR>
+vnoremap <silent> <leader>s :sort<CR>
+nnoremap <silent> <leader>w :w<CR>
+nnoremap <silent> <leader>l :set list!<CR>
+nnoremap <silent> <leader>e :Explore<CR>
 nnoremap <leader>fj :%!python -m json.tool<CR>
 
 " Highlight search word under cursor without jumping to next
@@ -172,17 +170,9 @@ endif
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
 
-nnoremap <silent> <leader>N <esc>:sbprevious<CR>
-nnoremap <silent> <silent> <leader>M <esc>:sbnext<CR>
-nnoremap <silent> <leader>n <esc>:bprevious<CR>
-nnoremap <silent> <leader>m <esc>:bnext<CR>
-nnoremap <silent> <leader>d <esc>:bdelete<CR>
-nnoremap <silent> <leader>b <esc>:ls<CR>
-nnoremap <silent> <leader> <space> :noh<cr>:call clearmatches()<cr>
-
-vnoremap <silent> <leader>s :sort<CR>
-nnoremap <silent> <leader>w :w<CR>
-nnoremap <silent> <leader>l :set list!<CR>
-nnoremap <silent> <leader>e :Explore<CR>
 

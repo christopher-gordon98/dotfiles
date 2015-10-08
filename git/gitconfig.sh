@@ -28,12 +28,12 @@
 [alias]
 
       c = commit -am
-      up = pull
-      p = push
-      s = status -s
-      sclone = clone --depth=1
+      pu = pull
+      ps = push
+      st = status -s
       df = diff --color --color-words --abbrev
       lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+      l = log 
       co = checkout
 
       # Show the diff between the latest commit and the current state

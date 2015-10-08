@@ -1,12 +1,12 @@
 # Create a new directory and enter it
 function md() {
-mkdir -p "$@" && cd "$@"
+  mkdir -p "$@" && cd "$@"
 }
 
 
 # find shorthand
 function f() {
-find . -name "$1" 2>&1 | grep -v 'Permission denied'
+  find . -name "$1" 2>&1 | grep -v 'Permission denied'
 }
 
 
@@ -18,12 +18,12 @@ cdf() {  # short for cdfinder
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
-local port="${1:-8000}"
-open "http://localhost:${port}/"
-# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
-}
+  local port="${1:-8000}"
+  open "http://localhost:${port}/"
+  # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+  }
 
 
 # Copy w/ progress
@@ -35,46 +35,46 @@ cp_p () {
 
 # get gzipped size
 function gz() {
-echo "orig size    (bytes): "
-cat "$1" | wc -c
-echo "gzipped size (bytes): "
-gzip -c "$1" | wc -c
+  echo "orig size    (bytes): "
+  cat "$1" | wc -c
+  echo "gzipped size (bytes): "
+  gzip -c "$1" | wc -c
 }
 
 # whois a domain or a URL
 function whois() {
-local domain=$(echo "$1" | awk -F/ '{print $3}') # get domain from URL
-if [ -z $domain ] ; then
-  domain=$1
-fi
-echo "Getting whois record for: $domain …"
+  local domain=`echo "$1" | awk -F/ '{print $3}'` # get domain from URL
+  if [ -z $domain ] ; then
+    domain=$1
+  fi
+  echo "Getting whois record for: $domain …"
 
-# avoid recursion
-# this is the best whois server
-# strip extra fluff
-/usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
-}
+  # avoid recursion
+  # this is the best whois server
+  # strip extra fluff
+  /usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
+  }
 
 function strip_diff_leading_symbols(){
-color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
-reset_color="\x1B\[m"
-dim_magenta="\x1B\[38;05;146m"
+  color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
+  reset_color="\x1B\[m"
+  dim_magenta="\x1B\[38;05;146m"
 
-# simplify the unified patch diff header
-sed -r "s/^($color_code_regex)diff --git .*$//g" | \
-  sed -r "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
-  sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
+  # simplify the unified patch diff header
+  sed -r "s/^($color_code_regex)diff --git .*$//g" | \
+    sed -r "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
+    sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
 
-  # extra color for @@ context line
-sed -r "s/@@$reset_color $reset_color(.*$)/@@ $dim_magenta\1/g"  |\
+    # extra color for @@ context line
+  sed -r "s/@@$reset_color $reset_color(.*$)/@@ $dim_magenta\1/g"  |\
 
-  # actually strips the leading symbols
-sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
-}
+    # actually strips the leading symbols
+  sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
+    }
 
-## Print a horizontal rule
-rule () {
-  printf "%$(tput cols)s\n"|tr " " "─"}}
+  ## Print a horizontal rule
+  rule () {
+    printf "%$(tput cols)s\n"|tr " " "─"
 }
 
 
@@ -143,11 +143,4 @@ gifify() {
 # brew reinstall ffmpeg --with-libvpx
 webmify(){
   ffmpeg -i $1 -vcodec libvpx -acodec libvorbis -isync -copyts -aq 80 -threads 3 -qmax 30 -y $2 $1.webm
-}
-
-
-# `shellswitch bash`
-# `shellswitch zsh`
-shellswitch () {
-  chsh -s $(brew --prefix)/bin/$1
 }

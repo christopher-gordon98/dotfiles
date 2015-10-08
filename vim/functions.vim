@@ -72,7 +72,7 @@ if !exists("*OpenURL")
 endif
 
 command! OpenUrl call OpenURL()
-nnoremap <leader>o :call OpenURL()<CR>
+nnoremap  <silent> <leader>o :call OpenURL()<CR>
 
 " ---------------
 " Paste link with Title
@@ -86,7 +86,7 @@ if !exists("*PasteURLTitle")
 endif
 
 command! PasteURLTitle call PasteURLTitle()
-noremap <leader>pt :PasteURLTitle<CR>
+noremap  <silent> <leader>pt :PasteURLTitle<CR>
 
 endif " endif has('ruby')
 

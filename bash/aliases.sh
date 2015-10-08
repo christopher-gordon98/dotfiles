@@ -1,37 +1,21 @@
-
-#Git shortcuts
-alias gts='git status'
-alias gtl='git log'
-alias gts='git status'
-alias gtl='git log'
-alias gtb='git branch'
-alias gtm='git log --name-status'
-
-
-alias dot='cd ~/.dotfiles/'
-
-alias hidedot='defaults write com.apple.Finder AppleShowAllFiles 0; killall -HUP Finder'
-alias showedot='defaults write com.apple.Finder AppleShowAllFiles 1; killall -HUP Finder'
-alias ebikh='vim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ebikh'
-alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
-alias srvr='python -m SimpleHTTPServer 9000'
-
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias dx="cd ~/Dropbox"
 alias g="git"
+alias gtm='git log --name-status'
 alias h="history"
 alias j="jobs"
+alias p="cd ~/projects"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -42,25 +26,13 @@ fi
 
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
-
-# List all files colorized in long format, including dot files
 alias la="ls -laF ${colorflag}"
-
-# List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
-
-# Always use color output for `ls`
 alias ls="ls -1 ${colorflag}"
-# Enable aliases to be sudo’ed
-alias su='sudo '
 
-# Get week number
+
 alias week='date +%V'
-
-# Stopwatch
-alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
-
-# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+alias stopwatch='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # IP addresses
@@ -90,24 +62,16 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 # JavaScriptCore REPL
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc";
 [ -e "${jscbin}" ] && alias jsc="${jscbin}";
-unset jscbin;
+  unset jscbin;
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 
-# Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
+alias showdot="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidedot="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
@@ -120,7 +84,6 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 
 # Disable Spotlight
 alias spotoff="sudo mdutil -a -i off"
-# Enable Spotlight
 alias spoton="sudo mdutil -a -i on"
 
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
@@ -156,3 +119,11 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+
+alias dot='cd ~/.dotfiles/'
+
+alias ebikh='vim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ebikh'
+alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
+alias srvr='python -m SimpleHTTPServer 9000'
+
+

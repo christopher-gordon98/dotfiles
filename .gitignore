@@ -6,5 +6,7 @@ spell/*
 vim/vundle_plugins/custom
 vim/.backup/*
 vim/.tmp/*
+vim/.temp/*
+vim/.backup/*
 vim/.undo/*
 bash/ssh.sh
