@@ -1,0 +1,1 @@
+ vim -V9myVimLog

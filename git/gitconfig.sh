@@ -86,3 +86,7 @@
 
 [push]
     default = current
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
