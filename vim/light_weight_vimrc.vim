@@ -29,6 +29,7 @@ source ~/.vim/vundle_plugins/vim-javascript.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
+source ~/.vim/vundle_plugins/syntastic.vim
 
 unlet g:vundle_installing_plugins
 call vundle#end()
@@ -60,6 +61,7 @@ source ~/.vim/vundle_plugins/vim-javascript.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
+source ~/.vim/vundle_plugins/syntastic.vim
 
 autocmd! FileType * call SetDictionary()
 autocmd! BufNewFile * call LoadTemplate()

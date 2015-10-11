@@ -7,7 +7,7 @@ echo '  / / |_|___/\__/_//_/\_, /\__/_/  /__/ '
 echo ' /_/ '
 
 
-PS1='> [\W \[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[0m\] ]\[\e[1;32m\] --➤ \[\e[0m\]'
+PS1='> [\W\[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[0m\]]\[\e[1;32m\] --➤ \[\e[0m\]'
 
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on

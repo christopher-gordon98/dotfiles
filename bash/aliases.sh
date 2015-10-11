@@ -15,7 +15,7 @@ alias g="git"
 alias gtm='git log --name-status'
 alias h="history"
 alias j="jobs"
-alias p="cd ~/projects"
+alias gh="cd ~/GITHUB"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
