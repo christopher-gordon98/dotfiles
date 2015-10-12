@@ -30,7 +30,8 @@ source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
 source ~/.vim/vundle_plugins/syntastic.vim
-"
+source ~/.vim/vundle_plugins/tcomment-vim.vim
+
 unlet g:vundle_installing_plugins
 call vundle#end()
 
@@ -38,7 +39,7 @@ call vundle#end()
 
 filetype plugin indent on
 " Platform (Windows, Mac, etc.) configuration.
-"source ~/.vim/platforms.vim
+source ~/.vim/platforms.vim
 " All of the Vim configuration.
 source ~/.vim/config.vim
 " New commands
@@ -62,7 +63,8 @@ source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
 source ~/.vim/vundle_plugins/syntastic.vim
-"
+source ~/.vim/vundle_plugins/tcomment-vim.vim
+
 autocmd! FileType * call SetDictionary()
 autocmd! BufNewFile * call LoadTemplate()
 au FocusLost * :silent! wall
