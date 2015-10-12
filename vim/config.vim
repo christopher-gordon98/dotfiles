@@ -63,6 +63,9 @@ set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
 set autochdir          " Switch vim to currnent working directory"
 set cryptmethod=blowfish2       " Better crypt"
+set timeout
+set timeoutlen=750
+set ttimeoutlen=250
 
 " ---------------
 " Text Format
