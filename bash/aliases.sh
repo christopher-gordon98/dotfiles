@@ -68,6 +68,7 @@ jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources
 alias c="tr -d '\n' | pbcopy"
 
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias k="clear"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 alias showdot="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"

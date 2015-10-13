@@ -51,6 +51,7 @@ ln -sFfiv $DOTDIR/tmux/.tmux-osx.conf  ~/.tmux-osx.conf
 ln -sFfiv $DOTDIR/git/gitconfig.sh ~/.gitconfig
 ln -sFfiv $DOTDIR/xrc/curlrc.sh ~/.curlrc
 ln -sFfiv $DOTDIR/xrc/wgetrc.sh ~/.wgetrc
+ln -sFfiv $DOTDIR/xrc/pystartup.sh ~/.pystartup
 
 
 while getopts ":l" opt; do
