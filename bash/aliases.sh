@@ -6,6 +6,11 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 
+# ...................................................
+# Project specific alias
+# ...................................................
+alias fc="cd ~/DEV_HOST/filingcatch.local/"
+
 # Shortcuts
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
