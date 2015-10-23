@@ -52,6 +52,8 @@ ln -sFfiv $DOTDIR/git/gitconfig.sh ~/.gitconfig
 ln -sFfiv $DOTDIR/xrc/curlrc.sh ~/.curlrc
 ln -sFfiv $DOTDIR/xrc/wgetrc.sh ~/.wgetrc
 ln -sFfiv $DOTDIR/xrc/pystartup.sh ~/.pystartup
+ln -sFfiv $DOTDIR/xrc/eslintrc.json ~/.eslintrc
+ln -sFfiv $DOTDIR/xrc/jshintrc.json ~/.jshintrc
 
 
 while getopts ":l" opt; do
