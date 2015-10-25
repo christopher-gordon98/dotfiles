@@ -18,19 +18,25 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 let g:vundle_installing_plugins = 1
-source ~/.vim/vundle_plugins/vim-airline.vim
+
+source ~/.vim/vundle_plugins/ag.vim
 source ~/.vim/vundle_plugins/colorv.vim
 source ~/.vim/vundle_plugins/ctrlp.vim
 source ~/.vim/vundle_plugins/html5.vim
+source ~/.vim/vundle_plugins/indenthtml.vim
 source ~/.vim/vundle_plugins/jellybeans.vim
+source ~/.vim/vundle_plugins/syntastic.vim
+source ~/.vim/vundle_plugins/tcomment-vim.vim
+source ~/.vim/vundle_plugins/vim-airline.vim
 source ~/.vim/vundle_plugins/vim-css3-syntax.vim
 source ~/.vim/vundle_plugins/vim-indent-guides.vim
 source ~/.vim/vundle_plugins/vim-javascript.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
-source ~/.vim/vundle_plugins/syntastic.vim
-source ~/.vim/vundle_plugins/tcomment-vim.vim
+source ~/.vim/vundle_plugins/swapvim.vim
+source ~/.vim/vundle_plugins/dragvisuals.vim
+source ~/.vim/vundle_plugins/mathvim.vim
 
 unlet g:vundle_installing_plugins
 call vundle#end()
@@ -51,19 +57,22 @@ source ~/.vim/functions.vim
 " Auto commands.
 source ~/.vim/autocmds.vim
 
-source ~/.vim/vundle_plugins/vim-airline.vim
+source ~/.vim/vundle_plugins/ag.vim
 source ~/.vim/vundle_plugins/colorv.vim
 source ~/.vim/vundle_plugins/ctrlp.vim
 source ~/.vim/vundle_plugins/html5.vim
+source ~/.vim/vundle_plugins/indenthtml.vim
 source ~/.vim/vundle_plugins/jellybeans.vim
+source ~/.vim/vundle_plugins/syntastic.vim
+source ~/.vim/vundle_plugins/tcomment-vim.vim
+source ~/.vim/vundle_plugins/vim-airline.vim
 source ~/.vim/vundle_plugins/vim-css3-syntax.vim
 source ~/.vim/vundle_plugins/vim-indent-guides.vim
 source ~/.vim/vundle_plugins/vim-javascript.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
-source ~/.vim/vundle_plugins/syntastic.vim
-source ~/.vim/vundle_plugins/tcomment-vim.vim
+
 
 autocmd! FileType * call SetDictionary()
 autocmd! BufNewFile * call LoadTemplate()
@@ -77,6 +86,5 @@ autocmd FileType javascripti,jsx setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType php setlocal omnifunc=phpcomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 
 
