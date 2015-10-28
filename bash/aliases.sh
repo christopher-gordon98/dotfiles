@@ -163,3 +163,5 @@ alias rrrfiles="chmod -R 744"
 # also allowing the file ower group to write
 alias rwrfiles="chmod -R 764"
 
+#added mit scheme 
+alias mit-scheme="/Applications/MIT-Scheme.app/Contents/Resources/mit-scheme"
