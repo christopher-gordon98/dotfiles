@@ -63,3 +63,5 @@ autocmd BufRead *
       \ exec "set path-=".s:default_path |
       \ exec "set path^=".s:tempPath |
       \ exec "set path^=".s:default_path
+
+autocmd BufNewFile,BufRead *.html.twig   set syntax=html.twig
