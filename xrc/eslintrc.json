@@ -102,7 +102,7 @@
       "no-unexpected-multiline": 2,
       "no-unneeded-ternary": [2, { "defaultAssignment": false }],
       "no-unreachable": 2,
-      "no-unused-vars": [2, { "vars": "all", "args": "none" }],
+      "no-unused-vars": [0, { "vars": "all", "args": "none" }],
       "no-useless-call": 2,
       "no-with": 2,
       "one-var": [2, { "initialized": "never" }],
@@ -110,7 +110,7 @@
       "padded-blocks": [2, "never"],
       "quotes": [2, "single", "avoid-escape"],
       "radix": 2,
-      "semi": [2, "never"],
+      "semi": [2, "always"],
       "semi-spacing": [2, { "before": false, "after": true }],
       "space-after-keywords": [2, "always"],
       "space-before-blocks": [2, "always"],
@@ -124,6 +124,6 @@
       "use-isnan": 2,
       "valid-typeof": 2,
       "wrap-iife": [2, "any"],
-      "yoda": [2, "never"],
+      "yoda": [2, "never"]
     }
 }
