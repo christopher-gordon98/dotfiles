@@ -30,10 +30,12 @@ source ~/.vim/vundle_plugins/tcomment-vim.vim
 source ~/.vim/vundle_plugins/vim-airline.vim
 source ~/.vim/vundle_plugins/vim-css3-syntax.vim
 source ~/.vim/vundle_plugins/vim-indent-guides.vim
+source ~/.vim/vundle_plugins/vim-fugitive.vim
 source ~/.vim/vundle_plugins/vim-javascript.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
+source ~/.vim/vundle_plugins/vim-signify.vim
 source ~/.vim/vundle_plugins/swapvim.vim
 source ~/.vim/vundle_plugins/dragvisuals.vim
 source ~/.vim/vundle_plugins/mathvim.vim
@@ -72,7 +74,7 @@ source ~/.vim/vundle_plugins/vim-javascript.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
-
+source ~/.vim/vundle_plugins/vim-fugitive.vim
 
 autocmd! FileType * call SetDictionary()
 autocmd! BufNewFile * call LoadTemplate()
