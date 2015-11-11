@@ -101,6 +101,7 @@ vnoremap <silent> <leader>s :sort<CR>
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>l :set list!<CR>
 nnoremap <silent> <leader>e :Explore<CR>
+nnoremap <silent> <leader>f :CtrlP<CR>
 nnoremap <leader>fj :%!python -m json.tool<CR>
 
 " Highlight search word under cursor without jumping to next
