@@ -21,6 +21,7 @@ let g:vundle_installing_plugins = 1
 
 source ~/.vim/vundle_plugins/ag.vim
 source ~/.vim/vundle_plugins/emmet.vim
+source ~/.vim/vundle_plugins/dash.vim
 source ~/.vim/vundle_plugins/colorv.vim
 source ~/.vim/vundle_plugins/ctrlp.vim
 source ~/.vim/vundle_plugins/html5.vim

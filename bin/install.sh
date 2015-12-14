@@ -72,7 +72,7 @@ if [ "$LIGHTWVIM" -eq "$TREW" ]
 fi
 
 echo ''
-sucess  'Hey! Superhero.'
+success  'Hey! Superhero.'
 echo ''
 
 info 'Installing plugins'
