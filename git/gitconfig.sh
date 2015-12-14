@@ -50,7 +50,8 @@
           git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
         fi \
       }; f"
-
+    # Find FIXME, TODO, etc
+    n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
 
 
 [color]

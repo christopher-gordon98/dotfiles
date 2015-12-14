@@ -14,10 +14,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq =  0
 
-let g:syntastic_html_tidy_ignore_errors = [ 'proprietary attribute "ng-controller"']
-let g:syntastic_html_tidy_ignore_errors = [ '<div> proprietary attribute "ng-repeat"']
-let g:syntastic_html_tidy_ignore_errors = [ '<div> proprietary attribute "ng-class"']
-let g:syntastic_html_tidy_ignore_errors = [ '<span> proprietary attribute "ng-show"']
-let g:syntastic_html_tidy_ignore_errors = [ '<span> proprietary attribute "ng-bind"']
+let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute ']
