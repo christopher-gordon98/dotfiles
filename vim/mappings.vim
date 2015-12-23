@@ -90,7 +90,7 @@ inoremap JK <Esc>
 " Leader Mappings
 " ---------------
 
-nnoremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
+nnoremap <silent> <leader><space>:noh<cr>:call clearmatches()<cr>
 nnoremap <silent> <leader>N <esc>:sbprevious<CR>
 nnoremap <silent> <leader>M <esc>:sbnext<CR>
 nnoremap <silent> <leader>n <esc>:bprevious<CR>
