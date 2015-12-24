@@ -50,7 +50,7 @@ endif
 syntax enable
 set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
-set wildmenu           " Turn on WiLd menu
+set wildmenu           " Turn on Wild menu
 set hidden             " Change buffer - without saving
 set history=1024       " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
@@ -66,7 +66,7 @@ set cryptmethod=blowfish2       " Better crypt"
 set timeout
 set timeoutlen=750
 set ttimeoutlen=250
-
+set spell spelllang=en_gb
 " ---------------
 " Text Format
 " ---------------
