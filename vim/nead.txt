@@ -1,0 +1,18 @@
+
+[user_1028813292@ssh01 ~]$ vim .vimrc 
+Error detected while processing /home/linweb02/f/flingcatch.com/user/.vimrc:
+line    6:
+E492: Not an editor command: olor
+line    9:
+E185: Cannot find colour scheme jellybeans
+line   68:
+E518: Unknown option: cryptmethod=blowfish2
+line   85:
+E518: Unknown option: breakindent
+Error detected while processing /usr/share/vim/vim70/plugin/netrwPlugin.vim:
+line   88:
+E227: mapping already exists for gx
+Press ENTER or type command to continue
+
+
+
