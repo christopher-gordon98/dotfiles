@@ -128,7 +128,7 @@ alias reload="exec $SHELL -l"
 
 alias dot='cd ~/.dotfiles/'
 
-alias ebikh='vim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ebikh'
+alias pass='vim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ebikh'
 alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
 alias srvr='python -m SimpleHTTPServer 9000'
 
