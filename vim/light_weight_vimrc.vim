@@ -41,7 +41,7 @@ source ~/.vim/vundle_plugins/vim-signify.vim
 source ~/.vim/vundle_plugins/swapvim.vim
 source ~/.vim/vundle_plugins/dragvisuals.vim
 source ~/.vim/vundle_plugins/mathvim.vim
-
+source ~/.vim/vundle_plugins/todo.txt.vim
 unlet g:vundle_installing_plugins
 call vundle#end()
 
