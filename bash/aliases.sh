@@ -127,6 +127,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias reload="exec $SHELL -l"
 
 alias dot='cd ~/.dotfiles/'
+alias todo='vim ~/.dotfiles/todo/'
 
 alias pass='vim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ebikh'
 alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
