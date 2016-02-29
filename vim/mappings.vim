@@ -158,6 +158,7 @@ iabbrev jxx /** \r* \r* */
 " copy current file name (relative/absolute) to system clipboard
 
 if has("mac") || has("gui_macvim") || has("gui_mac")
+
   " relative path  (src/foo.txt)
   nnoremap <silent> <leader>yp :let @*=expand("%")<CR>
 
