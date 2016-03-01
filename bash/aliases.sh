@@ -16,9 +16,13 @@ alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dx="cd ~/Dropbox"
+alias wk="cd ~/work"
+
 alias gtl="git log --graph"
 alias gts="git status"
+alias gtb="git branch"
 alias gtm='git log --name-status'
+
 alias h="history"
 alias j="jobs"
 alias gh="cd ~/GITHUB"
