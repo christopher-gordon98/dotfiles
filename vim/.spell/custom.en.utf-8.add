@@ -13,3 +13,7 @@ xMidYMid
 preserveAspectRatio
 devDependencies
 px
+beforeEach
+api
+afterEack
+afterEach
