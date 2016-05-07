@@ -76,7 +76,7 @@
       changed = green
       untracked = cyan
 [merge]
-    tool = opendiff
+      tool = opendiff
 
 
 [color "diff-highlight"]
@@ -86,8 +86,8 @@
       newHighlight = "green bold 22"
 
 [push]
-    default = current
+      default = current
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+      clean = git hawser clean %f
+      smudge = git hawser smudge %f
+      required = true
