@@ -17,3 +17,5 @@ beforeEach
 api
 afterEack
 afterEach
+conf
+protractor
