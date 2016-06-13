@@ -9,13 +9,22 @@ export PATH="$PATH:/usr/X10/bin"
 export PATH="$PATH:/usr/local/share/npm/bin"
 export PATH="$PATH:/usr/local/lib/node_modules/karma/bin"
 export PATH="$PATH:/usr/local/sbin:"
+
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH";
+
+export GOPATH=$HOME/Go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
 export GREP_OPTIONS="--color=auto"
 export CLICOLOR=1
 export TERM=xterm-256color
 export MC_SKIN="$HOME/.config/mc/jellybean.ini"
 export BYOBU_PREFIX="/usr/local"
 export EDITOR="vim"
+
 export PROJECT_HOME="$HOME/Project"
 export WORKON_HOME="$HOME/.virtualenvs"
 export VIRTENV="$HOME/.virtualenvs"
