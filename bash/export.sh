@@ -9,6 +9,7 @@ export PATH="$PATH:/usr/X10/bin"
 export PATH="$PATH:/usr/local/share/npm/bin"
 export PATH="$PATH:/usr/local/lib/node_modules/karma/bin"
 export PATH="$HOME/bin:$PATH";
+export PATH="$HOME/.local/bin:$PATH";
 export GREP_OPTIONS="--color=auto"
 export CLICOLOR=1
 export TERM=xterm-256color

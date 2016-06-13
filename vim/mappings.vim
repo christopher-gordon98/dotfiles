@@ -181,3 +181,5 @@ nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
 
 
+nmap <silent> --s "=HaskellModuleSection()<CR>gp
+nmap <silent> --h "=HaskellModuleHeader()<CR>:0put =<CR>
