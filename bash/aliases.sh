@@ -136,8 +136,8 @@ alias todo='vim ~/.dotfiles/todo/'
 
 alias pass='vim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ebikh'
 alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
-alias srvr='python -m SimpleHTTPServer 9000'
-
+alias pysrv='python -m SimpleHTTPServer 9000'
+alias psrv='php -S localhost:8000'
 
 
 # Unix octal permision table, just a reminder.
