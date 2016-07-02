@@ -139,6 +139,8 @@ alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
 alias pysrv='python -m SimpleHTTPServer 9000'
 alias psrv='php -S localhost:8000'
 
+alias srvr='python -m SimpleHTTPServer 9000'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Unix octal permision table, just a reminder.
 # if you intend to mix your own, just be careful
