@@ -17,3 +17,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq =  0
 
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute ', 'is not recognized!', 'discarding unexpected' ]
+
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2'
+
