@@ -44,7 +44,7 @@ alias ls="ls -1 ${colorflag}"
 
 alias week='date +%V'
 alias stopwatch='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo pip freeze --local | sudo grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
