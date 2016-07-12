@@ -52,3 +52,5 @@ export NVM_DIR="~/.nvm"
 
   export NVM_DIR=~/.nvm
   source $(brew --prefix nvm)/nvm.sh
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

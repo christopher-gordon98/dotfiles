@@ -7,6 +7,7 @@ for i in `ls -lrt -d -1 $PWD/*`;
     cd $i;
     git fetch --all
     git pull && composer install;
+    ./vendor/bin/phinx migrate;
     echo $i \n
     echo "=================";
     cd ../;
