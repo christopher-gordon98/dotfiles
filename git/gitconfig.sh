@@ -60,6 +60,7 @@
 [core]
       excludesfile = ~/.gitignore
       attributesfile = ~/.gitattributes
+	hooksPath = /Users/aaron.goshine/work/hara/git-hooks
       # insanely beautiful diffs
 #      pager = bash -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
 [color "branch"]
