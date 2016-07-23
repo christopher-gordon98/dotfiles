@@ -20,4 +20,4 @@ let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute ', 'is not rec
 
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2'
-
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
