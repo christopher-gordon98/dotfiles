@@ -44,6 +44,7 @@ cleanup "bin"
 ln -s $DOTDIR/config ~/.config
 ln -s $DOTDIR/tmux ~/.tmux
 ln -s $DOTDIR/vim ~/.vim
+ln -s $DOTDIR/vim ~/.nvim
 ln -s $DOTDIR/vifm ~/.vifm
 ln -s $DOTDIR/bin ~/bin
 
@@ -71,8 +72,10 @@ done
 if [ "$LIGHTWVIM" -eq "$TREW" ] 
   then
     ln -sFfiv $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
+    ln -sFfiv $DOTDIR/vim/light_weight_vimrc.vim ~/.nvimrc
   else
   ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.vimrc
+  ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.nvimrc
 fi
 
 echo ''
