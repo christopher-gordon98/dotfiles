@@ -7,7 +7,7 @@ echo '  / / |_|___/\__/_//_/\__/ \__/_/  /__/ '
 echo ' /_/  THE AGE OF ULTRA-AARON'
 
 
-PS1='> \h [\W\[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[0m\]]\[\e[1;32m\] --➤ \[\e[0m\]'
+ PS1='> \h [\W\[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[0m\]]\[\e[1;32m\] --➤ \[\e[0m\]'
 
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
