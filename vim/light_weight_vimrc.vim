@@ -19,29 +19,49 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 let g:vundle_installing_plugins = 1
 
+source ~/.vim/vundle_plugins/vundle.vim
+source ~/.vim/vundle_plugins/L9.vim
+source ~/.vim/vundle_plugins/MatchTagAlways.vim
 source ~/.vim/vundle_plugins/ag.vim
-source ~/.vim/vundle_plugins/emmet.vim
-source ~/.vim/vundle_plugins/dash.vim
 source ~/.vim/vundle_plugins/colorv.vim
 source ~/.vim/vundle_plugins/ctrlp.vim
+source ~/.vim/vundle_plugins/dragvisuals.vim
+source ~/.vim/vundle_plugins/emmet.vim
+source ~/.vim/vundle_plugins/ghcmod-vim.vim
+source ~/.vim/vundle_plugins/haskell-vim.vim
+source ~/.vim/vundle_plugins/haskellmode-vim.vim
 source ~/.vim/vundle_plugins/html5.vim
 source ~/.vim/vundle_plugins/indenthtml.vim
 source ~/.vim/vundle_plugins/jellybeans.vim
+source ~/.vim/vundle_plugins/mathvim.vim
+source ~/.vim/vundle_plugins/neco-ghc.vim
+source ~/.vim/vundle_plugins/supertab.vim
+source ~/.vim/vundle_plugins/swapvim.vim
 source ~/.vim/vundle_plugins/syntastic.vim
+source ~/.vim/vundle_plugins/tabular.vim
 source ~/.vim/vundle_plugins/tcomment-vim.vim
+source ~/.vim/vundle_plugins/tern.vim
+source ~/.vim/vundle_plugins/todo.txt.vim
+source ~/.vim/vundle_plugins/ultisnip.vim
 source ~/.vim/vundle_plugins/vim-airline.vim
 source ~/.vim/vundle_plugins/vim-css3-syntax.vim
-source ~/.vim/vundle_plugins/vim-indent-guides.vim
 source ~/.vim/vundle_plugins/vim-fugitive.vim
+source ~/.vim/vundle_plugins/vim-go.vim
+source ~/.vim/vundle_plugins/vim-hoogle.vim
+source ~/.vim/vundle_plugins/vim-indent-guides.vim
 source ~/.vim/vundle_plugins/vim-javascript.vim
+source ~/.vim/vundle_plugins/vim-jsdoc.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
+source ~/.vim/vundle_plugins/vim-markdown.vim
+source ~/.vim/vundle_plugins/vim-rust.vim
 source ~/.vim/vundle_plugins/vim-signify.vim
-source ~/.vim/vundle_plugins/swapvim.vim
-source ~/.vim/vundle_plugins/dragvisuals.vim
-source ~/.vim/vundle_plugins/mathvim.vim
-source ~/.vim/vundle_plugins/todo.txt.vim
+source ~/.vim/vundle_plugins/vim-snippets.vim
+source ~/.vim/vundle_plugins/vim-tmux-navigator.vim
+source ~/.vim/vundle_plugins/vim-tmux.vim
+source ~/.vim/vundle_plugins/vimproc.vim
+source ~/.vim/vundle_plugins/vimux.vim
 unlet g:vundle_installing_plugins
 call vundle#end()
 
@@ -61,23 +81,49 @@ source ~/.vim/functions.vim
 " Auto commands.
 source ~/.vim/autocmds.vim
 
+source ~/.vim/vundle_plugins/vundle.vim
+source ~/.vim/vundle_plugins/L9.vim
+source ~/.vim/vundle_plugins/MatchTagAlways.vim
 source ~/.vim/vundle_plugins/ag.vim
 source ~/.vim/vundle_plugins/colorv.vim
 source ~/.vim/vundle_plugins/ctrlp.vim
+source ~/.vim/vundle_plugins/dragvisuals.vim
+source ~/.vim/vundle_plugins/emmet.vim
+source ~/.vim/vundle_plugins/ghcmod-vim.vim
+source ~/.vim/vundle_plugins/haskell-vim.vim
+source ~/.vim/vundle_plugins/haskellmode-vim.vim
 source ~/.vim/vundle_plugins/html5.vim
 source ~/.vim/vundle_plugins/indenthtml.vim
 source ~/.vim/vundle_plugins/jellybeans.vim
+source ~/.vim/vundle_plugins/mathvim.vim
+source ~/.vim/vundle_plugins/neco-ghc.vim
+source ~/.vim/vundle_plugins/supertab.vim
+source ~/.vim/vundle_plugins/swapvim.vim
 source ~/.vim/vundle_plugins/syntastic.vim
+source ~/.vim/vundle_plugins/tabular.vim
 source ~/.vim/vundle_plugins/tcomment-vim.vim
+source ~/.vim/vundle_plugins/tern.vim
+source ~/.vim/vundle_plugins/todo.txt.vim
+source ~/.vim/vundle_plugins/ultisnip.vim
 source ~/.vim/vundle_plugins/vim-airline.vim
 source ~/.vim/vundle_plugins/vim-css3-syntax.vim
+source ~/.vim/vundle_plugins/vim-fugitive.vim
+source ~/.vim/vundle_plugins/vim-go.vim
+source ~/.vim/vundle_plugins/vim-hoogle.vim
 source ~/.vim/vundle_plugins/vim-indent-guides.vim
 source ~/.vim/vundle_plugins/vim-javascript.vim
+source ~/.vim/vundle_plugins/vim-jsdoc.vim
 source ~/.vim/vundle_plugins/vim-json.vim
 source ~/.vim/vundle_plugins/vim-jsx.vim
 source ~/.vim/vundle_plugins/vim-less.vim
-source ~/.vim/vundle_plugins/vim-fugitive.vim
-
+source ~/.vim/vundle_plugins/vim-markdown.vim
+source ~/.vim/vundle_plugins/vim-rust.vim
+source ~/.vim/vundle_plugins/vim-signify.vim
+source ~/.vim/vundle_plugins/vim-snippets.vim
+source ~/.vim/vundle_plugins/vim-tmux-navigator.vim
+source ~/.vim/vundle_plugins/vim-tmux.vim
+source ~/.vim/vundle_plugins/vimproc.vim
+source ~/.vim/vundle_plugins/vimux.vim
 autocmd! FileType * call SetDictionary()
 autocmd! BufNewFile * call LoadTemplate()
 au FocusLost * :silent! wall
