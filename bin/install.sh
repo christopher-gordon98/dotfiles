@@ -60,6 +60,7 @@ ln -sFfiv $DOTDIR/xrc/pystartup.sh ~/.pystartup
 ln -sFfiv $DOTDIR/xrc/eslintrc.json ~/.eslintrc
 ln -sFfiv $DOTDIR/xrc/jshintrc.json ~/.jshintrc
 
+ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
 while getopts ":l" opt; do
   case $opt in
