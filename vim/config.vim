@@ -15,7 +15,6 @@ endif
 " -----------------------------
 set backupdir=~/.vim/.backup " Double // causes backups to use full file path
 set directory=~/.vim/.temp
-set spellfile=~/.vim/.spell/custom.en.utf-8.add
 " Persistent Undo
 if has('persistent_undo')
   set undofile
@@ -62,7 +61,6 @@ set scrolloff=3        " Keep three lines below the last line when scrolling
 set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
 set autochdir          " Switch vim to currnent working directory"
-set cryptmethod=blowfish2       " Better crypt"
 set timeout
 set timeoutlen=750
 set ttimeoutlen=250
@@ -79,7 +77,7 @@ set autoindent
 set smarttab
 set expandtab
 set linebreak
-set breakindent
+"set breakindent
 set smartindent
 
 

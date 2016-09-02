@@ -1,14 +1,9 @@
-export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/X10/bin"
+export PATH="$PATH:/usr/local/lib/node_modules/karma/bin"
+export PATH="$PATH:/usr/local/share/npm/bin"
 export PATH="$PATH:/opt/local/bin"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:/usr/bin"
-export PATH="$PATH:/bin"
-export PATH="$PATH:/usr/sbin"
-export PATH="$PATH:/sbin"
-export PATH="$PATH:/usr/X10/bin"
-export PATH="$PATH:/usr/local/share/npm/bin"
-export PATH="$PATH:/usr/local/lib/node_modules/karma/bin"
-export PATH="$PATH:/usr/local/sbin:"
+
 
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH";
