@@ -5,11 +5,14 @@
 
 ;;; Code:
 
+(set-default 'truncate-lines t)
+(turn-on-visual-line-mode)
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq make-backup-files nil)
 (menu-bar-mode -1)
-
 (smex-initialize)
-;(ido-hacks 1)
+
+                                        ;(ido-hacks 1)
 (require 'projectile)
 (setq projectile-enable-caching t)
 (setq projectile-globally-ignored-directories (append '("node_modules" ".svn") projectile-globally-ignored-directories))
@@ -80,11 +83,11 @@
 (eval-after-load 'company
   '(progn
      (define-key company-active-map (kbd "TAB")  (lambda ()
-       (interactive)
-       (company-complete-common)
-       (if tip-showing
-         (company-select-next))
-     ))
+                                                   (interactive)
+                                                   (company-complete-common)
+                                                   (if tip-showing
+                                                     (company-select-next))
+                                                   ))
      (define-key company-active-map [tab] 'company-select-next)))
 
 (defun company-pseudo-tooltip-on-explicit-action (command)
@@ -101,7 +104,7 @@
     (`hide
       (company-echo-hide)
       (setq tip-showing nil)
-     )))
+      )))
 
 (setq company-frontends '(company-pseudo-tooltip-on-explicit-action company-echo-metadata-on-explicit-action-frontend company-preview-if-just-one-frontend))
 ;; End TAB cycle hack
@@ -119,16 +122,16 @@
 (require 'evil)
 (evil-mode 1)
 (global-evil-visualstar-mode 1)
-; (setq evil-default-cursor t)
+                                        ; (setq evil-default-cursor t)
 (progn (setq evil-default-state 'normal)
-       (setq evil-auto-indent t)
-       (setq evil-shift-width 2)
-       (setq evil-search-wrap t)
-       (setq evil-find-skip-newlines t)
-       (setq evil-move-cursor-back nil)
-       (setq evil-mode-line-format 'before)
-       (setq evil-esc-delay 0.001)
-       (setq evil-cross-lines t))
+  (setq evil-auto-indent t)
+  (setq evil-shift-width 2)
+  (setq evil-search-wrap t)
+  (setq evil-find-skip-newlines t)
+  (setq evil-move-cursor-back nil)
+  (setq evil-mode-line-format 'before)
+  (setq evil-esc-delay 0.001)
+  (setq evil-cross-lines t))
 
 (setq evil-overriding-maps nil)
 (setq evil-intercept-maps nil)
@@ -137,8 +140,8 @@
 (setq evil-esc-delay 0)
 
 ;; Don't show default text in command bar
-;  ** Currently breaks visual range selection, looking for workaround
-;(add-hook 'minibuffer-setup-hook (lambda () (evil-ex-remove-default)))
+                                        ;  ** Currently breaks visual range selection, looking for workaround
+                                        ;(add-hook 'minibuffer-setup-hook (lambda () (evil-ex-remove-default)))
 
 ;; Make HJKL keys work in special buffers
 (evil-add-hjkl-bindings magit-branch-manager-mode-map 'emacs
@@ -162,16 +165,17 @@
 (evil-leader/set-leader ",")
 (evil-leader/set-key
   "." 'find-tag
-  "t" 'projectile-find-file
+  "f" 'projectile-find-file
+  "m" 'recentf-open-files
   "b" 'ido-switch-buffer
   "cc" 'evilnc-comment-or-uncomment-lines
   "ag" 'projectile-ag
-  "," 'switch-to-previous-buffer
-  ; "gg" 'git-gutter+:toggle
-  ; "gd" 'git-gutter+:popup-diff
-  ; "gp" 'git-gutter+:previous-hunk
-  ; "gn" 'git-gutter+:next-hunk
-  ; "gr" 'git-gutter+:revert-hunk
+  ","  'switch-to-previous-buffer
+  "gg" 'git-gutter+:toggle
+  "gd" 'git-gutter+:popup-diff
+  "gp" 'git-gutter+:previous-hunk
+  "gn" 'git-gutter+:next-hunk
+  "gr" 'git-gutter+:revert-hunk
   "gb" 'mo-git-blame-current
   "gL" 'magit-log
   "gs" 'magit-status
@@ -248,15 +252,15 @@ Repeated invocations toggle between the two most recently open buffers."
   (let ((modified (buffer-modified-p)))
     (insert "j")
     (let ((evt (read-event (format "" ?k)
-               nil 0.5)))
+                 nil 0.5)))
       (cond
-       ((null evt) (message ""))
-       ((and (integerp evt) (char-equal evt ?k))
-         (delete-char -1)
-         (set-buffer-modified-p modified)
-         (push 'escape unread-command-events))
-       (t (setq unread-command-events (append unread-command-events
-                          (list evt))))))))
+        ((null evt) (message ""))
+        ((and (integerp evt) (char-equal evt ?k))
+          (delete-char -1)
+          (set-buffer-modified-p modified)
+          (push 'escape unread-command-events))
+        (t (setq unread-command-events (append unread-command-events
+                                         (list evt))))))))
 
 (evil-define-command cofi/maybe-exit-J ()
   :repeat change
@@ -264,15 +268,15 @@ Repeated invocations toggle between the two most recently open buffers."
   (let ((modified (buffer-modified-p)))
     (insert "J")
     (let ((evt (read-event (format "" ?k)
-               nil 0.5)))
+                 nil 0.5)))
       (cond
-       ((null evt) (message ""))
-       ((and (integerp evt) (char-equal evt ?k))
-         (delete-char -1)
-         (set-buffer-modified-p modified)
-         (push 'escape unread-command-events))
-       (t (setq unread-command-events (append unread-command-events
-                          (list evt))))))))
+        ((null evt) (message ""))
+        ((and (integerp evt) (char-equal evt ?k))
+          (delete-char -1)
+          (set-buffer-modified-p modified)
+          (push 'escape unread-command-events))
+        (t (setq unread-command-events (append unread-command-events
+                                         (list evt))))))))
 
 (define-key evil-normal-state-map "gh" 'windmove-left)
 (define-key evil-normal-state-map "gj" 'windmove-down)
@@ -280,23 +284,23 @@ Repeated invocations toggle between the two most recently open buffers."
 (define-key evil-normal-state-map "gl" 'windmove-right)
 
 (add-hook 'neotree-mode-hook
- (lambda ()
-   (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-   (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-   (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-   (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-         (define-key evil-normal-state-local-map (kbd "ma") 'neotree-create-node)
-         (define-key evil-normal-state-local-map (kbd "md") 'neotree-delete-node)
-         (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
-         (define-key evil-normal-state-local-map (kbd "mm") 'neotree-rename-node)
-))
+  (lambda ()
+    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "ma") 'neotree-create-node)
+    (define-key evil-normal-state-local-map (kbd "md") 'neotree-delete-node)
+    (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
+    (define-key evil-normal-state-local-map (kbd "mm") 'neotree-rename-node)
+    ))
 
 ;; Map ctrl-j/k to up down in ido selections
 (add-hook 'ido-setup-hook
   (lambda ()
     (define-key ido-completion-map (kbd "C-j") 'ido-next-match)
     (define-key ido-completion-map (kbd "C-k") 'ido-prev-match)
-))
+    ))
 
 
 ;; =============================================================================
@@ -308,7 +312,7 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (defun linum-format-func (line)
   (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
-     (propertize (format (format "%%%dd " w) line) 'face 'linum)))
+    (propertize (format (format "%%%dd " w) line) 'face 'linum)))
 
 (setq linum-format 'linum-format-func)
 ;; use customized linum-format: add a addition space after the line number
@@ -328,39 +332,43 @@ Repeated invocations toggle between the two most recently open buffers."
 
 
 (setq-default mode-line-format
-              '("%e"
-                (:eval
-                 (let* ((active (powerline-selected-window-active))
-                        (mode-line (if active 'mode-line 'mode-line-inactive))
-                        (face1 (if active 'powerline-active1 'powerline-inactive1))
-                        (face2 (if active 'powerline-active2 'powerline-inactive2))
-                        (separator-left (intern (format "powerline-%s-%s"
-                                                        powerline-default-separator
-                                                        (car powerline-default-separator-dir))))
-                        (separator-right (intern (format "powerline-%s-%s"
-                                                         powerline-default-separator
-                                                         (cdr powerline-default-separator-dir))))
-                        (lhs (list (powerline-buffer-id `(mode-line-buffer-id ,mode-line) 'l)
-                                   (when (and vc-mode buffer-file-name)
-                                     (let ((backend (vc-backend buffer-file-name)))
-                                       (when backend
-                                         (concat (powerline-raw "[" mode-line 'l)
-                                                 (powerline-raw (format "%s" (vc-working-revision buffer-file-name backend)))
-                                                 (powerline-raw "]" mode-line)))))))
-                        (rhs (list (powerline-raw global-mode-string mode-line 'r)
-                                   (powerline-raw "%l," mode-line 'l)
-                                   (powerline-raw (format-mode-line '(10 "%c")))
-                                   (powerline-raw (replace-regexp-in-string  "%" "%%" (format-mode-line '(-3 "%p"))) mode-line 'r))))
-                   (concat (powerline-render lhs)
-                           (powerline-fill mode-line (powerline-width rhs))
-                           (powerline-render rhs))))))
+  '("%e"
+     (:eval
+       (let* ((active (powerline-selected-window-active))
+               (mode-line (if active 'mode-line 'mode-line-inactive))
+               (face1 (if active 'powerline-active1 'powerline-inactive1))
+               (face2 (if active 'powerline-active2 'powerline-inactive2))
+               (separator-left
+                 (intern (format "powerline-%s-%s"
+                           powerline-default-separator
+                           (car powerline-default-separator-dir))))
+
+               (separator-right
+                 (intern
+                   (format "powerline-%s-%s"
+                     powerline-default-separator
+                     (cdr powerline-default-separator-dir))))
+               (lhs (list (powerline-buffer-id `(mode-line-buffer-id ,mode-line) 'l)
+                      (when (and vc-mode buffer-file-name)
+                        (let ((backend (vc-backend buffer-file-name)))
+                          (when backend
+                            (concat (powerline-raw "[" mode-line 'l)
+                              (powerline-raw (format "%s" (vc-working-revision buffer-file-name backend)))
+                              (powerline-raw "]" mode-line)))))))
+               (rhs (list (powerline-raw global-mode-string mode-line 'r)
+                      (powerline-raw "%l," mode-line 'l)
+                      (powerline-raw (format-mode-line '(10 "%c")))
+                      (powerline-raw (replace-regexp-in-string  "%" "%%" (format-mode-line '(-3 "%p"))) mode-line 'r))))
+         (concat (powerline-render lhs)
+           (powerline-fill mode-line (powerline-width rhs))
+           (powerline-render rhs))))))
 
 
 
 
 ;; Highlight cursor line
 (global-hl-line-mode t)
-(set-face-background hl-line-face "gray10")
+(set-face-background hl-line-face "green0")
 
 ;; Make lines longer than 80 highlighted
 (setq whitespace-line-column 80) ;; limit line length
@@ -370,20 +378,19 @@ Repeated invocations toggle between the two most recently open buffers."
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  )
 
+(require 'git-gutter)
 ;; Git Gutter
-;;(global-git-gutter+-mode 1)
 ;; If you enable global minor mode
-;; (require 'git-gutter)
-;; (global-git-gutter-mode t)
+(global-git-gutter-mode t)
 
 ;; ;; If you would like to use git-gutter.el and linum-mode
-;; (git-gutter:linum-setup)
+(git-gutter:linum-setup)
 
 (require 'smooth-scrolling)
 (smooth-scrolling-mode t)
@@ -392,23 +399,23 @@ Repeated invocations toggle between the two most recently open buffers."
 (setq linum-delay t)
 (setq redisplay-dont-pause t)
 
-; Auto-indent with the Return key
+                                        ; Auto-indent with the Return key
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;; Fix cursor
 (defun my-send-string-to-terminal (string)
-   (unless (display-graphic-p) (send-string-to-terminal string)))
+  (unless (display-graphic-p) (send-string-to-terminal string)))
 
 (defun my-evil-terminal-cursor-change ()
-   (when (string= (getenv "TERM_PROGRAM") "iTerm.app")
-        (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\e]50;CursorShape=1\x7")))
-           (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\e]50;CursorShape=0\x7"))))
-     (when (and (getenv "TMUX") (string= (getenv "TERM_PROGRAM") "iTerm.app"))
-          (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=1\x7\e\\")))
-              (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=0\x7\e\\")))))
+  (when (string= (getenv "TERM_PROGRAM") "iTerm.app")
+    (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\e]50;CursorShape=1\x7")))
+    (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\e]50;CursorShape=0\x7"))))
+  (when (and (getenv "TMUX") (string= (getenv "TERM_PROGRAM") "iTerm.app"))
+    (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=1\x7\e\\")))
+    (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=0\x7\e\\")))))
 
-  (add-hook 'after-make-frame-functions (lambda (frame) (my-evil-terminal-cursor-change)))
-  (my-evil-terminal-cursor-change)
+(add-hook 'after-make-frame-functions (lambda (frame) (my-evil-terminal-cursor-change)))
+(my-evil-terminal-cursor-change)
 
 
 ;; (defun change-major-mode-hook () (modify-syntax-entry ?_ "w"))
@@ -462,14 +469,14 @@ Repeated invocations toggle between the two most recently open buffers."
 (setq initial-major-mode 'elixir-mode)
 (setq initial-scratch-message "# scratch")
 
-; (let ((bg (face-attribute 'default :background)))
-;   (custom-set-faces
-;     `(company-scrollbar-bg ((t (:background "#151515"))))
-;     `(company-scrollbar-fg ((t (:background "#151515"))))
-;     `(company-tooltip ((t (:foreground "#f5f5f5" :background "#1c1c1c"))))
-;     `(company-preview-common ((t :background "gray10" :foreground "#929290")))
-;     `(company-tooltip-common ((t (:foreground "#cc6666" :background "#151515"))))
-;     `(company-tooltip-selection ((t (:background "#363636"))))))
+                                        ; (let ((bg (face-attribute 'default :background)))
+                                        ;   (custom-set-faces
+                                        ;     `(company-scrollbar-bg ((t (:background "#151515"))))
+                                        ;     `(company-scrollbar-fg ((t (:background "#151515"))))
+                                        ;     `(company-tooltip ((t (:foreground "#f5f5f5" :background "#1c1c1c"))))
+                                        ;     `(company-preview-common ((t :background "gray10" :foreground "#929290")))
+                                        ;     `(company-tooltip-common ((t (:foreground "#cc6666" :background "#151515"))))
+                                        ;     `(company-tooltip-selection ((t (:background "#363636"))))))
 
 
 (add-to-list 'load-path "~/.emacs.d/vendor/longlines/")
@@ -502,14 +509,14 @@ Repeated invocations toggle between the two most recently open buffers."
   (require 'mouse)
   (xterm-mouse-mode t)
   (global-set-key [mouse-4] '(lambda ()
-                              (interactive)
-                              (scroll-down 1)))
+                               (interactive)
+                               (scroll-down 1)))
   (global-set-key [mouse-5] '(lambda ()
-                              (interactive)
-                              (scroll-up 1)))
+                               (interactive)
+                               (scroll-up 1)))
   (defun track-mouse (e))
   (setq mouse-sel-mode t)
-)
+  )
 
 (defun author-mode ()
   (interactive)
@@ -545,8 +552,8 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
-      (let ((web-mode-enable-part-face nil))
-        ad-do-it)
+    (let ((web-mode-enable-part-face nil))
+      ad-do-it)
     ad-do-it))
 
 (setq jsx-indent-level 2)
@@ -570,6 +577,17 @@ Repeated invocations toggle between the two most recently open buffers."
       (flycheck-mode))))
 
 (add-hook 'web-mode-hook  'my-web-mode-hook)
+
+(require 'js-doc)
+(setq js-doc-mail-address "your email address"
+  js-doc-author (format "your name @aaron-goshine" js-doc-mail-address)
+  js-doc-url "https://github.com/aaron-goshine"
+  js-doc-license "license to code")
+
+(add-hook 'jsx-mode-hook
+  #'(lambda ()
+      (define-key jsx-mode-map "\C-ci" 'js-doc-insert-function-doc)
+      (define-key jsx-mode-map "@" 'js-doc-insert-tag)))
 
 ;; only need exec-path-from-shell on OSX
 (when (memq window-system '(mac ns))
@@ -595,12 +613,12 @@ Repeated invocations toggle between the two most recently open buffers."
                             (setq tab-width 2)))
 
 (add-hook 'elixir-mode-hook (lambda ()
-                            (setq evil-shift-width 2)
-                            (setq tab-width 2)))
+                              (setq evil-shift-width 2)
+                              (setq tab-width 2)))
 
 (add-hook 'coffee-mode-hook (lambda ()
-                            (setq evil-shift-width 2)
-                            (setq tab-width 2)))
+                              (setq evil-shift-width 2)
+                              (setq tab-width 2)))
 
 (add-hook 'haml-mode-hook (lambda ()
                             (setq evil-shift-width 2)
@@ -613,11 +631,11 @@ Repeated invocations toggle between the two most recently open buffers."
                             (setq tab-width 2)))
 
 (add-hook 'jsx-mode-hook (lambda ()
-                            (emmet-mode t)))
+                           (emmet-mode t)))
 
 (add-hook 'css-mode-hook (lambda ()
-                            (setq evil-shift-width 2)
-                            (setq tab-width 2)))
+                           (setq evil-shift-width 2)
+                           (setq tab-width 2)))
 
 ;; Play nice with evil-mode in compilation-mode, ie project-ag results
 (add-hook 'compilation-mode-hook '(lambda ()
@@ -630,19 +648,19 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun my-evil-prepare-word-search (forward symbol)
   "Prepare word search, but do not move yet."
   (interactive (list (prefix-numeric-value current-prefix-arg)
-                     evil-symbol-word-search))
+                 evil-symbol-word-search))
   (let ((string (car-safe regexp-search-ring))
-        (move (if forward #'forward-char #'backward-char))
-        (end (if forward #'eobp #'bobp)))
+         (move (if forward #'forward-char #'backward-char))
+         (end (if forward #'eobp #'bobp)))
     (setq isearch-forward forward)
     (setq string (evil-find-thing forward (if symbol 'symbol 'word)))
     (cond
-     ((null string)
-      (error "No word under point"))
-     (t
-      (setq string
-            (format (if symbol "\\_<%s\\_>" "\\<%s\\>")
-                    (regexp-quote string)))))
+      ((null string)
+        (error "No word under point"))
+      (t
+        (setq string
+          (format (if symbol "\\_<%s\\_>" "\\<%s\\>")
+            (regexp-quote string)))))
     (evil-push-search-history string forward)
     (my-evil-search string forward t)))
 
@@ -653,29 +671,29 @@ If REGEXP-P is non-nil, STRING is taken to be a regular expression.
 START is the position to search from; if unspecified, it is
 one more than the current position."
   (when (and (stringp string)
-             (not (string= string "")))
+          (not (string= string "")))
     (let* ((orig (point))
-           (start (or start
-                      (if forward
-                          (min (point-max) (1+ orig))
-                        orig)))
-           (isearch-regexp regexp-p)
-           (isearch-forward forward)
-           (case-fold-search
-            (unless (and search-upper-case
-                         (not (isearch-no-upper-case-p string nil)))
-              case-fold-search)))
+            (start (or start
+                     (if forward
+                       (min (point-max) (1+ orig))
+                       orig)))
+            (isearch-regexp regexp-p)
+            (isearch-forward forward)
+            (case-fold-search
+              (unless (and search-upper-case
+                        (not (isearch-no-upper-case-p string nil)))
+                case-fold-search)))
       ;; no text properties, thank you very much
       (set-text-properties 0 (length string) nil string)
       (setq isearch-string string)
       (isearch-update-ring string regexp-p)
       ;; handle opening and closing of invisible area
       (cond
-       ((boundp 'isearch-filter-predicates)
-        (dolist (pred isearch-filter-predicates)
-          (funcall pred (match-beginning 0) (match-end 0))))
-       ((boundp 'isearch-filter-predicate)
-        (funcall isearch-filter-predicate (match-beginning 0) (match-end 0))))
+        ((boundp 'isearch-filter-predicates)
+          (dolist (pred isearch-filter-predicates)
+            (funcall pred (match-beginning 0) (match-end 0))))
+        ((boundp 'isearch-filter-predicate)
+          (funcall isearch-filter-predicate (match-beginning 0) (match-end 0))))
       (evil-flash-search-pattern string t))))
 
 (define-key evil-motion-state-map "*" 'my-evil-prepare-word-search)
@@ -778,7 +796,7 @@ one more than the current position."
 (defun line-at-click ()
   (save-excursion
     (let ((click-y (cdr (cdr (mouse-position))))
-          (line-move-visual-store line-move-visual))
+           (line-move-visual-store line-move-visual))
       (setq line-move-visual t)
       (goto-char (window-start))
       (next-line (1- click-y))
@@ -792,7 +810,7 @@ one more than the current position."
   (goto-line (line-at-click))
   (set-mark (point))
   (setq *linum-mdown-line*
-        (line-number-at-pos)))
+    (line-number-at-pos)))
 
 (defun mu-select-linum ()
   (interactive)
@@ -804,7 +822,7 @@ one more than the current position."
       (set-mark (line-end-position))
       (goto-line (min *linum-mdown-line* mu-line))
       (setq *linum-mdown*
-            nil))))
+        nil))))
 
 (global-set-key (kbd "<left-margin> <down-mouse-1>") 'md-select-linum)
 (global-set-key (kbd "<left-margin> <mouse-1>") 'mu-select-linum)
@@ -815,18 +833,22 @@ one more than the current position."
 
 (defcustom ispell-program-name
   (or (locate-file "aspell"   exec-path exec-suffixes 'file-executable-p)
-      (locate-file "ispell"   exec-path exec-suffixes 'file-executable-p)
-      (locate-file "hunspell" exec-path exec-suffixes 'file-executable-p)
-      "ispell")
+    (locate-file "ispell"   exec-path exec-suffixes 'file-executable-p)
+    (locate-file "hunspell" exec-path exec-suffixes 'file-executable-p)
+    "ispell")
   "Program invoked by \\[ispell-word] and \\[ispell-region] commands."
   :type 'string
   :group 'ispell)
 
 (yas-global-mode 1)
-(yas-new-snippet)
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 (setq custom-file
- (expand-file-name "customize.el" user-emacs-directory))
+  (expand-file-name "customize.el" user-emacs-directory))
 
 (load custom-file)
 (provide 'anything-bundle)
