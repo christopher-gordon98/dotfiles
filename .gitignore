@@ -12,7 +12,6 @@ bash/ssh.sh
 bin/php*
 config/configstore/update-notifier-nodemon.json
 vim/.spell/custom.en.utf-8.add.spl
-
 emacs/*.elc
 emacs/\#*
 emacs/bookmarks
@@ -26,7 +25,6 @@ emacs/var
 emacs/eshell
 emacs/ido.last
 emacs/recentf
-emacs/vendor
 emacs/.cask
 emacs/emms
 emacs/url
