@@ -5,7 +5,7 @@ source $HOME/.dotfiles/bash/aliases.sh
 source $HOME/.dotfiles/bash/functions.sh
 source $HOME/.dotfiles/bash/git-completion.sh
 source $HOME/.dotfiles/bash/ssh.sh
-
+source $HOME/.localenv.sh
 
 
 # Case-insensitive globbing (used in pathname expansion)
