@@ -59,6 +59,7 @@ ln -sFfiv $DOTDIR/xrc/wgetrc.sh ~/.wgetrc
 ln -sFfiv $DOTDIR/xrc/pystartup.sh ~/.pystartup
 ln -sFfiv $DOTDIR/xrc/eslintrc.json ~/.eslintrc
 ln -sFfiv $DOTDIR/xrc/jshintrc.json ~/.jshintrc
+ln -sFfiv $DOTDIR/nano/nanorc ~/.nanorc
 
 ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
