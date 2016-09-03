@@ -139,6 +139,12 @@ alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
 alias pysrv='python -m SimpleHTTPServer 9000'
 alias psrv='php -S localhost:8000'
 
+alias e='emacs'
+alias v='vim'
+alias na='nano'
+alias nv='nvim'
+alias mv='mvim'
+
 alias srvr='python -m SimpleHTTPServer 9000'
 
 # Unix octal permision table, just a reminder.
@@ -156,18 +162,18 @@ alias srvr='python -m SimpleHTTPServer 9000'
 alias myfiles="chown -R  `whoami` ./ && chmod -R 700 ./"
 
 #ghost files, sudo you will need sudo to reset permission 
-alias goshfiles="chmod -R 000"
+alias ghosf="chmod -R 000"
 
 # change files or directory permission mode to to all read and ececute
 # permission good for scripts
-alias xxxfiles="chmod -R 755"
+alias xxxf="chmod -R 755"
 
 # change files or directory permission mode to all read 
-alias rrrfiles="chmod -R 744"
+alias rrrf="chmod -R 744"
 
 # change files or directory permission mode to to all read and
 # also allowing the file ower group to write
-alias rwrfiles="chmod -R 764"
+alias rwrf="chmod -R 764"
 
 #added mit scheme 
 alias mit-scheme="/Applications/MIT-Scheme.app/Contents/Resources/mit-scheme"
