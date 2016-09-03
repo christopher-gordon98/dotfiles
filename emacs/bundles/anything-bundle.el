@@ -12,7 +12,8 @@
 (menu-bar-mode -1)
 (smex-initialize)
 
-                                        ;(ido-hacks 1)
+;(ido-hacks 1)
+
 (require 'projectile)
 (setq projectile-enable-caching t)
 (setq projectile-globally-ignored-directories (append '("node_modules" ".svn") projectile-globally-ignored-directories))
@@ -32,9 +33,9 @@
 ;; Parens handling
 ;; Show and create matching parens automatically
 (show-paren-mode t)
-(smartparens-global-mode t)
+;; (smartparens-global-mode t)
 (show-smartparens-global-mode nil)
-(setq sp-autoescape-string-quote nil)
+;; (setq sp-autoescape-string-quote nil)
 ;; Do not highlight paren area
 (setq sp-highlight-pair-overlay nil)
 (setq sp-highlight-wrap-overlay nil)
@@ -201,8 +202,8 @@
 ;; (setq evil-magit-use-y-for-yank nil)
 (require 'evil-magit)
 
-(require 'evil-surround)
-(global-evil-surround-mode 1)
+; (require 'evil-surround)
+; (global-evil-surround-mode 1)
 
 (require 'evil-visualstar)
 
@@ -221,20 +222,23 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; =============================================================================
 ;; Evil Bindings
 ;; =============================================================================
-;; (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
+(define-key evil-normal-state-map (kbd "RET") 'save-buffer)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-scroll-down)
 (define-key evil-normal-state-map (kbd "C-k") 'evil-scroll-up)
 
 
 ;; Make ";" behave like ":" in normal mode
-(define-key evil-normal-state-map (kbd ";") 'evil-ex)
-(define-key evil-visual-state-map (kbd ";") 'evil-ex)
-(define-key evil-motion-state-map (kbd ";") 'evil-ex)
+;; (define-key evil-normal-state-map (kbd ";") 'evil-ex)
+;; (define-key evil-visual-state-map (kbd ";") 'evil-ex)
+;; (define-key evil-motion-state-map (kbd ";") 'evil-ex)
+
+(define-key evil-visual-state-map (kbd "<") (kbd "<gv"))
+(define-key evil-visual-state-map (kbd ">") (kbd ">gv"))
 
 ;; Yank whole buffer
 (define-key evil-normal-state-map (kbd "gy") (kbd "gg v G y"))
 
-(setq key-chord-two-keys-delay 0.075)
+(setq key-chord-two-keys-delay 0.9)
 (key-chord-mode 1)
 ;; Hack to fix eldoc errors when `jk` is triggered
 (eldoc-mode 1)
@@ -242,41 +246,6 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; end hack
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 (key-chord-define evil-insert-state-map "JK" 'evil-normal-state)
-(key-chord-define evil-insert-state-map "Jk" 'evil-normal-state)
-
-(define-key evil-insert-state-map "j" #'cofi/maybe-exit-j)
-(define-key evil-insert-state-map "J" #'cofi/maybe-exit-J)
-(evil-define-command cofi/maybe-exit-j ()
-  :repeat change
-  (interactive)
-  (let ((modified (buffer-modified-p)))
-    (insert "j")
-    (let ((evt (read-event (format "" ?k)
-                 nil 0.5)))
-      (cond
-        ((null evt) (message ""))
-        ((and (integerp evt) (char-equal evt ?k))
-          (delete-char -1)
-          (set-buffer-modified-p modified)
-          (push 'escape unread-command-events))
-        (t (setq unread-command-events (append unread-command-events
-                                         (list evt))))))))
-
-(evil-define-command cofi/maybe-exit-J ()
-  :repeat change
-  (interactive)
-  (let ((modified (buffer-modified-p)))
-    (insert "J")
-    (let ((evt (read-event (format "" ?k)
-                 nil 0.5)))
-      (cond
-        ((null evt) (message ""))
-        ((and (integerp evt) (char-equal evt ?k))
-          (delete-char -1)
-          (set-buffer-modified-p modified)
-          (push 'escape unread-command-events))
-        (t (setq unread-command-events (append unread-command-events
-                                         (list evt))))))))
 
 (define-key evil-normal-state-map "gh" 'windmove-left)
 (define-key evil-normal-state-map "gj" 'windmove-down)
@@ -327,9 +296,17 @@ Repeated invocations toggle between the two most recently open buffers."
 
 ;; Powerline
 (require 'powerline)
-;; (powerline-vim-theme)
+(powerline-vim-theme)
 
-
+(setq powerline-utf-8-separator-left        #xe0b0
+      powerline-utf-8-separator-right       #xe0b2
+      airline-utf-glyph-separator-left      #xe0b0
+      airline-utf-glyph-separator-right     #xe0b2
+      airline-utf-glyph-subseparator-left   #xe0b1
+      airline-utf-glyph-subseparator-right  #xe0b3
+      airline-utf-glyph-branch              #xe0a0
+      airline-utf-glyph-readonly            #xe0a2
+      airline-utf-glyph-linenumber          #xe0a1)
 
 (setq-default mode-line-format
   '("%e"
@@ -788,7 +765,6 @@ one more than the current position."
 
 (setq js-indent-level 2)
 (evil-mode 1)
-(powerline-center-evil-theme)
 (global-auto-complete-mode t)
 
 (defvar *linum-mdown-line* nil)
@@ -829,7 +805,7 @@ one more than the current position."
 (global-set-key (kbd "<left-margin> <drag-mouse-1>") 'mu-select-linum)
 
 (global-linum-mode t)
-(set-frame-font "Source Code Pro-13")
+(set-frame-font "Source Code Pro for Powerline-13")
 
 (defcustom ispell-program-name
   (or (locate-file "aspell"   exec-path exec-suffixes 'file-executable-p)

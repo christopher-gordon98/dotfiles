@@ -9,9 +9,12 @@
 (cask-initialize)
 
 (add-to-list 'load-path (expand-file-name "bundles" user-emacs-directory))
-
 (require 'custom-bundle)
 (require 'anything-bundle)
+
+(require 'airline-themes)
+(load-theme 'airline-dark)
+
 
 (provide 'init)
 
