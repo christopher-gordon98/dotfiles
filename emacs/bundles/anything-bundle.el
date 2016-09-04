@@ -82,14 +82,16 @@
 ;; Hack to trigger candidate list on first TAB, then cycle through candiates with TAB
 (defvar tip-showing nil)
 (eval-after-load 'company
-  '(progn
-     (define-key company-active-map (kbd "TAB")  (lambda ()
-                                                   (interactive)
-                                                   (company-complete-common)
-                                                   (if tip-showing
-                                                     (company-select-next))
-                                                   ))
-     (define-key company-active-map [tab] 'company-select-next)))
+                 '(progn
+                    (define-key company-active-map 
+                                (kbd "TAB")
+                                (lambda ()
+                                  (interactive)
+                                  (company-complete-common)
+                                  (if tip-showing
+                                    (company-select-next))
+                                  ))
+                    (define-key company-active-map [tab] 'company-select-next)))
 
 (defun company-pseudo-tooltip-on-explicit-action (command)
   "`company-pseudo-tooltip-frontend', but only on an explicit action."
@@ -122,7 +124,7 @@
 
 (require 'evil)
 (evil-mode 1)
-(global-evil-visualstar-mode 1)
+; (global-evil-visualstar-mode 1)
                                         ; (setq evil-default-cursor t)
 (progn (setq evil-default-state 'normal)
   (setq evil-auto-indent t)
@@ -376,7 +378,7 @@ Repeated invocations toggle between the two most recently open buffers."
 (setq linum-delay t)
 (setq redisplay-dont-pause t)
 
-                                        ; Auto-indent with the Return key
+;; Auto-indent with the Return key
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;; Fix cursor
