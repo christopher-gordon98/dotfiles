@@ -141,9 +141,6 @@ alias psrv='php -S localhost:8000'
 
 alias e='emacs'
 alias v='vim'
-alias na='nano'
-alias nv='nvim'
-alias mv='mvim'
 
 alias srvr='python -m SimpleHTTPServer 9000'
 
