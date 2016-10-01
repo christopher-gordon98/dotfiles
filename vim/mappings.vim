@@ -106,6 +106,9 @@ nnoremap <silent> <leader>f :CtrlP<CR>
 " Format a json file with Python's built in json.tool.
 nnoremap <leader>fj :%!python -m json.tool<CR>
 
+" Format a json file with Python's built in json.tool.
+vnoremap <leader>fj :'<,'>!python -m json.tool<CR>
+
 " Highlight search word under cursor without jumping to next
 nnoremap <leader>h *<C-O>
 
