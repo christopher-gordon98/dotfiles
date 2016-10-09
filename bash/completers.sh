@@ -1,7 +1,9 @@
-source /usr/local/Cellar/git/2.10.0/etc/bash_completion.d/git-completion.bash
-source /usr/local/Cellar/git/2.10.0/etc/bash_completion.d/git-prompt.sh
+source /usr/local/Cellar/cabal-install/1.24.0.0_1/etc/bash_completion.d/cabal
+source /usr/local/Cellar/flow/0.33.0/etc/bash_completion.d/flow-completion.bash
+source /usr/local/Cellar/git/2.10.1/etc/bash_completion.d/git-completion.bash
+source /usr/local/Cellar/git/2.10.1/etc/bash_completion.d/git-prompt.sh
 source /usr/local/Cellar/leiningen/2.7.1/etc/bash_completion.d/lein-completion.bash
-source /usr/local/Cellar/mercurial/3.9.1/etc/bash_completion.d/hg-completion.bash
+source /usr/local/Cellar/mercurial/3.9.2/etc/bash_completion.d/hg-completion.bash
 source /usr/local/Cellar/node/6.7.0/etc/bash_completion.d/npm
 source /usr/local/Cellar/node5/5.12.0/etc/bash_completion.d/npm
 source /usr/local/Cellar/nvm/0.32.0/etc/bash_completion.d/nvm
