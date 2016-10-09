@@ -70,6 +70,8 @@ ln -sFfiv $DOTDIR/nano/nanorc ~/.nanorc
 
 ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
+find -E  /usr/local/Cellar -path *bash_completion.d/[^.]* -print | sed 's/^/source /' > $DOTDIR/bash/completers.sh
+
 while getopts ":l" opt; do
   case $opt in
     l)
