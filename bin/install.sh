@@ -70,6 +70,7 @@ ln -sFfiv $DOTDIR/nano/nanorc ~/.nanorc
 
 ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
+# install bash completions that was shipped with brew packages
 find -E  /usr/local/Cellar -path *bash_completion.d/[^.]* -print | sed 's/^/source /' > $DOTDIR/bash/completers.sh
 
 while getopts ":l" opt; do
