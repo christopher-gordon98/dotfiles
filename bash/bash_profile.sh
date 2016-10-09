@@ -1,12 +1,11 @@
 
-source $HOME/.dotfiles/bash/export.sh
+source $HOME/.dotfiles/bash/completers.sh
 source $HOME/.dotfiles/bash/prompt.sh
+source $HOME/.dotfiles/bash/export.sh
 source $HOME/.dotfiles/bash/aliases.sh 
 source $HOME/.dotfiles/bash/functions.sh
-source $HOME/.dotfiles/bash/git-completion.sh
 source $HOME/.dotfiles/bash/ssh.sh
 source $HOME/.localenv.sh
-
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
