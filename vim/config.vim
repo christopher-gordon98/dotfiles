@@ -77,7 +77,6 @@ set autoindent
 set smarttab
 set expandtab
 set linebreak
-"set breakindent
 set smartindent
 
 
