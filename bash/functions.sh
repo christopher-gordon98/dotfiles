@@ -55,29 +55,6 @@ function whois() {
   /usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
   }
 
-function strip_diff_leading_symbols(){
-  color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
-  reset_color="\x1B\[m"
-  dim_magenta="\x1B\[38;05;146m"
-
-  # simplify the unified patch diff header
-  sed -r "s/^($color_code_regex)diff --git .*$//g" | \
-    sed -r "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
-    sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
-
-    # extra color for @@ context line
-  sed -r "s/@@$reset_color $reset_color(.*$)/@@ $dim_magenta\1/g"  |\
-
-    # actually strips the leading symbols
-  sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
-    }
-
-  ## Print a horizontal rule
-  rule () {
-    printf "%$(tput cols)s\n"|tr " " "─"
-}
-
-
 # Extract archives - use: extract <file>
 # Based on http://dotfiles.org/~pseup/.bashrc
 function extract() {
@@ -143,4 +120,20 @@ gifify() {
 # brew reinstall ffmpeg --with-libvpx
 webmify(){
   ffmpeg -i $1 -vcodec libvpx -acodec libvorbis -isync -copyts -aq 80 -threads 3 -qmax 30 -y $2 $1.webm
+}
+
+function strip_diff_leading_symbols(){
+  color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
+    # simplify the unified patch diff header
+    sed -E "s/^($color_code_regex)diff --git .*$//g" | \
+    sed -E "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
+    sed -E "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
+
+      # actually strips the leading symbols
+    sed -E "s/^($color_code_regex)[\+\-]/\1 /g"
+}
+
+## Print a horizontal rule
+rule () {
+  printf "%$(tput cols)s\n"|tr " " "~"
 }

@@ -1,0 +1,7 @@
+# type of commits: chore docs feat fix patch refactor style unit-test e2e-test
+
+type_of_commits (x) : description 
+
+- actions
+
+[ticket: 0] - title
