@@ -1,94 +1,91 @@
 [user]
-        name = Goshine
-        email = greenlig@gmail.com
-[core]
-        excludesfile = /Users/Gato/.gitignore_global
-        autocrlf = input
-[color]
-        branch = auto
-        diff = auto
-        interactive = auto
-        status = auto
-[filter "media"]
-        required = true
-        clean = git media clean %f
-        smudge = git media smudge %f
-[difftool "sourcetree"]
-        cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-        path = 
-[mergetool "sourcetree"]
-        cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-        trustExitCode = true
-[filter "lfs"]
-        clean = git-lfs clean %f
-        smudge = git-lfs smudge %f
-        required = true
-
-
-[alias]
-
-      c = commit -am
-      pu = pull
-      ps = push
-      st = status -s
-      df = diff --color --color-words --abbrev
-      lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-      l = log 
-      co = checkout
-
-      # Show the diff between the latest commit and the current state
-      d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
-      # Merge GitHub pull request on top of the `master` branch
-      mpr = "!f() { \
-        if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-          git fetch origin refs/pull/$1/head:pr/$1 && \
-          git rebase master pr/$1 && \
-          git checkout master && \
-          git merge pr/$1 && \
-          git branch -D pr/$1 && \
-          git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
-        fi \
-      }; f"
-    # Find FIXME, TODO, etc
-    n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
-
-
-[color]
-    ui = always
+  name = Aaron Goshine
+  email = greenlig@gmail.com
 
 [core]
-      excludesfile = ~/.gitignore
-      attributesfile = ~/.gitattributes
-	hooksPath = /Users/aaron.goshine/work/hara/git-hooks
-      # insanely beautiful diffs
-#      pager = bash -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
+  autocrlf = input
+  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  # hooksPath = ~/work/hara/git-hooks
+  # insanely beautiful diffs
+  pager = bash -lc 'diff-highlight.sh | strip_diff_leading_symbols | less -r'
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = always
+
 [color "branch"]
-      current = yellow reverse
-      local = yellow
-      remote = green
-[color "diff"]
-      meta = yellow bold
-      frag = magenta bold
-      old = red bold
-      new = green bold
-[color "status"]
-      added = yellow
-      changed = green
-      untracked = cyan
-[merge]
-      tool = opendiff
+  current = yellow reverse
+  local = yellow
+  remote = green
 
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [color "diff-highlight"]
-      oldNormal = "red bold"
-      oldHighlight = "red bold 52"
-      newNormal = "green bold"
-      newHighlight = "green bold 22"
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+
+[commit]
+  template = ~/.dotfiles/git/template.txt
+
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+
+[alias]
+  c = commit -am
+  pu = pull
+  ps = push
+  st = status -s
+  df = diff --color --color-words --abbrev
+ # Show the diff between the latest commit and the current state
+  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  l = log 
+  co = checkout
+  # Merge GitHub pull request on top of the `master` branch
+  mpr = "!f() { \
+    if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+      git fetch origin refs/pull/$1/head:pr/$1 && \
+      git rebase master pr/$1 && \
+      git checkout master && \
+      git merge pr/$1 && \
+      git branch -D pr/$1 && \
+      git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+    fi \
+  }; f"
+# Find FIXME, TODO, etc
+n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
+
+[merge]
+  tool = opendiff
 
 [push]
-      default = current
-[filter "hawser"]
-      clean = git hawser clean %f
-      smudge = git hawser smudge %f
-      required = true
+  default = current

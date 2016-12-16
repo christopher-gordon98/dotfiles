@@ -16,6 +16,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq =  0
 
+let g:syntastic_css_checkers = ['stylelint']
+
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute ', 'is not recognized!', 'discarding unexpected' ]
 
 let g:syntastic_php_checkers=['php', 'phpcs']
