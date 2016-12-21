@@ -4,8 +4,7 @@ echo '     /  | ALL WAYS RTFMP.'
 echo '    / - |_  _____ ___  ___ ____ ________'
 echo '   / __ | |/ / -_\ _ \/ _  / -_) __/ __/'
 echo '  / / |_|___/\__/_//_/\__/ \__/_/  /__/ '
-echo " /_/  THE AGE OF ULTRA-$(whoami | awk '{print toupper($0)}' | sed 's/.[A-Z]*$//')"
-
+echo " /_/  THE AGE OF ULTRA-$(whoami | sed 's/\.[a-z]*$//' | awk '{print toupper($0)}') "
 
  PS1='> \h [\W\[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[0m\]]\[\e[1;32m\] •--➤ \[\e[0m\]'
 

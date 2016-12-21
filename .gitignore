@@ -38,3 +38,4 @@ emacs/ac-comphist.dat
 emacs/auto-save-list
 emacs/games
 config/configstore/snyk.json
+config/git/gitk
