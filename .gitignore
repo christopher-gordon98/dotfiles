@@ -39,3 +39,4 @@ emacs/auto-save-list
 emacs/games
 config/configstore/snyk.json
 config/git/gitk
+config/vifm/vifminfo
