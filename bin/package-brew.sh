@@ -49,6 +49,7 @@ brew install sox
 brew install ssh-copy-id
 brew install task
 brew install tcptraceroute
+brew install thefuck
 brew install tig
 brew install tmux
 brew install tree
