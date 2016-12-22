@@ -1,13 +1,9 @@
-[user]
-  name = Aaron Goshine
-  email = greenlig@gmail.com
-
 [core]
   autocrlf = input
   excludesfile = ~/.gitignore_global
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
-  # hooksPath = ~/work/hara/git-hooks
+  # hooksPath = ~/git-hooks
   # insanely beautiful diffs
   pager = bash -lc 'diff-highlight.sh | strip_diff_leading_symbols | less -r'
 
@@ -24,6 +20,12 @@
   remote = green
 
 [color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "blame"]
   meta = yellow bold
   frag = magenta bold
   old = red bold
