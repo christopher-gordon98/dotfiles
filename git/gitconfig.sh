@@ -61,17 +61,18 @@
   required = true
 
 [alias]
-  c = commit -am
+  ca = commit -am
+  cm = commit
   pu = pull
   ps = push
   st = status -s
-  df = diff --color --color-words --abbrev
- # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-  l = log 
   co = checkout
+  l = log 
+
+ # Show the diff between the latest commit and the current state
+  df = diff --color --color-words --abbrev
+  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   # Merge GitHub pull request on top of the `master` branch
   mpr = "!f() { \
     if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
@@ -84,7 +85,7 @@
     fi \
   }; f"
 # Find FIXME, TODO, etc
-n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
+n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grc conf.notes "
 
 [merge]
   tool = opendiff
