@@ -1,6 +1,6 @@
 #!/bin/bash
 #************************************************#
-#          Written by Aaron-Avenger.             #
+#          Written by Aaron.                     #
 #************************************************#
 
 # --------------------------------------------------------- #
@@ -61,10 +61,10 @@ ln -sFfiv $DOTDIR/xrc/eslintrc.json ~/.eslintrc
 ln -sFfiv $DOTDIR/xrc/jshintrc.json ~/.jshintrc
 ln -sFfiv $DOTDIR/xrc/jrnl_config.json ~/.jrnl_config
 
-ln -sFfiv $DOTDIR/xrc/taskrc.sh ~/.taskrc
+# ln -sFfiv $DOTDIR/xrc/taskrc.sh ~/.taskrc
 
 
-ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
+ ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.gnupg ~/.gnupg
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.password-store ~/.password-store
 
@@ -88,8 +88,8 @@ if [ "$LIGHTWVIM" -eq "$TREW" ]
     ln -sFfiv $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
     ln -sFfiv $DOTDIR/vim/light_weight_vimrc.vim ~/.nvimrc
   else
-  ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.vimrc
-  ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.nvimrc
+    ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.vimrc
+    ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.nvimrc
 fi
 
 echo ''

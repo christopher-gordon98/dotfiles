@@ -7,11 +7,12 @@ source /usr/local/Cellar/leiningen/2.7.1/etc/bash_completion.d/lein-completion.b
 source /usr/local/Cellar/mercurial/4.0.1/etc/bash_completion.d/hg-completion.bash
 source /usr/local/Cellar/node/7.3.0/etc/bash_completion.d/npm
 source /usr/local/Cellar/node5/5.12.0/etc/bash_completion.d/npm
+source /usr/local/Cellar/node@5/5.12.0/etc/bash_completion.d/npm
 source /usr/local/Cellar/nvm/0.32.1/etc/bash_completion.d/nvm
 source /usr/local/Cellar/opam/1.2.2_2/etc/bash_completion.d/opam_completion.sh
 source /usr/local/Cellar/pass/1.6.5_1/etc/bash_completion.d/password-store
 source /usr/local/Cellar/task/2.5.1/etc/bash_completion.d/task.sh
-source /usr/local/Cellar/the_silver_searcher/0.33.0/etc/bash_completion.d/ag.bashcomp.sh
+source /usr/local/Cellar/the_silver_searcher/1.0.2/etc/bash_completion.d/ag.bashcomp.sh
 source /usr/local/Cellar/tig/2.2.1/etc/bash_completion.d/tig-completion.bash
 source /usr/local/Cellar/tmux/2.3_2/etc/bash_completion.d/tmux
 source /usr/local/Cellar/unar/1.10.1/etc/bash_completion.d/lsar.bash_completion

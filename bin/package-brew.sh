@@ -1,3 +1,4 @@
+brew install ag
 brew install activemq
 brew install aspcud
 brew install autoconf
@@ -8,7 +9,9 @@ brew install clasp
 brew install cmake
 brew install composer
 brew install cscope
+brew install dart
 brew install dirmngr
+brew install emacs
 brew install exercism
 brew install flow
 brew install ghc
@@ -16,6 +19,7 @@ brew install git
 brew install go
 brew install gpg-agent
 brew install gradle
+brew install grc
 brew install gringo
 brew install hh
 brew install highlight
@@ -31,7 +35,6 @@ brew install mysql
 brew install nano
 brew install ngrep
 brew install nmap
-brew install node
 brew install ocaml
 brew install ocamlbuild
 brew install opam
@@ -44,6 +47,7 @@ brew install python
 brew install python3
 brew install r
 brew install rlwrap
+brew install rtorrent
 brew install sbcl
 brew install sox
 brew install ssh-copy-id
