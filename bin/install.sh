@@ -48,7 +48,9 @@ ln -s $DOTDIR/vim ~/.nvim
 ln -s $DOTDIR/vifm ~/.vifm
 ln -s $DOTDIR/bin ~/bin
 
-ln -sFfiv $DOTDIR/bash/bash_profile.sh ~/.bash_profile
+ln -sFfiv $DOTDIR/shells/bash_profile.sh ~/.bash_profile
+ln -sFfiv $DOTDIR/shells/zshrc.sh ~/.zshrc
+
 ln -sFfiv $DOTDIR/tmux/.tmux.conf ~/.tmux.conf
 ln -sFfiv $DOTDIR/tmux/.tmux-osx.conf  ~/.tmux-osx.conf
 ln -sFfiv $DOTDIR/git/gitconfig.sh ~/.gitconfig
@@ -64,7 +66,7 @@ ln -sFfiv $DOTDIR/xrc/jrnl_config.json ~/.jrnl_config
 # ln -sFfiv $DOTDIR/xrc/taskrc.sh ~/.taskrc
 
 
- ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
+ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.gnupg ~/.gnupg
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.password-store ~/.password-store
 
@@ -73,7 +75,7 @@ ln -sFfiv $DOTDIR/nano/nanorc ~/.nanorc
 ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
 # install bash completions that was shipped with brew packages
-find -E  /usr/local/Cellar -path *bash_completion.d/[^.]* -print | sed 's/^/source /' > $DOTDIR/bash/completers.sh
+find -E  /usr/local/Cellar -path *bash_completion.d/[^.]* -print | sed 's/^/source /' > $DOTDIR/shells/completers.sh
 
 while getopts ":l" opt; do
   case $opt in

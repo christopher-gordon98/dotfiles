@@ -1,10 +1,9 @@
-
-source $HOME/.dotfiles/bash/completers.sh
-source $HOME/.dotfiles/bash/prompt.sh
-source $HOME/.dotfiles/bash/export.sh
-source $HOME/.dotfiles/bash/aliases.sh 
-source $HOME/.dotfiles/bash/functions.sh
-source $HOME/.dotfiles/bash/ssh.sh
+source $HOME/.dotfiles/shells/completers.sh
+source $HOME/.dotfiles/shells/prompt.sh
+source $HOME/.dotfiles/shells/export.sh
+source $HOME/.dotfiles/shells/aliases.sh 
+source $HOME/.dotfiles/shells/functions.sh
+source $HOME/.dotfiles/shells/ssh.sh
 source $HOME/.localenv.sh
 
 # Case-insensitive globbing (used in pathname expansion)
