@@ -1,0 +1,6 @@
+[submodule "shells/bash-it"]
+	path = shells/bash-it
+	url = git@github.com:aaron-goshine/bash-it.git
+[submodule "shells/oh-my-zsh"]
+	path = shells/oh-my-zsh
+	url = git@github.com:aaron-goshine/oh-my-zsh.git

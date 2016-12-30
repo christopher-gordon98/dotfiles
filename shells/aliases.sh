@@ -9,18 +9,15 @@ alias -- -="cd -"
 # ...................................................
 # Project specific alias
 # ...................................................
-alias fc="cd ~/DEV_HOST/filingcatch.local/"
 
 # Shortcuts
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias dx="cd ~/Dropbox"
-alias wk="cd ~/work"
-alias wkhu="cd ~/work/hara/hara-ui"
 
+alias wk="cd ~/work"
 alias gtl="git log --graph"
-alias gts="git status"
+alias gts="git status -s"
 alias gtm='git log --name-status'
 alias gtb="git branch"
 
@@ -41,9 +38,9 @@ alias la="ls -laF ${colorflag}"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 alias ls="ls -1 ${colorflag}"
 
-
 alias week='date +%V'
 alias stopwatch='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo pip freeze --local | sudo grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U'
 
 # IP addresses
@@ -171,6 +168,3 @@ alias rrrf="chmod -R 744"
 # change files or directory permission mode to to all read and
 # also allowing the file ower group to write
 alias rwrf="chmod -R 764"
-
-#added mit scheme 
-alias mit-scheme="/Applications/MIT-Scheme.app/Contents/Resources/mit-scheme"

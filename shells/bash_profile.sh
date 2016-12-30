@@ -1,11 +1,14 @@
-source $HOME/.dotfiles/shells/completers.sh
-source $HOME/.dotfiles/shells/prompt.sh
+#!/usr/bin/env bash
+
 source $HOME/.dotfiles/shells/export.sh
-source $HOME/.dotfiles/shells/aliases.sh 
+source $HOME/.dotfiles/shells/bash-it/bash_it.sh
+source $HOME/.dotfiles/shells/prompt.sh
+source $HOME/.dotfiles/shells/aliases.sh
 source $HOME/.dotfiles/shells/functions.sh
 source $HOME/.dotfiles/shells/ssh.sh
 source $HOME/.localenv.sh
-
+source /usr/local/etc/profile.d/z.sh
+#
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
@@ -22,33 +25,44 @@ for option in autocd globstar; do
   shopt -s "$option" 2> /dev/null;
 done;
 
-# Add tab completion for many Bash commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-  source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-  source /etc/bash_completion;
-fi;
-
-# Enable tab completion for `g` by marking it as an alias for `git`
-if type _git &> /dev/null && [ -f ~/.dotfiles/bash/git-completion.sh ]; then
-  complete -o default -o nospace -F _git g;
-fi;
-
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
-
-# Add tab completion for `defaults read|write NSGlobalDomain`
-# You could just use `-g` instead, but I like being explicit
-complete -W "NSGlobalDomain" defaults;
-
 # Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter node" killall;
 
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" 
-# This loads nvm
-
-  export NVM_DIR=~/.nvm
-  source $(brew --prefix nvm)/nvm.sh
+source $(brew --prefix nvm)/nvm.sh
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
+
+ulimit -n 10000
+
+# Do not autocomplete hidden files unless the pattern explicitly begins with a dot
+set match-hidden-files off
+
+# Show all autocomplete results at once
+set page-completions off
+
+# If there are more than 200 possible completions for a word, ask to show them all
+set completion-query-items 200
+
+# Show extra file information when completing, like `ls -F` does
+set visible-stats on
+
+# Be more intelligent when autocompleting by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
+
+# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
+set input-meta on
+set output-meta on
+set convert-meta off

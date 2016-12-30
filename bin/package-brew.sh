@@ -1,8 +1,8 @@
-brew install ag
 brew install activemq
 brew install aspcud
 brew install autoconf
 brew install automake
+brew install bash
 brew install bats
 brew install camlp4
 brew install clasp
@@ -13,6 +13,7 @@ brew install dart
 brew install dirmngr
 brew install emacs
 brew install exercism
+brew install fasd
 brew install flow
 brew install ghc
 brew install git
@@ -35,6 +36,7 @@ brew install mysql
 brew install nano
 brew install ngrep
 brew install nmap
+brew install node
 brew install ocaml
 brew install ocamlbuild
 brew install opam
