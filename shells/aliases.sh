@@ -1,10 +1,6 @@
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias -- -="cd -"
-
 
 # ...................................................
 # Project specific alias
@@ -14,28 +10,10 @@ alias -- -="cd -"
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-
 alias wk="cd ~/work"
-alias gtl="git log --graph"
-alias gts="git status -s"
-alias gtm='git log --name-status'
-alias gtb="git branch"
-
-alias h="history"
-alias j="jobs"
 alias gh="cd ~/GITHUB"
 
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-  colorflag="--color"
-else # OS X `ls`
-  colorflag="-G"
-fi
-
 # List all files colorized in long format
-alias l="ls -lF ${colorflag}"
-alias la="ls -laF ${colorflag}"
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 alias ls="ls -1 ${colorflag}"
 
 alias week='date +%V'

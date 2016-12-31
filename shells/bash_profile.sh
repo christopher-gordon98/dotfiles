@@ -2,10 +2,12 @@
 
 source $HOME/.dotfiles/shells/export.sh
 source $HOME/.dotfiles/shells/bash-it/bash_it.sh
-source $HOME/.dotfiles/shells/prompt.sh
 source $HOME/.dotfiles/shells/aliases.sh
 source $HOME/.dotfiles/shells/functions.sh
 source $HOME/.dotfiles/shells/ssh.sh
+
+source $HOME/.dotfiles/shells/prompt.sh
+
 source $HOME/.localenv.sh
 source /usr/local/etc/profile.d/z.sh
 #
@@ -41,8 +43,6 @@ set show-all-if-ambiguous on
 # Immediately add a trailing slash when autocompleting symlinks to directories
 set mark-symlinked-directories on
 
-ulimit -n 10000
-
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
 
@@ -50,7 +50,7 @@ set match-hidden-files off
 set page-completions off
 
 # If there are more than 200 possible completions for a word, ask to show them all
-set completion-query-items 200
+set completion-query-items 100
 
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on

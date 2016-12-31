@@ -61,18 +61,6 @@
   required = true
 
 [alias]
-  ca = commit -am
-  cm = commit
-  pu = pull
-  ps = push
-  st = status -s
-  co = checkout
-  l = log 
-
- # Show the diff between the latest commit and the current state
-  df = diff --color --color-words --abbrev
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   # Merge GitHub pull request on top of the `master` branch
   mpr = "!f() { \
     if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
@@ -88,7 +76,7 @@
 n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grc conf.notes "
 
 [merge]
-  tool = opendiff
+  tool = vimdiff
 
 [push]
   default = current

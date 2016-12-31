@@ -1,4 +1,3 @@
-
 export _DATABASE_URL=""
 export HEROKU_POSTGRESQL_PINK_URL=""
 alias work="cd ~/work/"
