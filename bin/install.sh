@@ -36,17 +36,18 @@ info 'Installing Vundle'
 info '-----------------'
 git clone git://github.com/gmarik/vundle.git $DOTDIR/vim/bundle/vundle/
 
-cleanup ".vim" 
-cleanup ".tmux"
-cleanup ".config"
 cleanup "bin"
+cleanup ".config"
+cleanup ".tmux"
+cleanup ".vifm"
+cleanup ".vim" 
 
+ln -s $DOTDIR/bin ~/bin
 ln -s $DOTDIR/config ~/.config
 ln -s $DOTDIR/tmux ~/.tmux
-ln -s $DOTDIR/vim ~/.vim
-ln -s $DOTDIR/vim ~/.nvim
 ln -s $DOTDIR/vifm ~/.vifm
-ln -s $DOTDIR/bin ~/bin
+ln -s $DOTDIR/vim ~/.nvim
+ln -s $DOTDIR/vim ~/.vim
 
 ln -sFfiv $DOTDIR/shells/bash_profile.sh ~/.bash_profile
 ln -sFfiv $DOTDIR/shells/zshrc.sh ~/.zshrc
@@ -71,7 +72,6 @@ ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.gnupg ~/.gnupg
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.password-store ~/.password-store
 
 ln -sFfiv $DOTDIR/nano/nanorc ~/.nanorc
-
 ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
 # install bash completions that was shipped with brew packages
