@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
 source $HOME/.dotfiles/shells/export.sh
+source $HOME/.dotfiles/shells/prompt.sh
 source $HOME/.dotfiles/shells/bash-it/bash_it.sh
 source $HOME/.dotfiles/shells/aliases.sh
 source $HOME/.dotfiles/shells/functions.sh
 source $HOME/.dotfiles/shells/ssh.sh
-
-source $HOME/.dotfiles/shells/prompt.sh
-
 source $HOME/.localenv.sh
 source /usr/local/etc/profile.d/z.sh
 #
@@ -30,9 +28,9 @@ done;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter node" killall;
 
-source $(brew --prefix nvm)/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
@@ -68,10 +66,8 @@ set output-meta on
 set convert-meta off
 
 export HH_CONFIG=hicolor         # get more colors
-shopt -s histappend              # append new history items to .bash_history
-export HISTCONTROL=ignorespace   # leading space hides commands from history
-export HISTFILESIZE=10000        # increase history file size (default is 500)
-export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
-export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 # if this is interactive shell, then bind hh to Ctrl-r (for Vi mode check doc)
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hh -- \C-j"'; fi
+
+# set +x
+# exec 2>&3 3>&-

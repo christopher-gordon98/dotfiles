@@ -1,16 +1,17 @@
-export PATH="$PATH:/usr/X10/bin"
-export PATH="$PATH:/usr/local/lib/node_modules/karma/bin"
-export PATH="$PATH:/usr/local/share/npm/bin"
-export PATH="$PATH:/opt/local/bin"
-export PATH="$PATH:/usr/local/go/bin"
-
-export PATH="$HOME/.cask/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH";
 
 export GOPATH=$HOME/Go
 export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
+
+PATH="$PATH:/usr/X10/bin"
+PATH="$PATH:/usr/local/lib/node_modules/karma/bin"
+PATH="$PATH:/usr/local/share/npm/bin"
+PATH="$PATH:/opt/local/bin"
+PATH="$PATH:/usr/local/go/bin"
+PATH="$HOME/.cask/bin:$PATH"
+PATH="$HOME/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH";
+PATH=$PATH:$GOPATH/bin
+
 export PATH=$PATH:$GOROOT/bin
 
 export GREP_OPTIONS="--color=auto"
@@ -44,9 +45,6 @@ export BASH_IT_THEME='ultra'
 # cloned bash-it with a remote other than origin such as `bash-it`.
 # export BASH_IT_REMOTE='bash-it'
 
-# Your place for hosting Git repos. I use this for private repos.
-export GIT_HOSTING='git@git.domain.com'
-
 # Don't check mail when opening terminal.
 unset MAILCHECK
 
@@ -72,8 +70,5 @@ export SCM_CHECK=true
 # after enabling or disabling aliases, plugins, and completions.
 # export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-# This loads nvm
-
-export NVM_DIR=~/.nvm
+  export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
