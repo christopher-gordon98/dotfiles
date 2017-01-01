@@ -3,9 +3,7 @@
   excludesfile = ~/.gitignore_global
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
-  # hooksPath = ~/git-hooks
-  # insanely beautiful diffs
-  pager = bash -lc 'diff-highlight.sh | strip_diff_leading_symbols | less -r'
+  pager =  less 
 
 [color]
   branch = auto

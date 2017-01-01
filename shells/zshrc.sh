@@ -1,4 +1,4 @@
-source $HOME/.dotfiles/shells/zprompt.sh
+source $HOME/.dotfiles/shells/prompt.sh
 source $HOME/.dotfiles/shells/export.sh
 source $HOME/.dotfiles/shells/aliases.sh 
 source $HOME/.dotfiles/shells/functions.sh
