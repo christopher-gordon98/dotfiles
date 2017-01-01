@@ -25,22 +25,36 @@ fail () {
   echo ''
   exit
 }
+
 cleanup()
 { rm -rf "$HOME/$1"
   return 0   # Success.
 } 
 
 
-
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 info 'Installing Vundle'
-info '-----------------'
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+
 git clone git://github.com/gmarik/vundle.git $DOTDIR/vim/bundle/vundle/
 
-cleanup "bin"
-cleanup ".config"
-cleanup ".tmux"
-cleanup ".vifm"
-cleanup ".vim" 
+
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+info 'updating git sub modules'
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+  git submodule update --recursive --remote
+
+
+cleanup "~/bin"
+cleanup "~/.config"
+cleanup "~/.tmux"
+cleanup "~/.vifm"
+cleanup "~/.vim" 
+cleanup "~/.nvim" 
+cleanup "~/.emacs.d" 
+cleanup "~/.emacs" 
+
+
 
 ln -s $DOTDIR/bin ~/bin
 ln -s $DOTDIR/config ~/.config
@@ -48,6 +62,7 @@ ln -s $DOTDIR/tmux ~/.tmux
 ln -s $DOTDIR/vifm ~/.vifm
 ln -s $DOTDIR/vim ~/.nvim
 ln -s $DOTDIR/vim ~/.vim
+ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
 ln -sFfiv $DOTDIR/shells/bash_profile.sh ~/.bash_profile
 ln -sFfiv $DOTDIR/shells/zshrc.sh ~/.zshrc
@@ -64,18 +79,11 @@ ln -sFfiv $DOTDIR/xrc/eslintrc.json ~/.eslintrc
 ln -sFfiv $DOTDIR/xrc/jshintrc.json ~/.jshintrc
 ln -sFfiv $DOTDIR/xrc/jrnl_config.json ~/.jrnl_config
 
-# ln -sFfiv $DOTDIR/xrc/taskrc.sh ~/.taskrc
-
-
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.gnupg ~/.gnupg
 ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.password-store ~/.password-store
 
-ln -sFfiv $DOTDIR/nano/nanorc ~/.nanorc
-ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
-# install bash completions that was shipped with brew packages
-find -E  /usr/local/Cellar -path *bash_completion.d/[^.]* -print | sed 's/^/source /' > $DOTDIR/shells/completers.sh
 
 while getopts ":l" opt; do
   case $opt in
@@ -94,29 +102,40 @@ if [ "$LIGHTWVIM" -eq "$TREW" ]
     ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.nvimrc
 fi
 
-echo ''
-success  'Hey! Superhero.'
-echo ''
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+info 'Installing home brew'
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
+source $DOTDIR/bin/homebrew-sync.sh
+
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 info 'Installing plugins'
-info '-------------------------------------------------'
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+
 if test $(which mvim)
 then
   mvim -v +PluginInstall +qall
+  mvim -v +PluginUpdate +qall
 else
   if test $(which vim)
   then
     vim +PluginInstall +qall
+    vim +PluginUpdate +qall
   else
     fail 'mvim or vim not found in path.'
   fi
 fi
 
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+success  'Hey! Superhero.'
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 success 'Setup complete. Run vim and enjoy'
+info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
 unset DOTDIR
 unset LIGHTWVIM
 unset TREW
 unset BAD_FILE
-
 exit;

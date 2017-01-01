@@ -8,7 +8,7 @@ source /usr/local/Cellar/mercurial/4.0.1/etc/bash_completion.d/hg-completion.bas
 source /usr/local/Cellar/node/7.3.0/etc/bash_completion.d/npm
 source /usr/local/Cellar/node5/5.12.0/etc/bash_completion.d/npm
 source /usr/local/Cellar/node@5/5.12.0/etc/bash_completion.d/npm
-source /usr/local/Cellar/nvm/0.32.1/etc/bash_completion.d/nvm
+source /usr/local/Cellar/nvm/0.33.0/etc/bash_completion.d/nvm
 source /usr/local/Cellar/opam/1.2.2_2/etc/bash_completion.d/opam_completion.sh
 source /usr/local/Cellar/pass/1.6.5_1/etc/bash_completion.d/password-store
 source /usr/local/Cellar/task/2.5.1/etc/bash_completion.d/task.sh

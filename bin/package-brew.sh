@@ -36,7 +36,6 @@ brew install mysql
 brew install nano
 brew install ngrep
 brew install nmap
-brew install node
 brew install ocaml
 brew install ocamlbuild
 brew install opam
