@@ -1,18 +1,6 @@
 #!/bin/bash
 source $HOME/.dotfiles/shells/functions.sh
 
-# OPTIONS="BLOW_BASH_PROFILE_AWAY QUIT"
-# select opt in $OPTIONS; do
-#   if [ "$opt" = "2" ]; then
-#     echo done
-#     exit
-#   elif [ "$opt" = "1" ]; then
-#     echo Hello World
-#   else
-#     echo bad option
-#     exit
-#   fi
-# done
 #==========================================================
 t1=$(get_ultra_rule_str ' Ultra dotfiles installer ' 0 0)
 echo "$t1"
@@ -48,13 +36,11 @@ function slimlinker() {
 }
 
 slimlinker $DOTDIR/bin/
-slimlinker $DOTDIR/shells/bash_profile
 slimlinker $DOTDIR/config/ 
 slimlinker $DOTDIR/tmux/
 slimlinker $DOTDIR/vifm/
 slimlinker $DOTDIR/vim/
 slimlinker $DOTDIR/emacs.d
-slimlinker $DOTDIR/shells/zshrc
 slimlinker $DOTDIR/git/gitconfig
 
 for FILE in $(ls $DOTDIR/xrc/); 
@@ -62,14 +48,19 @@ do
   slimlinker $DOTDIR/xrc/$FILE
 done;
 
-ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
-ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.gnupg ~/.gnupg
-ln -sFfiv ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.password-store ~/.password-store
+rm -rf ~/.task ~/.gnupg ~/.password-store ~/bin 2> /dev/null
+ln -s $DOTDIR/bin/ ~/bin
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.gnupg ~/.gnupg
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.password-store ~/.password-store
+
+
 success "done"
 
 #==========================================================
 t1=$(get_ultra_rule_str ' Installing homebrew packages ' 0 0)
 echo "$t1"
+brew update
 source $DOTDIR/bin/homebrew-sync.sh
 npm install eslint tern -g
 success "done"
@@ -87,11 +78,13 @@ done
 
 if [ "$LIGHTWVIM" -eq "$TREW" ] 
   then
-    ln -sFfiv $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
-    ln -sFfiv $DOTDIR/vim/light_weight_vimrc.vim ~/.nvimrc
+    rm -rf ~/.vimrc ~/.nvimrc 2> /dev/null 
+    ln -s $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
+    ln -s $DOTDIR/vim/light_weight_vimrc.vim ~/.nvimrc
   else
-    ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.vimrc
-    ln -sFfiv $DOTDIR/vim/vimrc.vim ~/.nvimrc
+    rm -rf ~/.vimrc ~/.nvimrc 2> /dev/null
+    ln -s $DOTDIR/vim/vimrc.vim ~/.vimrc
+    ln -s $DOTDIR/vim/vimrc.vim ~/.nvimrc
 fi
 success "done"
 #==========================================================
@@ -124,10 +117,25 @@ source $DOTDIR/vim/bundle/Youcompleteme/install.sh
 t1=$(get_ultra_rule_str 'Enjoy' 0 0 '∿')
 echo "$t1"
 success "done"
+
+OPTIONS="KEEP_BSH_PROFILE REPLACE"
+select opt in $OPTIONS; do
+  if [ "$REPLY" = "1" ]; then
+    t1=$(get_ultra_rule_str ' Keeping bash_profile but injecting source ' 0 0)
+    echo "$t1"
+    cat $DOTDIR/shells/localenv-template.sh $DOTDIR/shells/local-source-bash.sh >> ~/.bash_profile
+    cat $DOTDIR/shells/localenv-template.sh $DOTDIR/shells/local-source-zsh.sh >> ~/.zshrc
+  elif [ "$REPLY" = "2" ]; then
+    t1=$(get_ultra_rule_str ' replace bash_profile ' 0 0)
+    echo "$t1"
+    slimlinker $DOTDIR/shells/bash_profile
+    slimlinker $DOTDIR/shells/zshrc
+  fi
+exit
+done
 unset DOTDIR
 unset LIGHTWVIM
 unset TREW
 unset BAD_FILE
 sleep 3
 clear
-source source $HOME/.dotfiles/shells/prompt.sh;
