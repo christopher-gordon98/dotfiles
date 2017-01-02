@@ -15,6 +15,8 @@ alias dkt="cd ~/Desktop"
 alias wk="cd ~/work"
 alias ghb="cd ~/GITHUB"
 
+alias o="open"
+
 alias a="git add"
 alias b="git branch"
 alias cm="git commit"
