@@ -138,6 +138,61 @@ function rule () {
   printf "%$(tput cols)s\n"|tr " " "~"
 }
 
-function chang_shell() {
+function change_shell() {
   chsh -s $(which $1)
 }
+
+function get_ultra_rule_str() {
+  local ULTRASTRING=${1:-''}
+  local MINWIDTH=${2:-60}
+  local MARGIN_R=${3:-40}
+  local RULE_CHAR=${4:-'-'}
+
+  local ULSTRMAX=$(expr $(tput cols) - $MARGIN_R)
+
+  if [  "$(tput cols)" -lt "$MINWIDTH"  ]
+  then
+    echo "$(printf "%*s\n" $ULSTRMAX | tr " " $RULE_CHAR)" && return;
+  fi
+
+  local ULTRAWIDTH=$(expr $ULSTRMAX - ${#ULTRASTRING})
+  local PADD_L=$(expr $ULTRAWIDTH / 2)
+  local PADD_R=$PADD_L
+
+  if [  $(expr $ULTRAWIDTH  % 2) -eq 1 ]
+  then
+    PADD_R=$(expr $PADD_L + 1)
+  fi
+
+  local PADDCHARS_L=$(printf "%*s\n" $PADD_L | tr " " $RULE_CHAR)
+  local PADDCHARS_R=$(printf "%*s\n" $PADD_R | tr " " $RULE_CHAR)
+  echo "$PADDCHARS_L$1$PADDCHARS_R"
+}
+
+function message () {
+  printf "  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+function success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+function fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+function cleanup()
+{ rm -rf "$HOME/$1"
+  return 0   # Success.
+} 
+
+function ultra_title() {
+  rule
+  get_ultra_rule_str $1 0 0 '~'
+  rule
+}
+
+
+

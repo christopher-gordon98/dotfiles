@@ -1,3 +1,5 @@
+#! /usr/local/bin/bash
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
