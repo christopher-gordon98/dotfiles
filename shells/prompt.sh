@@ -2,16 +2,17 @@ getUltraStr() {
   local MINWIDTH=60
   local ULNAMEMAX=$(expr $(tput cols) - 42)
 
-  if [  "$(tput cols)" -lt "$MINWIDTH" ]
+  if [  "$(tput cols)" -lt "$MINWIDTH"  ]
   then
     echo "$(printf "%*s\n" $ULNAMEMAX | tr " " "-")" && return;
   fi
 
   local ULTRANAMELEN=$1
-  local PADD_L=$(expr $(expr $ULNAMEMAX - ${#ULTRANAMELEN}) / 2)
+  local ULTRAWIDTH=$(expr $ULNAMEMAX - ${#ULTRANAMELEN})
+  local PADD_L=$(expr $ULTRAWIDTH / 2)
   local PADD_R=$PADD_L
 
-  if [  $(expr $(expr $ULNAMEMAX - ${#ULTRANAMELEN}) % 2) -eq 1 ]
+  if [  $(expr $ULTRAWIDTH  % 2) -eq 1 ]
   then
     PADD_R=$(expr $PADD_L + 1)
   fi
@@ -32,7 +33,3 @@ echo "██║   ██║██║     ██║   ██████╔╝█
 echo "██║   ██║██║     ██║   ██╔══██╗██╔══██║ $RULE"
 echo "╚██████╔╝███████╗██║   ██║  ██║██║  ██║ $ULTRANAME"
 echo " ╚═════╝ ╚══════╝╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ $RULE"
-# echo "$TITLE"
-# echo "$FMN"
-# echo "$RULE"
-# echo "$ULTRANAME"
