@@ -45,23 +45,24 @@ info '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
   git submodule update --recursive --remote
 
 
-cleanup "~/bin"
-cleanup "~/.config"
-cleanup "~/.tmux"
-cleanup "~/.vifm"
-cleanup "~/.vim" 
-cleanup "~/.nvim" 
-cleanup "~/.emacs.d" 
-cleanup "~/.emacs" 
+cleanup "bin"
+cleanup ".config"
+cleanup ".tmux"
+cleanup ".task"
+cleanup ".vifm"
+cleanup ".vim" 
+cleanup ".nvim" 
+cleanup ".emacs.d" 
+cleanup ".emacs" 
 
 
 
-ln -s $DOTDIR/bin ~/bin
-ln -s $DOTDIR/config ~/.config
-ln -s $DOTDIR/tmux ~/.tmux
-ln -s $DOTDIR/vifm ~/.vifm
-ln -s $DOTDIR/vim ~/.nvim
-ln -s $DOTDIR/vim ~/.vim
+ln -s $DOTDIR/bin/ ~/bin
+ln -s $DOTDIR/config/ ~/.config
+ln -s $DOTDIR/tmux/ ~/.tmux
+ln -s $DOTDIR/vifm/ ~/.vifm
+ln -s $DOTDIR/vim/ ~/.nvim
+ln -s $DOTDIR/vim/ ~/.vim
 ln -sFfiv $DOTDIR/emacs ~/.emacs.d
 
 ln -sFfiv $DOTDIR/shells/bash_profile.sh ~/.bash_profile
