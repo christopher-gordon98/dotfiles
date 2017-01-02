@@ -1,26 +1,38 @@
 getUltraStr() {
-  MINWIDTH=60
-  ULNAMEMAX=$(expr $(tput cols) - 43)
+  local MINWIDTH=60
+  local ULNAMEMAX=$(expr $(tput cols) - 42)
 
   if [  "$(tput cols)" -lt "$MINWIDTH" ]
   then
     echo "$(printf "%*s\n" $ULNAMEMAX | tr " " "-")" && return;
   fi
 
-  ULTRANAMELEN=$1
-  PADD="$(expr $(expr $ULNAMEMAX - ${#ULTRANAMELEN}) / 2)"
-  PADDCHARS="$(printf "%*s\n" $PADD | tr " " "-")"
-    echo "$PADDCHARS$1$PADDCHARS"
-  }
-  TITLE=`getUltraStr ' ALL WAYS RTFMP '` 
-  ULTRANAME=`getUltraStr " ULTRA $(whoami | sed 's/\.[a-z]*$//' | awk '{print toupper($0)}') "` 
-  FMN=`getUltraStr ' ✿ '` 
-  RULE=`getUltraStr ''` 
+  local ULTRANAMELEN=$1
+  local PADD_L=$(expr $(expr $ULNAMEMAX - ${#ULTRANAMELEN}) / 2)
+  local PADD_R=$PADD_L
 
-  echo " "
-  echo "██╗   ██╗██╗  ████████╗██████╗  █████╗  $TITLE"
-  echo "██║   ██║██║  ╚══██╔══╝██╔══██╗██╔══██╗ $RULE"
-  echo "██║   ██║██║     ██║   ██████╔╝███████║ $FMN"
-  echo "██║   ██║██║     ██║   ██╔══██╗██╔══██║ $RULE"
-  echo "╚██████╔╝███████╗██║   ██║  ██║██║  ██║ $ULTRANAME"
-  echo " ╚═════╝ ╚══════╝╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ $RULE"
+  if [  $(expr $(expr $ULNAMEMAX - ${#ULTRANAMELEN}) % 2) -eq 1 ]
+  then
+    PADD_R=$(expr $PADD_L + 1)
+  fi
+
+  local PADDCHARS_L=$(printf "%*s\n" $PADD_L | tr " " "-")
+  local PADDCHARS_R=$(printf "%*s\n" $PADD_R | tr " " "-")
+  echo "$PADDCHARS_L$1$PADDCHARS_R"
+}
+TITLE=`getUltraStr ' ALWAYS RTFMP '` 
+ULTRANAME=`getUltraStr " ULTRA $(whoami | sed 's/\.[a-z]*$//' | awk '{print toupper($0)}') "` 
+FMN=`getUltraStr ' ✿ '` 
+RULE=`getUltraStr ''` 
+
+echo " "
+echo "██╗   ██╗██╗  ████████╗██████╗  █████╗  $TITLE"
+echo "██║   ██║██║  ╚══██╔══╝██╔══██╗██╔══██╗ $RULE"
+echo "██║   ██║██║     ██║   ██████╔╝███████║ $FMN"
+echo "██║   ██║██║     ██║   ██╔══██╗██╔══██║ $RULE"
+echo "╚██████╔╝███████╗██║   ██║  ██║██║  ██║ $ULTRANAME"
+echo " ╚═════╝ ╚══════╝╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ $RULE"
+# echo "$TITLE"
+# echo "$FMN"
+# echo "$RULE"
+# echo "$ULTRANAME"
