@@ -7,11 +7,20 @@ alias ...="cd ../.."
 # ...................................................
 
 # Shortcuts
-alias d="cd ~/Documents"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
+alias doc="cd ~/Documents"
+alias dwl="cd ~/Downloads"
+alias dkt="cd ~/Desktop"
 alias wk="cd ~/work"
-alias gh="cd ~/GITHUB"
+alias ghb="cd ~/GITHUB"
+
+alias gts="git status"
+
+alias a="git add"
+alias b="git branch"
+alias cm="git commit"
+alias d="git diff"
+alias p="git push"
+alias s="git status"
 
 # List all files colorized in long format
 alias ls="ls -1 ${colorflag}"
