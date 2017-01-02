@@ -11,7 +11,7 @@ function f() {
 
 
 # cd into whatever is the forefront Finder window.
-cdf() {  # short for cdfinder
+function cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
 
@@ -27,7 +27,7 @@ function server() {
 
 
 # Copy w/ progress
-cp_p () {
+function cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
@@ -93,7 +93,7 @@ fi
 }
 
 # who is using the laptop's iSight camera?
-camerausedby() {
+function camerausedby() {
   echo "Checking to see who is using the iSight camera… 📷"
   usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
   echo -e "Recent camera uses:\n$usedby"
@@ -102,7 +102,7 @@ camerausedby() {
 
 # animated gifs from any video
 # from alex sexton   gist.github.com/SlexAxton/4989674
-gifify() {
+function gifify() {
   if [[ -n "$1" ]]; then
     if [[ $2 == '--good' ]]; then
       ffmpeg -i $1 -r 10 -vcodec png out-static-%05d.png
@@ -118,7 +118,7 @@ gifify() {
 
 # turn that video into webm.
 # brew reinstall ffmpeg --with-libvpx
-webmify(){
+function webmify(){
   ffmpeg -i $1 -vcodec libvpx -acodec libvorbis -isync -copyts -aq 80 -threads 3 -qmax 30 -y $2 $1.webm
 }
 
@@ -134,6 +134,10 @@ function strip_diff_leading_symbols(){
 }
 
 ## Print a horizontal rule
-rule () {
+function rule () {
   printf "%$(tput cols)s\n"|tr " " "~"
+}
+
+function chang_shell() {
+  chsh -s $(which $1)
 }
