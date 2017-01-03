@@ -11,10 +11,12 @@ TREW=1
 BAD_FILE=85
 
 #==========================================================
-t1=$(get_ultra_rule_str ' Installing Vundle ' 0 0)
+t1=$(get_ultra_rule_str ' Installing sub modules ' 0 0)
 echo "$t1"
-rm -rf $DOTDIR/vim/bundle/vundle
+rm -rf $DOTDIR/vim/bundle/vundle $DOTDIR/shells/bast  $DOTDIR/shells/zsh 2> /dev/null
 git clone git://github.com/gmarik/vundle.git $DOTDIR/vim/bundle/vundle/
+git clone git://github.com/aaron-goshine/bask_it.git $DOTDIR/shells/bash/
+git clone git://github.com/aaron-goshine/oh_my_zsh.git $DOTDIR/zsh/
 success "done"
 
 #==========================================================
@@ -31,7 +33,7 @@ success "done"
 
 function slimlinker() {
   local BNAME="$HOME/.$(basename $1)"
-  rm -rf $BNAME
+  rm -rf $BNAME 2> /dev/null
   ln -s $1 $BNAME
 }
 
