@@ -41,3 +41,5 @@ config/configstore/snyk.json
 config/git/gitk
 config/vifm/vifminfo
 vim/vim
+shells/bash
+shells/zsh

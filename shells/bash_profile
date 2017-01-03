@@ -2,11 +2,12 @@
 
 source $HOME/.dotfiles/shells/export.sh
 source $HOME/.dotfiles/shells/prompt.sh
-source $HOME/.dotfiles/shells/bash-it/bash_it.sh
+source $HOME/.dotfiles/shells/bash/bash_it.sh
 source $HOME/.dotfiles/shells/aliases.sh
 source $HOME/.dotfiles/shells/functions.sh
 source $HOME/.dotfiles/shells/ssh.sh
 source $HOME/.localenv.sh
+
 source /usr/local/etc/profile.d/z.sh
 #
 # Case-insensitive globbing (used in pathname expansion)
