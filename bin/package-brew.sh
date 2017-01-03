@@ -7,9 +7,7 @@ brew install bats
 brew install camlp4
 brew install clasp
 brew install cmake
-brew install composer
 brew install cscope
-brew install dart
 brew install dirmngr
 brew install emacs
 brew install exercism
@@ -33,9 +31,9 @@ brew install links
 brew install lua
 brew install mcrypt
 brew install mysql
-brew install nano
 brew install ngrep
 brew install nmap
+brew install node
 brew install ocaml
 brew install ocamlbuild
 brew install opam
@@ -46,9 +44,8 @@ brew install pkg-config
 brew install pwgen
 brew install python
 brew install python3
-brew install r
 brew install rlwrap
-brew install rtorrent
+brew install ruby
 brew install sbcl
 brew install sox
 brew install ssh-copy-id
