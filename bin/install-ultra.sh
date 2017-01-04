@@ -47,6 +47,8 @@ slimlinker $DOTDIR/vim/
 slimlinker $DOTDIR/emacs.d
 slimlinker $DOTDIR/git/gitconfig
 
+ln -s $DOTDIR/tmux/.tmux.conf ~/.tmux.conf 
+
 for FILE in $(ls $DOTDIR/xrc/); 
 do
   slimlinker $DOTDIR/xrc/$FILE
@@ -68,7 +70,7 @@ brew update
 source $DOTDIR/bin/homebrew-sync.sh
 npm install eslint tern -g
 success "done"
-#==========================================================
+# #==========================================================
 t1=$(get_ultra_rule_str 'Installing vim config symlinks' 0 0)
 echo "$t1"
 
@@ -113,7 +115,7 @@ cd $DOTDIR/vim/
 mkdir .tmp .backup .temp
 cd $DOTDIR/vim/bundle/YouCompleteMe/
 git submodule update 
-git submodule sycn 
+git submodule sync
 
 source $DOTDIR/vim/bundle/Youcompleteme/install.sh
 
