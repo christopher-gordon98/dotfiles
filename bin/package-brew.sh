@@ -8,7 +8,9 @@ brew install clasp
 brew install cmake
 brew install composer
 brew install cscope
+brew install dart
 brew install dirmngr
+brew install emacs
 brew install exercism
 brew install fasd
 brew install flow
@@ -44,8 +46,9 @@ brew install pwgen
 brew install python
 brew install python3
 brew install r
+brew install reattach-to-user-namespace
 brew install rlwrap
-brew install ruby
+brew install rtorrent
 brew install sbcl
 brew install sox
 brew install ssh-copy-id
