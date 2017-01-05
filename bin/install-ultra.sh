@@ -13,10 +13,12 @@ BAD_FILE=85
 #==========================================================
 t1=$(get_ultra_rule_str ' Installing sub modules ' 0 0)
 echo "$t1"
-rm -rf $DOTDIR/vim/bundle/vundle $DOTDIR/shells/bash  $DOTDIR/shells/bash 2> /dev/null
+rm -rf $DOTDIR/vim/bundle/vundle $DOTDIR/shells/bash  $DOTDIR/shells/zsh 2> /dev/null
 
 git clone https://github.com/aaron-goshine/bash-it.git $DOTDIR/shells/bash
+
 git clone https://github.com/aaron-goshine/oh-my-zsh.git $DOTDIR/shells/zsh
+
 git clone https://github.com/VundleVim/Vundle.vim.git $DOTDIR/vim/bundle/vundle
 
 success "done"

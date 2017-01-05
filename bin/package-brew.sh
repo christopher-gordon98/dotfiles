@@ -2,7 +2,6 @@ brew install activemq
 brew install aspcud
 brew install autoconf
 brew install automake
-brew install bash
 brew install bats
 brew install camlp4
 brew install clasp
