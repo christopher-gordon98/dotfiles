@@ -43,3 +43,4 @@ config/vifm/vifminfo
 vim/vim
 shells/bash
 shells/zsh
+.maxcrc
