@@ -10,7 +10,7 @@
 ### Installation
 ```
 cd ~/
-git clone git@github.com:aaron-goshine/dotfiles.git .dotfiles --recusive
+git clone git@github.com:aaron-goshine/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles/
 ```
 ```
