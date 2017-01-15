@@ -44,3 +44,4 @@ vim/vim
 shells/bash
 shells/zsh
 .maxcrc
+.nukes
