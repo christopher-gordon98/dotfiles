@@ -1,4 +1,4 @@
-## - Welcome to the Ultra dot files and configurations
+## Welcome to the Ultra dot files and configurations
 
 ### What you get out of the box.
 - Bash, zsh and ipython configurations
