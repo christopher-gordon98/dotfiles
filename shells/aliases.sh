@@ -12,7 +12,7 @@ alias ...="cd ../.."
 alias doc="cd ~/Documents"
 alias dwl="cd ~/Downloads"
 alias dkt="cd ~/Desktop"
-alias wk="cd ~/work"
+alias wk="cd ~/workspace"
 alias ghb="cd ~/GITHUB"
 
 alias o="open"
@@ -40,9 +40,6 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-# Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
