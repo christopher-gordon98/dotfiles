@@ -11,17 +11,13 @@ TREW=1
 BAD_FILE=85
 
 #==========================================================
-t1=$(get_ultra_rule_str ' Installing sub modules ' 0 0)
-echo "$t1"
-rm -rf $DOTDIR/vim/bundle/vundle $DOTDIR/shells/bash  $DOTDIR/shells/zsh 2> /dev/null
-
-git clone https://github.com/aaron-goshine/bash-it.git $DOTDIR/shells/bash
-
-git clone https://github.com/aaron-goshine/oh-my-zsh.git $DOTDIR/shells/zsh
-
-git clone https://github.com/VundleVim/Vundle.vim.git $DOTDIR/vim/bundle/vundle
-
-success "done"
+# t1=$(get_ultra_rule_str ' Installing shell configurations and vundle ' 0 0)
+# echo "$t1"
+# rm -rf $DOTDIR/vim/bundle/vundle $DOTDIR/shells/bash  $DOTDIR/shells/zsh 2> /dev/null
+# git clone https://github.com/aaron-goshine/bash-it.git $DOTDIR/shells/bash
+# git clone https://github.com/aaron-goshine/oh-my-zsh.git $DOTDIR/shells/zsh
+# git clone https://github.com/VundleVim/Vundle.vim.git $DOTDIR/vim/bundle/vundle
+# success "done"
 
 #==========================================================
 t1=$(get_ultra_rule_str ' Updating git sub modules ' 0 0)
@@ -31,10 +27,8 @@ git submodule sync
 success "done"
 
 #==========================================================
-t1=$(get_ultra_rule_str ' Creating symlinks ' 0 0)
+t1=$(get_ultra_rule_str ' Creating symlinks for dot directories ' 0 0)
 echo "$t1"
-success "done"
-
 function slimlinker() {
   local BNAME="$HOME/.$(basename $1)"
   rm -rf $BNAME 2> /dev/null
@@ -46,6 +40,7 @@ slimlinker $DOTDIR/config/
 slimlinker $DOTDIR/tmux/
 slimlinker $DOTDIR/vifm/
 slimlinker $DOTDIR/vim/
+slimlinker $DOTDIR/ipython/
 slimlinker $DOTDIR/emacs.d
 slimlinker $DOTDIR/git/gitconfig
 
@@ -61,7 +56,6 @@ ln -s $DOTDIR/bin/ ~/bin
 ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
 ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.gnupg ~/.gnupg
 ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger/.password-store ~/.password-store
-
 
 success "done"
 
@@ -121,11 +115,10 @@ git submodule sync
 
 source $DOTDIR/vim/bundle/Youcompleteme/install.sh
 
+success "done"
 #==========================================================
 t1=$(get_ultra_rule_str 'Enjoy' 0 0 '∿')
 echo "$t1"
-success "done"
-
 OPTIONS="KEEP_BSH_PROFILE REPLACE"
 select opt in $OPTIONS; do
   if [ "$REPLY" = "1" ]; then
