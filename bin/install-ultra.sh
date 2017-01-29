@@ -62,9 +62,19 @@ brew tap Homebrew/bundle
 brew bundle dump
 brew bundle
 cd -
-npm install eslint tern -g
 success "done"
-# #==========================================================
+
+#==========================================================
+t1=$(get_ultra_rule_str ' Installing global npm packages ' 0 0)
+npm install -g eslint
+npm install -g jshint
+npm install -g eslint-plugin-react
+npm install -g tern
+npm install -g babel-eslint
+npm install -g stylelint
+success "done"
+
+#==========================================================
 t1=$(get_ultra_rule_str 'Installing vim config symlinks' 0 0)
 echo "$t1"
 
