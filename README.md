@@ -1,4 +1,4 @@
-## - Welcome to the Ultra dot files and configurations
+## Welcome to the Ultra dot files and configurations
 
 ### What you get out of the box.
 - Bash, zsh and ipython configurations
@@ -10,7 +10,7 @@
 ### Installation
 ```
 cd ~/
-git clone git@github.com:aaron-goshine/dotfiles.git .dotfiles --recusive
+git clone git@github.com:aaron-goshine/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles/
 ```
 ```
