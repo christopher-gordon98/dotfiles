@@ -43,3 +43,5 @@ config/vifm/vifminfo
 vim/vim
 .maxcrc
 .nukes
+vifm/vifminfo
+ipython/profile_default/history.sqlite
