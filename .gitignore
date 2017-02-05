@@ -42,6 +42,7 @@ config/git/gitk
 config/vifm/vifminfo
 vim/vim
 .maxcrc
+vim/undo/*
 .nukes
 vifm/vifminfo
 ipython/profile_default/history.sqlite
