@@ -1,0 +1,28 @@
+#!/usr/bin/python
+import sys
+import os
+
+def flipper (str, key = 1):
+    if len(str) > 128 or key > 8:
+        print('you are only allowed 128 chars and size 8 key')
+        return '';
+    charsList = list(str)
+    for i in range(len(charsList)):
+        c = charsList[i]
+        charsList[i] = chr(ord(c) ^ i + key)
+    return ''.join(charsList);
+
+if len(sys.argv) >= 2:
+    cipher = flipper(sys.argv[1])
+    os.system("echo " + "'" + str(cipher) +"'" + "| pbcopy")
+    print(cipher)
+    print('On your clipboard!')
+else:
+    print('-you are only allowed 128 chars and size 8 key')
+
+
+
+
+
+
+
