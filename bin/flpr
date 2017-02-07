@@ -2,18 +2,31 @@
 import sys
 import os
 
-def flipper (str, key = 1):
-    if len(str) > 128 or key > 8:
-        print('you are only allowed 128 chars and size 8 key')
-        return '';
-    charsList = list(str)
+def role_up(chars, key):
+    charsList = list(chars)
     for i in range(len(charsList)):
         c = charsList[i]
-        charsList[i] = chr(ord(c) ^ i + key)
-    return ''.join(charsList);
+        charsList[i] = hex(ord(c) ^ ((i << 8) + key))
+    return ''.join(charsList) + "===";
+        
+def role_out(chars, key):
+    chars = chars.replace('=', '')
+    hexico = chars.split('0x')[1:]
+    charsList = []
+    for i in range(len(hexico)):
+        hx = hexico[i]
+        hexico[i] = chr(int('0x' + hx, 16) ^ ((i << 8) + key))
+    return ''.join(hexico)
+       
+
+def main (chars, key = 1):
+    if chars[-3:] == '===':
+        return role_out(chars, key)
+    else:
+       return role_up(chars, key)
 
 if len(sys.argv) >= 2:
-    cipher = flipper(sys.argv[1])
+    cipher = main(sys.argv[1])
     os.system("echo " + "'" + str(cipher) +"'" + "| pbcopy")
     print(cipher)
     print('On your clipboard!')
