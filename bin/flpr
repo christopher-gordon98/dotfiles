@@ -1,9 +1,27 @@
 #!/usr/bin/python
 import sys
 import os
+import subprocess
+import argparse
 
-def key_gen():
-    key = 1
+def get_clipboard_data():
+    p = subprocess.Popen(['pbpaste'], stdout=subprocess.PIPE)
+    retcode = p.wait()
+    data = p.stdout.read()
+    return data
+
+
+def set_clipboard_data(data):
+    p = subprocess.Popen(['pbcopy'], stdin=subprocess.PIPE)
+    p.stdin.write(data)
+    p.stdin.close()
+    retcode = p.wait()
+
+
+def key_gen(key):
+    if key:
+        return abs(hash(''.join(key)))
+
     with open(os.path.join(os.path.expanduser('~'),'.flprc')) as f:
         content = f.readlines()
     if content :
@@ -13,11 +31,11 @@ def key_gen():
 
 def role_up(chars, key):
     charsList = list(chars)
+    rs = ''
     for i in range(len(charsList)):
-        c = charsList[i]
-        charsList[i] = hex(ord(c) ^ ((i << 8) + key))
-        gees = ''.join(charsList) 
-    return  gees.replace('0x', 'r') + "==";
+        charsList[i] = hex(ord(charsList[i]) ^ ((i << 8) + key))
+        rs = ''.join(charsList) 
+    return  rs.replace('0x', 'r') + "==";
 
 
 def role_out(chars, key):
@@ -29,29 +47,50 @@ def role_out(chars, key):
         try:
             hexico[i] = chr(int('0x' + hx, 16) ^ ((i << 8) + key))
         except:
-            print( "You string is corrupted")
+            print( "You cipher is corrupted or your key does not match")
     return ''.join(hexico)
 
 
-def main (chars, key = 1):
-    if (key == 1):
-        key = key_gen();
-    if chars[-2:] == '==':
-        return role_out(chars, key)
+def main(args):
+    key = key_gen(args.key);
+    if len(args.chars) > 0 and args.chars[-2:] == '==':
+        cipher = role_out(args.chars, key)
     else:
-        return role_up(chars, key)
+        if args.clip:
+           args.chars = get_clipboard_data() 
+        cipher = role_up(args.chars, key)
+    set_clipboard_data(cipher)
 
-if len(sys.argv) >= 2:
-    cipher = main(sys.argv[1])
-    os.system("echo " + "'" + str(cipher) +"'" + "| pbcopy")
-    print(cipher)
-    print('On your clipboard!')
-else:
-    print('There was nothing to flip')
-
+    if not args.silent:
+        print(cipher)
+    print('Clipboard updated!')
 
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Encrypts or decrypt a string')
+
+    parser.add_argument('-c', '--clip',
+            dest='clip',
+            action='store_true',
+            help='Process content of clip, use with care' )
 
 
+    parser.add_argument('-k', '--key',
+            dest='key',
+            type=str,
+            help='Encryption key (default: uses text content in (~/.flprc) as key)')
 
+    parser.add_argument('-s', '--silent',
+            dest='silent',
+            action='store_true',
+            help='stop print to standard out' )
+
+    parser.add_argument('chars',
+            metavar='STRING',
+            type=str,
+            default=' ',
+            help='A string of characters or to process')
+
+    args = parser.parse_args()
+    main(args)
 
