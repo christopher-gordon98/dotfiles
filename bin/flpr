@@ -2,13 +2,15 @@
 import sys
 import os
 
+
 def role_up(chars, key):
     charsList = list(chars)
     for i in range(len(charsList)):
         c = charsList[i]
         charsList[i] = hex(ord(c) ^ ((i << 8) + key))
-    return ''.join(charsList) + "===";
-        
+    return ''.join(charsList) + "==="
+
+
 def role_out(chars, key):
     chars = chars.replace('=', '')
     hexico = chars.split('0x')[1:]
@@ -17,25 +19,33 @@ def role_out(chars, key):
         hx = hexico[i]
         hexico[i] = chr(int('0x' + hx, 16) ^ ((i << 8) + key))
     return ''.join(hexico)
-       
 
-def main (chars, key = 1):
+
+def flpr(chars, key=1):
     if chars[-3:] == '===':
         return role_out(chars, key)
-    else:
-       return role_up(chars, key)
+    return role_up(chars, key)
 
-if len(sys.argv) >= 2:
-    cipher = main(sys.argv[1])
-    os.system("echo " + "'" + str(cipher) +"'" + "| pbcopy")
+
+def main(args):
+    if not 1 < len(args) <= 3:
+        print('- Please supply 1 or 2 arguments')
+        return
+
+    key = 1
+
+    if len(args) == 3:
+        try:
+            key = int(args[2])
+        except ValueError:
+            print("Please provide a valid integer as the key")
+            return
+
+    cipher = flpr(args[1], key)
+    os.system("echo " + "'" + str(cipher) + "'" + "| pbcopy")
     print(cipher)
-    print('On your clipboard!')
-else:
-    print('-you are only allowed 128 chars and size 8 key')
+    print('Copied to your clipboard!')
 
 
-
-
-
-
-
+if __name__ == "__main__":
+    main(sys.argv)
