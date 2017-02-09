@@ -34,7 +34,7 @@ def role_up(chars, key):
     rs = ''
     for i in range(len(charsList)):
         charsList[i] = hex(ord(charsList[i]) ^ ((i << 8) + key))
-        rs = ''.join(charsList) 
+    rs = ''.join(charsList) 
     return  rs.replace('0x', 'r') + "==";
 
 
@@ -47,18 +47,21 @@ def role_out(chars, key):
         try:
             hexico[i] = chr(int('0x' + hx, 16) ^ ((i << 8) + key))
         except:
-            print( "You cipher is corrupted or your key does not match")
+            raise Exception('You cipher is corrupted or your key does not match!')
+
     return ''.join(hexico)
 
 
 def main(args):
     key = key_gen(args.key);
-    if len(args.chars) > 0 and args.chars[-2:] == '==':
-        cipher = role_out(args.chars, key)
+    chars = args.chars
+    if args.clip:
+        chars = get_clipboard_data() 
+
+    if len(chars) > 0 and chars[-2:] == '==':
+        cipher = role_out(chars, key)
     else:
-        if args.clip:
-           args.chars = get_clipboard_data() 
-        cipher = role_up(args.chars, key)
+        cipher = role_up(chars, key)
     set_clipboard_data(cipher)
 
     if not args.silent:
@@ -88,7 +91,6 @@ if __name__ == "__main__":
     parser.add_argument('chars',
             metavar='STRING',
             type=str,
-            default=' ',
             help='A string of characters or to process')
 
     args = parser.parse_args()
