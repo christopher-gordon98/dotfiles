@@ -47,7 +47,8 @@ def role_out(chars, key):
         try:
             hexico[i] = chr(int('0x' + hx, 16) ^ ((i << 8) + key))
         except:
-            raise Exception('You cipher is corrupted or your key does not match!')
+            print('You cipher is corrupted or your key does not match!')
+            return ''
 
     return ''.join(hexico)
 
@@ -66,7 +67,7 @@ def main(args):
 
     if not args.silent:
         print(cipher)
-    print('Clipboard updated!')
+        print('Clipboard updated!')
 
 
 if __name__ == "__main__":
