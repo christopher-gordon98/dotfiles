@@ -3,6 +3,7 @@ import sys
 import os
 import subprocess
 import argparse
+import random
 
 
 def get_clipboard_data():
@@ -25,8 +26,18 @@ def key_gen(key):
 
     with open(os.path.join(os.path.expanduser('~'), '.flprc')) as f:
         content = f.readlines()
+
     if content:
         key = abs(hash(''.join(content)))
+    return key
+
+
+def new_key():
+    key = random.getrandbits(128)
+
+    with open(os.path.join(os.path.expanduser('~'), '.flprc'), 'w') as f:
+        f.write(str(key) + '\n')
+
     return key
 
 
@@ -55,7 +66,11 @@ def role_out(chars, key):
 
 
 def main(args):
-    key = key_gen(args.key)
+    if args.gen_new_key:
+        key = new_key()
+    else:
+        key = key_gen(args.key)
+
     chars = args.chars
     if args.clip:
         chars = get_clipboard_data()
@@ -67,6 +82,8 @@ def main(args):
     set_clipboard_data(cipher)
 
     if not args.silent:
+        if args.gen_new_key:
+            print('New key: ' + str(key))
         print(cipher)
         print('Clipboard updated!')
 
@@ -84,10 +101,15 @@ if __name__ == "__main__":
                         type=str,
                         help='Encryption key (default: uses text content in (~/.flprc) as key)')
 
+    parser.add_argument('-g', '--generate',
+                        dest='gen_new_key',
+                        action='store_true',
+                        help='Generates and saves a new key')
+
     parser.add_argument('-s', '--silent',
                         dest='silent',
                         action='store_true',
-                        help='stop print to standard out')
+                        help='Stop print to standard out')
 
     parser.add_argument('chars',
                         metavar='STRING',
