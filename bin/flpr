@@ -4,6 +4,7 @@ import os
 import subprocess
 import argparse
 
+
 def get_clipboard_data():
     p = subprocess.Popen(['pbpaste'], stdout=subprocess.PIPE)
     retcode = p.wait()
@@ -22,9 +23,9 @@ def key_gen(key):
     if key:
         return abs(hash(''.join(key)))
 
-    with open(os.path.join(os.path.expanduser('~'),'.flprc')) as f:
+    with open(os.path.join(os.path.expanduser('~'), '.flprc')) as f:
         content = f.readlines()
-    if content :
+    if content:
         key = abs(hash(''.join(content)))
     return key
 
@@ -34,8 +35,8 @@ def role_up(chars, key):
     rs = ''
     for i in range(len(charsList)):
         charsList[i] = hex(ord(charsList[i]) ^ ((i << 8) + key))
-    rs = ''.join(charsList) 
-    return  rs.replace('0x', 'r') + "==";
+    rs = ''.join(charsList)
+    return rs.replace('0x', 'r') + "=="
 
 
 def role_out(chars, key):
@@ -53,10 +54,10 @@ def role_out(chars, key):
 
 
 def main(args):
-    key = key_gen(args.key);
+    key = key_gen(args.key)
     chars = args.chars
     if args.clip:
-        chars = get_clipboard_data() 
+        chars = get_clipboard_data()
 
     if len(chars) > 0 and chars[-2:] == '==':
         cipher = role_out(chars, key)
@@ -73,26 +74,24 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Encrypts or decrypt a string')
 
     parser.add_argument('-c', '--clip',
-            dest='clip',
-            action='store_true',
-            help='Process content of clip, use with care' )
-
+                        dest='clip',
+                        action='store_true',
+                        help='Process content of clip, use with care')
 
     parser.add_argument('-k', '--key',
-            dest='key',
-            type=str,
-            help='Encryption key (default: uses text content in (~/.flprc) as key)')
+                        dest='key',
+                        type=str,
+                        help='Encryption key (default: uses text content in (~/.flprc) as key)')
 
     parser.add_argument('-s', '--silent',
-            dest='silent',
-            action='store_true',
-            help='stop print to standard out' )
+                        dest='silent',
+                        action='store_true',
+                        help='stop print to standard out')
 
     parser.add_argument('chars',
-            metavar='STRING',
-            type=str,
-            help='A string of characters or to process')
+                        metavar='STRING',
+                        type=str,
+                        help='A string of characters or to process')
 
     args = parser.parse_args()
     main(args)
-
