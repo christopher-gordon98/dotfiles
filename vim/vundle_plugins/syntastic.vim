@@ -27,6 +27,5 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
 
-let g:syntastic_python_checkers=['/usr/local/opt/python3/bin/python3.6', 'pep8', 'flake8', 'pyflakes']
-let g:syntastic_python_python_exec = '/usr/local/opt/python3/bin/python3.6'
+let g:syntastic_python_checkers=['pylint', 'flake8', 'pyflakes', 'pep8']
 
