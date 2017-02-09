@@ -22,11 +22,15 @@ def set_clipboard_data(data):
 def key_gen(key):
     if key:
         return abs(hash(''.join(key)))
+    try:
+        with open(os.path.join(os.path.expanduser('~'), '.flprc')) as f:
+            content = f.readlines()
+        if content:
+            key = abs(hash(''.join(content)))
+    except:
+        print('Please create ~/.flprc and add and text that will be as your default key or use the -k [KEY] switch')
 
-    with open(os.path.join(os.path.expanduser('~'), '.flprc')) as f:
-        content = f.readlines()
-    if content:
-        key = abs(hash(''.join(content)))
+        return abs(hash('1'))
     return key
 
 
@@ -69,7 +73,6 @@ def main(args):
     if not args.silent:
         print(cipher)
         print('Clipboard updated!')
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Encrypts or decrypt a string')
