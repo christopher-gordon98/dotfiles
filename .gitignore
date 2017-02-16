@@ -47,3 +47,4 @@ vim/undo/*
 vifm/vifminfo
 ipython/profile_default/history.sqlite
 vifm/vimfiles
+config/ranger/history
