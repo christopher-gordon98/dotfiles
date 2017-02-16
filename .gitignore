@@ -46,3 +46,4 @@ vim/undo/*
 .nukes
 vifm/vifminfo
 ipython/profile_default/history.sqlite
+vifm/vimfiles
