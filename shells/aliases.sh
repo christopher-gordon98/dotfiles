@@ -113,7 +113,7 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $SHELL -l"
+alias reload="clear && exec $SHELL -l"
 
 alias dot='cd ~/.dotfiles/'
 alias todo='vim ~/.dotfiles/todo/'
