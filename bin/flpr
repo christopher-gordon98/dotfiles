@@ -45,6 +45,7 @@ def set_clipboard_data(data):
     proc_handle.stdin.writelines(data)
     proc_handle.stdin.close()
     proc_handle.wait()
+    sys.stdout.writelines('\nClipboard updated!\n')
 
 
 def key_gen(key):
@@ -137,7 +138,6 @@ def main(args):
 
     if not args.silent:
         sys.stdout.writelines(cipher)
-        sys.stdout.writelines('\nClipboard updated!\n')
 
 
 if __name__ == "__main__":
