@@ -25,4 +25,7 @@ echo "$RULE"
 t1=$(get_ultra_rule_str ' Ultra dotfiles installer ' 0 0)
 
 source "$(brew --prefix git)/etc/bash_completion.d/git-prompt.sh"
-PS1='⦿ \h [\W\[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[0m\]]\[\e[1;32m\] ▶︎ \[\e[0m\]'
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWDIRTYSTATE=1
+PROMPT_COMMAND='__git_ps1 "⦿ [\W]" "\[\e[1;32m\]--❯ \[\e[0m\]"'
