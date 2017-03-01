@@ -186,3 +186,7 @@ nnoremap <silent> N Nzzzv
 
 nmap <silent> --s "=HaskellModuleSection()<CR>gp
 nmap <silent> --h "=HaskellModuleHeader()<CR>:0put =<CR>
+
+" search current file for visually selected  word
+vnoremap // y/<C-R>"<CR>
+
