@@ -1,13 +1,19 @@
 {
   "default_hour": 9, 
-  "timeformat": "%Y-%m-%d %H:%M", 
-  "linewrap": 79, 
-  "encrypt": true, 
-  "editor": "vim", 
-  "default_minute": 0, 
-  "highlight": true, 
-  "journals": {
-    "default": "~/Library/Mobile Documents/com~apple~CloudDocs/jrnl/default"
-  }, 
-  "tagsymbols": "@"
+    "linewrap": 79, 
+    "encrypt": false, 
+    "default_minute": 0, 
+    "tagsymbols": "@", 
+    "editor": "vim", 
+    "timeformat": "%Y-%m-%d %H:%M", 
+    "highlight": true, 
+    "journals": {
+      "default": {
+        "journal": "~/Library/Mobile Documents/com~apple~CloudDocs/jrnl/default"
+      },
+      "home": {
+        "journal": "~/Library/Mobile Documents/com~apple~CloudDocs/jrnl/default",
+        "encrypt": true, 
+      }
+    }
 }
