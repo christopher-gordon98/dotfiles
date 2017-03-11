@@ -13,7 +13,7 @@
       },
       "home": {
         "journal": "~/Library/Mobile Documents/com~apple~CloudDocs/jrnl/default",
-        "encrypt": true, 
+        "encrypt": true
       }
     }
 }

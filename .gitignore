@@ -49,3 +49,4 @@ ipython/profile_default/history.sqlite
 vifm/vimfiles
 config/ranger/history
 ipython/profile_default/db
+config/.isolated-storage/
