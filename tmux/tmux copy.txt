@@ -1,5 +1,3 @@
-
-
   tmux [command]     # Run a command
                      # 'tmux' with no commands will create a new session
 
