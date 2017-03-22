@@ -1,5 +1,5 @@
 
-export GOPATH=$HOME/Go
+export GOPATH=$HOME/workspace/Go
 export GOROOT=/usr/local/opt/go/libexec
 
 PATH="$PATH:/usr/X10/bin"
