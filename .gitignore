@@ -51,3 +51,4 @@ config/ranger/history
 ipython/profile_default/db
 config/.isolated-storage/
 config/configstore/update-notifier-npm.json
+config/direnv
