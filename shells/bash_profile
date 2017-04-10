@@ -72,3 +72,5 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hh -- \C-j"'; fi
 
 # set +x
 # exec 2>&3 3>&-
+
+eval "$(direnv hook bash)"
