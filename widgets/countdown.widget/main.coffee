@@ -5,13 +5,14 @@ MILLIS_IN_SECOND: 1000
 
 countdowns: [
 	label: "New Year's Day"
-	time: "Jan 1, 2015"
+	time: "Jan 1, 2018"
 ,
-	label: "UIUC Decision"
-	time: "Feb 13, 2015"
+	label: "Bithday"
+	time: "May 25, 2017"
 ,
-	label: "High School Ends"
-	time: "Jun 18, 2015 12:10 PM"
+	label: "Financial Year"
+	time: "March 10, 2018"
+
 ]
 
 command: ""
@@ -19,8 +20,10 @@ command: ""
 refreshFrequency: 1000
 
 style: """
+  left: 500px
+  top: 50px
 	*
-		margin 0 0 0 200px
+		margin 0 
 		padding 0
 
 	#container
@@ -28,7 +31,6 @@ style: """
 		margin 10px 10px 15px
 		padding 10px
 		border-radius 5px
-    left: 500px
 
 		color rgba(#fff, .9)
 		font-family Helvetica Neue

@@ -23,8 +23,7 @@ style: "                              \n\
   bottom: 20px                        \n\
   left: 20px                          \n\
   font-family: Helvetica Neue         \n\
-  font-size: 11px                     \n\
-  font-weight: 500                    \n\
+  font-size: 10px                     \n\
   color: #fff                         \n\
                                       \n\
   .cal-container                      \n\
