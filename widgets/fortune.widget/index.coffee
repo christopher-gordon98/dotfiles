@@ -3,6 +3,11 @@
 # CHANGE STYLE IF DESIRED #
 ###########################
 
+command: "/usr/local/bin/fortune"
+
+refreshFrequency: 3600000 # 1 hour
+
+
 style: """
     top                100px
     left               800px
@@ -22,10 +27,6 @@ style: """
             content    ''
             font-size: 16px
 """
-
-command: "/usr/local/bin/fortune"
-refreshFrequence: 1
-
 render: (lag) -> """
 <div class="ms">
 	#{lag} ms
