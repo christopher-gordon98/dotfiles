@@ -28,4 +28,4 @@ source "$(brew --prefix git)/etc/bash_completion.d/git-prompt.sh"
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWDIRTYSTATE=1
-PROMPT_COMMAND='__git_ps1 "⦿ [\W]" "\[\e[1;32m\]--❯ \[\e[0m\]"'
+PROMPT_COMMAND='__git_ps1 "⦿ (\[\e[1;32m\]`basename \"$VIRTUAL_ENV\"`\[\e[0m\])[\W]" "\[\e[1;32m\]--❯ \[\e[0m\]"'
