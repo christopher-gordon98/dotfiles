@@ -122,7 +122,7 @@ alias dot='cd ~/.dotfiles/'
 alias todo='vim ~/.dotfiles/todo/'
 
 alias pxx='vim  ~/Library/Mobile\ Documents/com~apple~CloudDocs/roger'
-alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
+# alias setvw='source /usr/local/bin/virtualenvwrapper.sh'
 alias pysrv='python -m SimpleHTTPServer 9000'
 alias psrv='php -S localhost:8000'
 
