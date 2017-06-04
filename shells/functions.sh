@@ -15,6 +15,10 @@ function cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
 
+# cd into and show content of dir.
+function cdl() {  # show content of current directory
+  cd "$@" && ls -a1
+}
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
