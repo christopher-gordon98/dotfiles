@@ -1,6 +1,11 @@
 #!/bin/bash
 source $HOME/.dotfiles/shells/functions.sh
+# Get the latest versions from git, make sure you have git installed
 
+# TODO: implement feather to update php global packages
+# TODO: implement automation to up date PHP_CodeSniffer and
+# git clone https://github.com/squizlabs/PHP_CodeSniffer.git phpcs
+# git clone git://github.com/phpmd/phpmd.git
 #==========================================================
 t1=$(get_ultra_rule_str ' Ultra dotfiles installer ' 0 0)
 echo "$t1"
