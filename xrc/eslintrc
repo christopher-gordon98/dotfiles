@@ -6,10 +6,6 @@
     "jsx": true
   },
   "plugins": [ "react" ],
-    "ecmaFeatures": {
-      "modules": true,
-      "experimentalObjectRestSpread": true
-    },
     "env": {
       "browser": true,
       "es6": true,
