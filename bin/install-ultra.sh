@@ -1,5 +1,5 @@
 #!/bin/bash
-source $HOME/.dotfiles/shells/functions.sh
+source $HOME/.dotfiles/bash/plugins/functions.bash
 # Get the latest versions from git, make sure you have git installed
 
 # TODO: implement feature to update php global packages
