@@ -2,7 +2,7 @@
 source $HOME/.dotfiles/shells/functions.sh
 # Get the latest versions from git, make sure you have git installed
 
-# TODO: implement feather to update php global packages
+# TODO: implement feature to update php global packages
 # TODO: implement automation to up date PHP_CodeSniffer and
 # git clone https://github.com/squizlabs/PHP_CodeSniffer.git phpcs
 # git clone git://github.com/phpmd/phpmd.git
@@ -15,9 +15,6 @@ LIGHTWVIM=0
 TREW=1
 BAD_FILE=85
 
-#==========================================================
-mkdir $DOTDIR/shells/bash/aliases/enabled
-mkdir $DOTDIR/shells/bash/plugins/enabled
 #==========================================================
 t1=$(get_ultra_rule_str ' Updating git sub modules ' 0 0)
 echo "$t1"
@@ -138,12 +135,10 @@ select opt in $OPTIONS; do
     t1=$(get_ultra_rule_str ' Keeping bash_profile but injecting source ' 0 0)
     echo "$t1"
     cat $DOTDIR/shells/localenv-template.sh $DOTDIR/shells/local-source-bash.sh >> ~/.bash_profile
-    cat $DOTDIR/shells/localenv-template.sh $DOTDIR/shells/local-source-zsh.sh >> ~/.zshrc
   elif [ "$REPLY" = "2" ]; then
     t1=$(get_ultra_rule_str ' replace bash_profile ' 0 0)
     echo "$t1"
-    slimlinker $DOTDIR/shells/bash_profile
-    slimlinker $DOTDIR/shells/zshrc
+    slimlinker $DOTDIR/bash/bash_profile
   fi
 exit
 done
