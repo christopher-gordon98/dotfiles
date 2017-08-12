@@ -1,12 +1,3 @@
-cite 'about-alias'
-about-alias 'common git abbreviations'
-
-# Aliases
-
-# Add uncommitted and unstaged changes to the last commit
-# From http://blogs.atlassian.com/2014/10/advanced-git-aliases/
-# Show commits since last pull
-
 alias g='git'
 alias ga='git add'
 alias gall='git add --all'
@@ -143,30 +134,14 @@ alias gus='git reset HEAD'
 alias gw="git whatchanged"
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+alias gtls='git tag -l | sort -V'
+alias gdv='git diff | vim -R -'
+alias a="git add"
+alias b="git branch"
+alias cm="git commit"
+alias co="git checkout"
+alias d="git diff"
+alias p="git push"
+alias s="git status"
 
 
-
-case $OSTYPE in
-  darwin*)
-    alias gtls="git tag -l | gsort -V"
-    ;;
-  *)
-    alias gtls='git tag -l | sort -V'
-    ;;
-esac
-
-if [ -z "$EDITOR" ]; then
-    case $OSTYPE in
-      linux*)
-        alias gd='git diff | vim -R -'
-        ;;
-      darwin*)
-        alias gd='git diff'
-        ;;
-      *)
-        alias gd='git diff'
-        ;;
-    esac
-else
-    alias gd="git diff | $EDITOR"
-fi

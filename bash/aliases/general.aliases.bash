@@ -1,6 +1,3 @@
-cite about-alias
-about-alias 'general aliases'
-
 # List directory contents
 alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
@@ -8,19 +5,8 @@ alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -al'
 alias l='ls -a'
 alias l1='ls -1'
-
+alias ls="ls -1 ${colorflag}"
 alias _="sudo"
-
-if [ $(uname) = "Linux" ]
-then
-  alias ls="ls --color=auto"
-fi
-which gshuf &> /dev/null
-if [ $? -eq 0 ]
-then
-  alias shuf=gshuf
-fi
-
 alias c='clear'
 alias k='clear'
 alias cls='clear'
@@ -46,21 +32,9 @@ alias ...='cd ../..'     # Go up two directories
 alias ....='cd ../../..' # Go up three directories
 alias -- -='cd -'        # Go back
 
-# Shell History
-alias h='history'
-
-# Tree
-if [ ! -x "$(which tree 2>/dev/null)" ]
-then
-  alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-fi
-
-# Directory
 alias md='mkdir -p'
 alias rd='rmdir'
 
-alias ..="cd .."
-alias ...="cd ../.."
 
 # ...................................................
 # Project specific alias
@@ -73,22 +47,22 @@ alias dkt="cd ~/Desktop"
 alias wk="cd ~/workspace"
 alias ghb="cd ~/GITHUB"
 
+# Desktop Programs
 alias o="open"
-
-alias a="git add"
-alias b="git branch"
-alias cm="git commit"
-alias co="git checkout"
-alias d="git diff | diff-highlight.sh"
-alias p="git push"
-alias s="git status"
+alias preview="open -a '$PREVIEW'"
+alias safari="open -a safari"
+alias firefox="open -a firefox"
+alias chrome="open -a google\ chrome"
+alias chromium="open -a chromium"
+alias dashcode="open -a dashcode"
+alias f='open -a Finder '
+alias fh='open -a Finder .'
+alias textedit='open -a TextEdit'
 
 # List all files colorized in long format
-alias ls="ls -1 ${colorflag}"
 
 alias week='date +%V'
 alias stopwatch='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
-
 alias update='softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; gem update --system; gem update'
 
 alias pipudate='sudo pip freeze --local | sudo grep -v '^\-e' | cut -d = -f 1  | sudo xargs -n1 pip install -U'
@@ -217,12 +191,30 @@ alias rrrf="chmod -R 744"
 # also allowing the file ower group to write
 alias rwrf="chmod -R 764"
 # Display whatever file is regular file or folder
-catt() {
-  for i in "$@"; do
-    if [ -d "$i" ]; then
-      ls "$i"
-    else
-      cat "$i"
-    fi
-  done
-}
+
+# Get rid of those pesky .DS_Store files recursively
+alias dsclean='find . -type f -name .DS_Store -delete'
+
+# Track who is listening to your iTunes music
+alias whotunes='lsof -r 2 -n -P -F n -c iTunes -a -i TCP@`hostname`:3689'
+
+# Flush your dns cache
+alias flush='dscacheutil -flushcache'
+
+# Show/hide hidden files (for Mac OS X Mavericks)
+alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE"
+alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE"
+
+# From http://apple.stackexchange.com/questions/110343/copy-last-command-in-terminal
+alias copyLastCmd='fc -ln -1 | awk '\''{$1=$1}1'\'' ORS='\'''\'' | pbcopy'
+
+# Use Finder's Quick Look on a file (^C or space to close)
+alias ql='qlmanage -p 2>/dev/null'
+
+# Mute/Unmute the system volume. Plays nice with all other volume settings.
+alias mute="osascript -e 'set volume output muted true'"
+alias unmute="osascript -e 'set volume output muted false'"
+
+# Pin to the tail of long commands for an audible alert after long processes
+## curl http://downloads.com/hugefile.zip; lmk
+alias lmk="say 'Process complete.'"
