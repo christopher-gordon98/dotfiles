@@ -2,14 +2,18 @@
 " Vundle
 " ----------------------------------------
 
-set nocompatible " be iMproved
-filetype off     " required!
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+
 
 " Source all the plugins with a global variable set that ensures only the
 " Plugin 'name' code will be called.

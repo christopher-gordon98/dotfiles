@@ -1,5 +1,5 @@
 #!/bin/bash
-source $HOME/.dotfiles/bash/plugins/functions.bash
+source $HOME/.dotfiles/bash/libs/functions.bash
 # Get the latest versions from git, make sure you have git installed
 
 # TODO: implement feature to update php global packages
@@ -46,6 +46,10 @@ for FILE in $(ls $DOTDIR/xrc/);
 do
   slimlinker $DOTDIR/xrc/$FILE
 done;
+
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 
 rm -rf ~/.task ~/.gnupg ~/.password-store ~/bin 2> /dev/null
 ln -s $DOTDIR/bin/ ~/bin
@@ -122,8 +126,7 @@ mkdir .tmp .backup .temp
 cd $DOTDIR/vim/bundle/YouCompleteMe/
 git submodule update 
 git submodule sync
-
-source $DOTDIR/vim/bundle/Youcompleteme/install.sh
+bash ./install.py
 
 success "done"
 #==========================================================

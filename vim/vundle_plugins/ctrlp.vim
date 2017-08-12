@@ -1,5 +1,5 @@
 if exists('g:vundle_installing_plugins')
-  Plugin 'kien/ctrlp.vim'
+  Plugin 'ctrlpvim/ctrlp.vim'
   finish
 endif
 
@@ -13,10 +13,7 @@ let g:ctrlp_reuse_window = 'startify'
 let g:ctrlp_mruf_max = 350
 let g:ctrlp_mruf_default_order = 0
 
-" Leader Commands
-nnoremap <leader>t :CtrlPRoot<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>u :CtrlPCurFile<CR>
+" " Leader Commands
 nnoremap <leader>m :CtrlPMRUFiles<CR>
 
 if executable('ag')
