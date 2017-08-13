@@ -1,3 +1,6 @@
+" ---------------------------------------------
+" Regular Vim Configuration (No Plugins Needed)
+" ---------------------------------------------
 
 " ---------------
 " Color
@@ -5,31 +8,32 @@
 set background=dark
 colorscheme jellybeans
 " Force 256 color mode if available
-hi! link cssAttr Constant
-if $TERM =~ "-256color"
+if $TERM =~ '-256color'
    set t_Co=256
 endif
 
 " -----------------------------
 " File Locations
 " -----------------------------
-set backupdir=~/.vim/.backup " Double // causes backups to use full file path
-set directory=~/.vim/.temp
+" Double // causes backups to use full file path
+exec 'set backupdir=~/.vim/.backup/'
+exec 'set directory=~/.vim/.tmp/'
+exec 'set spellfile=~/.vim/spell/custom.en.utf-8.add'
 " Persistent Undo
-
-set undofile                " Save undo's after file closes
-set undodir=$HOME/.vim/undo " where to save undo histories
-set undolevels=1000         " How many undos
-set undoreload=10000        " number of lines to save for undo
+if has('persistent_undo')
+  set undofile
+  exec 'set undodir=~/.vim/.undo'
+endif
 
 " ---------------
 " UI
 " ---------------
 set ruler          " Ruler on
-set showtabline=2  " Tabs styles"
 set number         " Line numbers on
+set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
+set cursorline     " Highlight current line
 set encoding=utf-8
 set noshowmode     " Don't show the mode since Powerline shows it
 set title          " Set the title of the window in the terminal to the file
@@ -45,27 +49,33 @@ if exists('+ballooneval')
 endif
 
 " ---------------
-" Behaviors #211212
+" Behaviors
 " ---------------
 syntax enable
+set nocompatible " be iMproved
+filetype plugin indent on
 set backup             " Turn on backups
 set autoread           " Automatically reload changes if detected
-set wildmenu           " Turn on Wild menu
+set wildmenu           " Turn on WiLd menu
+" longest common part, then all.
+set wildmode=longest,full
 set hidden             " Change buffer - without saving
-set history=1024       " Number of things to remember in history.
-set cf                 " Enable error files & error jumping.
+set history=768        " Number of things to remember in history.
+set confirm            " Enable error files & error jumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
+set timeoutlen=400     " Time to wait for a command (after leader for example).
+set ttimeout
+set ttimeoutlen=100    " Time to wait for a key sequence.
+set nofoldenable       " Disable folding entirely.
+set foldlevelstart=99  " I really don't like folds.
 set formatoptions=crql
+set iskeyword+=\$,-   " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
 set scrolloff=3        " Keep three lines below the last line when scrolling
 set gdefault           " this makes search/replace global by default
 set switchbuf=useopen  " Switch to an existing buffer if one exists
-set autochdir          " Switch vim to currnent working directory"
-set timeout
-set timeoutlen=750
-set ttimeoutlen=250
-set spell spelllang=en_gb
+
 " ---------------
 " Text Format
 " ---------------
@@ -77,9 +87,6 @@ set cindent
 set autoindent
 set smarttab
 set expandtab
-set linebreak
-set smartindent
-
 
 " ---------------
 " Searching
@@ -103,9 +110,10 @@ set list
 " Show trailing spaces as dots and carrots for extended lines.
 " From Janus, http://git.io/PLbAlw
 
+" Reset the listchars
 set listchars=""
 " make tabs visible
-set listchars=tab:\|\ ,eol:¬
+set listchars=tab:▸▸
 " show trailing spaces as dots
 set listchars+=trail:•
 " The character to show in the last column when wrap is off and the line

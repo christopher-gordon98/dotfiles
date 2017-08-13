@@ -3,94 +3,6 @@
 " ----------------------------------------
 
 " ---------------
-" OpenURL
-" ---------------
-
-if has('ruby')
-ruby << EOF
-  require 'open-uri'
-  require 'openssl'
-
-  def extract_url(url)
-    re = %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|
-    [a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]
-    +\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]\{\};:'"
-    .,<>?«»“”‘’]))}
-
-    url.match(re).to_s
-  end
-
-  def open_url
-    line = VIM::Buffer.current.line
-
-    if url = extract_url(line)
-      if RUBY_PLATFORM.downcase =~ /(win|mingw)(32|64)/
-        `start cmd /c chrome #{url}`
-        VIM::message("Opened #{url}")
-      else
-        `open #{url}`
-        VIM::message("Opened #{url}")
-      end
-    else
-      VIM::message("No URL found on this line.")
-    end
-
-  end
-
-  # Returns the contents of the <title> tag of a given page
-  def fetch_title(url)
-    if RUBY_VERSION < '1.9'
-      open(url).read.match(/<title>(.*?)<\/title>?/i)[1]
-    else
-      open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read.
-        match(/<title>(.*?)<\/title>?/i)[1]
-    end
-  end
-
-  # Paste the title and url for the url on the clipboard in markdown format:
-  #   [Title](url)
-  # Note: Clobbers p register
-  def paste_url_and_title
-    clipboard = VIM::evaluate('@+')
-    url = extract_url(clipboard)
-    if url and url.strip != ""
-      puts "Fetching title"
-      title = fetch_title(url)
-      VIM::command "let @p = '[#{title}](#{url})'"
-      VIM::command 'normal! "pp'
-    else
-      VIM::message("Clipboard does not contain URL: '#{clipboard[1..10]}'...")
-    end
-  end
-EOF
-
-" Open a URL
-if !exists("*OpenURL")
-  function! OpenURL()
-    :ruby open_url
-  endfunction
-endif
-
-command! OpenUrl call OpenURL()
-nnoremap  <silent> <leader>o :call OpenURL()<CR>
-
-" ---------------
-" Paste link with Title
-" ---------------
-
-" Open a URL
-if !exists("*PasteURLTitle")
-  function! PasteURLTitle()
-    :ruby paste_url_and_title
-  endfunction
-endif
-
-command! PasteURLTitle call PasteURLTitle()
-noremap  <silent> <leader>pt :PasteURLTitle<CR>
-
-endif " endif has('ruby')
-
-" ---------------
 " Quick spelling fix (first item in z= list)
 " ---------------
 function! QuickSpellingFix()
@@ -254,58 +166,79 @@ function! WordFrequency() range
 endfunction
 command! -range=% WordFrequency <line1>,<line2>call WordFrequency()
 
-function! LoadTemplate()
-  silent! 0r ~/.vim/template/tmpl.%:e
+" ---------------
+" Sort attributes inside <> in html.
+" E.g.
+" <div
+"   b="1"
+"   a="1"
+"   c="1"
+" />
+"
+" becomes
+"
+" <div
+"   a="1"
+"   b="1"
+"   c="1"
+" />
+" ---------------
+function! SortAttributes()
+  normal vi>kojV
+  :'<,'>sort
 endfunction
 
-function! SetDictionary()
-  if filereadable($HOME."/.vim/syntax/".&filetype.".vim")
-    execute ('setl dict='.$HOME."/.vim/syntax/".&filetype.".vim")
-  elseif filereadable($VIMRUNTIME."/syntax/".&filetype.".vim")
-    execute ('setl dict='.$VIMRUNTIME."/syntax/".&filetype.".vim")
-  endif
-  set complete+=k
-endfunction
-set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
-set complete+=k
+command! SortAttributes call SortAttributes()
+nnoremap <silent> <leader>sa :SortAttributes<CR>
 
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-N>"
-  else
-    return "\<Tab>"
-  endif
+" ---------------
+" Sort values inside a curl block
+" ---------------
+function! SortBlock()
+  normal vi}
+  :'<,'>sort
 endfunction
 
-" -------------------------------------------------------
-let s:width = 80
-function! HaskellModuleSection(...)
-    let name = 0 < a:0 ? a:1 : inputdialog("Section name: ")
+command! SortBlock call SortBlock()
+nnoremap <silent> <leader>sb :SortBlock<CR>
 
-    return  repeat('-', s:width) . "\n"
-    \       . "--  " . name . "\n"
-    \       . "\n"
 
+" -------
+" Profile
+" from https://github.com/vheon/dotvim/blob/fb2db22c552365389acd8962a71685f9eedf80e3/autoload/profile.vim#L18
+" -------
+function! ProfileSort()
+  let timings = []
+  g/^SCRIPT/call add(
+        \   timings,
+        \   [
+        \    getline('.')[len('SCRIPT  '):],
+        \    matchstr(getline(line('.')+1),
+        \    '^Sourced \zs\d\+')
+        \   ] + map(getline(line('.')+2, line('.')+3), 'matchstr(v:val, ''\d\+\.\d\+$'')')
+        \ )
+  enew
+  setl ft=vim
+  call setline('.',
+        \      ['count total (s)   self (s)  script']+map(copy(timings), 'printf("%5u %9s   %8s  %s", v:val[1], v:val[2], v:val[3], v:val[0])'))
+  2,$sort! /\d\s\+\zs\d\.\d\{6}/ r
 endfunction
 
-" -------------------------------------------------------
-
-let s:width = 80
-function! HaskellModuleHeader(...)
-    let name = 0 < a:0 ? a:1 : inputdialog("Module: ")
-    let note = 1 < a:0 ? a:2 : inputdialog("Note: ")
-    let description = 2 < a:0 ? a:3 : inputdialog("Describe this module: ")
-
-    return  repeat('-', s:width) . "\n"
-    \       . "-- | \n"
-    \       . "-- Module      : " . name . "\n"
-    \       . "-- Note        : " . note . "\n"
-    \       . "-- \n"
-    \       . "-- " . description . "\n"
-    \       . "-- \n"
-    \       . repeat('-', s:width) . "\n"
-    \       . "\n"
-
+function! ProfileStop()
+  profdel func *
+  profdel file *
+  qa!
 endfunction
 
+function! ProfileStart()
+  profile start vim.profile
+  profile func *
+  profile file *
+endfunction
 
+" this is for stop profiling after starting vim with
+" vi --cmd 'profile start vimrc.profile' --cmd 'profile func *' --cmd 'profile file *'
+" I have a script in ~/bin which start vim like this
+command! -nargs=0 StopProfiling call ProfileStop()
+" If I want to profile something after that vim started
+command! -nargs=0 StartProfiling call ProfileStart()

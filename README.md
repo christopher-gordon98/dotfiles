@@ -22,6 +22,3 @@ to replace you existing bash_profile if you have one, if you don't have one
 just select option `2` and let it rip.
 If you have issues, warning or strange errors, please message
 
-### Todo
-[] remove unused bash-it themes
-

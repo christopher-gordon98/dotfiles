@@ -1,0 +1,10 @@
+{
+  "portkeys": [],
+  "plug_plugins/*.vim": {
+    "type": "plugin",
+    "template": "if exists('g:plug_installing_plugins')\n  Plug '%s'\n  finish\nendif"
+  },
+  "MyUltiSnips/**": {
+    "type": "snippet"
+  }
+}
