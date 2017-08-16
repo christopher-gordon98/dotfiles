@@ -126,7 +126,7 @@ mkdir .tmp .backup .temp
 cd $DOTDIR/vim/bundle/YouCompleteMe/
 git submodule update 
 git submodule sync
-bash ./install.py
+python install.py
 
 success "done"
 #==========================================================
