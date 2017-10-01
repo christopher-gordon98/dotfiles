@@ -52,3 +52,4 @@ ipython/profile_default/db
 config/.isolated-storage/
 config/configstore/update-notifier-npm.json
 config/direnv
+config/ranger/bookmarks

@@ -45,6 +45,7 @@ alias doc="cd ~/Documents"
 alias dwl="cd ~/Downloads"
 alias dkt="cd ~/Desktop"
 alias wk="cd ~/workspace"
+alias gw="cd ~/workspace/Go"
 alias ghb="cd ~/GITHUB"
 
 # Desktop Programs
