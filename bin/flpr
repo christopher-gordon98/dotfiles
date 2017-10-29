@@ -130,14 +130,15 @@ def main(args):
     if args.clip:
         chars = get_clipboard_data()
 
-    if len(chars) > 0 and chars[-2:] == '==':
+    len_of_word = len(chars)
+    if len_of_word > 0 and chars[-2:] == '==':
         cipher = decode_cipher(chars, key)
     else:
         cipher = encode_string(chars, key)
     set_clipboard_data(cipher)
 
     if not args.silent:
-        sys.stdout.writelines(cipher)
+        sys.stdout.writelines("\n" + cipher + "\n")
 
 
 if __name__ == "__main__":

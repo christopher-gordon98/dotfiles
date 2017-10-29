@@ -49,10 +49,10 @@ autocmd FileType javascript set ts=2 sts=2 sw=2 expandtab
 autocmd FileType python set ts=4 sts=4 sw=4 expandtab
 autocmd FileType php set ts=4 sts=4 sw=4 expandtab
 
-autocmd FileType javascript set listchars=tab:\|\ ,eol
-autocmd FileType css set listchars=tab:\|\ ,eol
-autocmd FileType html set listchars=tab:\|\ ,eol
-autocmd FileType python set listchars=tab:\|\ ,eol
+autocmd FileType javascript set listchars=tab:\|\
+autocmd FileType css set listchars=tab:\|\
+autocmd FileType html set listchars=tab:\|\
+autocmd FileType python set listchars=tab:\|\
 
 autocmd! FileType * call SetDictionary()
 autocmd! BufNewFile * call LoadTemplate()
