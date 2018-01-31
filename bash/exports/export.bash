@@ -44,4 +44,4 @@ export IRC_CLIENT='irssi'
 export TODO="task"
 
   export NVM_DIR="~/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
+  # . "/usr/local/opt/nvm/nvm.sh"
