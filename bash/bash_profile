@@ -80,6 +80,9 @@ set skip-completed-text on
 set input-meta on
 set output-meta on
 set convert-meta off
+set -o vi
+shopt -s lithist
+shopt -s cmdhist
 
 export HH_CONFIG=hicolor         # get more colors
 # if this is interactive shell, then bind hh to Ctrl-r (for Vi mode check doc)
