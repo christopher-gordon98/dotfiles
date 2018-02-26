@@ -2,7 +2,7 @@ export GOPATH=$HOME/workspace/Go
 export GOROOT=/usr/local/opt/go/libexec
 
 
-export PATH="~/.local/bin:~/bin:~/.cask/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/X10/bin:/usr/local/lib/node_modules/karma/bin:/usr/local/share/npm/bin:/opt/local/bin:/usr/local/go/bin:/usr/local/opt/php70/bin:~/workspace/Go/bin:/usr/local/opt/go/libexec/bin"
+export PATH=":~/.local/bin:~/bin:~/.cask/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/lib/node_modules/karma/bin:/usr/local/share/npm/bin:/opt/local/bin:/usr/local/go/bin:/usr/local/opt/php70/bin:~/workspace/Go/bin:/usr/local/opt/go/libexec/bin:/usr/local/sbin:./"
 
 export GREP_OPTIONS="--color=auto"
 export CLICOLOR=1
@@ -44,4 +44,4 @@ export IRC_CLIENT='irssi'
 export TODO="task"
 
   export NVM_DIR="~/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
+  # . "/usr/local/opt/nvm/nvm.sh"
