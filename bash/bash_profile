@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash -x
+
+set +x
+exec 2>&1
 
 function _load_bash_files() {
   subdirectory="$1"
@@ -14,12 +17,13 @@ function _load_bash_files() {
   fi
 }
 
-_load_bash_files libs
 _load_bash_files exports
+_load_bash_files libs
 _load_bash_files plugins
-_load_bash_files aliases
 _load_bash_files completions
-#
+_load_bash_files aliases
+
+
 source $HOME/.localenv.sh
 
 source /usr/local/bin/virtualenvwrapper.sh
@@ -88,7 +92,4 @@ export HH_CONFIG=hicolor         # get more colors
 # if this is interactive shell, then bind hh to Ctrl-r (for Vi mode check doc)
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hh -- \C-j"'; fi
 
-# set +x
-# exec 2>&3 3>&-
-
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
