@@ -78,6 +78,9 @@ npm install -g eslint-plugin-react
 npm install -g tern
 npm install -g babel-eslint
 npm install -g stylelint
+npm install -g pm2 
+npm install -g nodeunit 
+npm install -g mocha 
 success "done"
 
 #==========================================================
