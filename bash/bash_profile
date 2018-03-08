@@ -3,6 +3,8 @@
 set +x
 exec 2>&1
 
+source $HOME/.localenv.sh
+
 function _load_bash_files() {
   subdirectory="$1"
   if [ -d "$HOME/.dotfiles/bash/${subdirectory}" ]
@@ -17,6 +19,7 @@ function _load_bash_files() {
   fi
 }
 
+
 _load_bash_files exports
 _load_bash_files libs
 _load_bash_files plugins
@@ -24,7 +27,6 @@ _load_bash_files completions
 _load_bash_files aliases
 
 
-source $HOME/.localenv.sh
 
 source /usr/local/bin/virtualenvwrapper.sh
 source /usr/local/etc/profile.d/z.sh
