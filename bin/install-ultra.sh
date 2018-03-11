@@ -92,16 +92,18 @@ while getopts ":l" opt; do
   esac
 done
 
+rm ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim
+
 if [ "$LIGHTWVIM" -eq "$TREW" ] 
   then
-    rm -rf ~/.vimrc ~/.nvimrc 2> /dev/null 
-    ln -s $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
-    ln -s $DOTDIR/vim/light_weight_vimrc.vim ~/.nvimrc
+    ln -f -s $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
+    ln -f -s $DOTDIR/vim/light_weight_vimrc.vim ~/.config/nvim/init.vim
   else
-    rm -rf ~/.vimrc ~/.nvimrc 2> /dev/null
-    ln -s $DOTDIR/vim/vimrc.vim ~/.vimrc
-    ln -s $DOTDIR/vim/vimrc.vim ~/.nvimrc
+    ln -f -s $DOTDIR/vim/vimrc.vim ~/.vimrc
+    ln -f -s $DOTDIR/vim/light_weight_vimrc.vim  ~/.config/nvim/init.vim
 fi
+
 success "done"
 #==========================================================
 t1=$(get_ultra_rule_str 'Installing vim plugins' 0 0)
