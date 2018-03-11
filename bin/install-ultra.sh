@@ -40,8 +40,6 @@ slimlinker $DOTDIR/ipython/
 slimlinker $DOTDIR/emacs.d
 slimlinker $DOTDIR/git/gitconfig
 
-ln -s $DOTDIR/tmux/.tmux.conf ~/.tmux.conf 
-
 for FILE in $(ls $DOTDIR/xrc/); 
 do
   slimlinker $DOTDIR/xrc/$FILE
