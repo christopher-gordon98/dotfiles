@@ -60,10 +60,11 @@ success "done"
 t1=$(get_ultra_rule_str ' Installing homebrew packages ' 0 0)
 echo "$t1"
 cd $DOTDIR
+xcode-select --install
 brew update
 brew tap Homebrew/bundle
-brew bundle dump
-brew bundle
+brew bundle dump 2> /dev/null
+brew bundle 2> /dev/null
 cd -
 success "done"
 
@@ -81,6 +82,11 @@ npm install -g mocha
 success "done"
 
 #==========================================================
+t1=$(get_ultra_rule_str ' Installing ruby gems ' 0 0)
+gem install neovim 
+success "done"
+
+#==========================================================
 t1=$(get_ultra_rule_str 'Installing vim config symlinks' 0 0)
 echo "$t1"
 
@@ -92,16 +98,15 @@ while getopts ":l" opt; do
   esac
 done
 
-rm ~/.config/nvim/init.vim
-mkdir -p ~/.config/nvim
+ln -fs $DOTDIR/vim ~/.config/nvim
 
-if [ "$LIGHTWVIM" -eq "$TREW" ] 
-  then
-    ln -f -s $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
-    ln -f -s $DOTDIR/vim/light_weight_vimrc.vim ~/.config/nvim/init.vim
-  else
-    ln -f -s $DOTDIR/vim/vimrc.vim ~/.vimrc
-    ln -f -s $DOTDIR/vim/light_weight_vimrc.vim  ~/.config/nvim/init.vim
+if [ $FAST_MACHINE ]
+then
+  ln -fs $DOTDIR/vim/vimrc.vim ~/.vimrc
+  ln -fs $DOTDIR/vim/vimrc.vim  ~/.config/nvim/init.vim
+else
+  ln -fs $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
+  ln -fs $DOTDIR/vim/light_weight_vimrc.vim ~/.config/nvim/init.vim
 fi
 
 success "done"
@@ -140,7 +145,7 @@ select opt in $OPTIONS; do
   if [ "$REPLY" = "1" ]; then
     t1=$(get_ultra_rule_str ' Keeping bash_profile but injecting source ' 0 0)
     echo "$t1"
-    cat $DOTDIR/shells/localenv-template.sh $DOTDIR/shells/local-source-bash.sh >> ~/.bash_profile
+    cat $DOTDIR/bash/bash_profile >> ~/.bash_profile
   elif [ "$REPLY" = "2" ]; then
     t1=$(get_ultra_rule_str ' replace bash_profile ' 0 0)
     echo "$t1"
