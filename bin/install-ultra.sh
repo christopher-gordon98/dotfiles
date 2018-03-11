@@ -37,7 +37,6 @@ slimlinker $DOTDIR/tmux/
 slimlinker $DOTDIR/vifm/
 slimlinker $DOTDIR/vim/
 slimlinker $DOTDIR/ipython/
-slimlinker $DOTDIR/emacs.d
 slimlinker $DOTDIR/git/gitconfig
 
 for FILE in $(ls $DOTDIR/xrc/); 
@@ -126,6 +125,7 @@ cd $DOTDIR/vim/
 mkdir .tmp .backup .temp
 cd $DOTDIR/vim/bundle/YouCompleteMe/
 git submodule update 
+npm install
 git submodule sync
 python install.py
 
