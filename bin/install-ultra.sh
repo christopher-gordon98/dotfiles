@@ -44,10 +44,6 @@ do
   slimlinker $DOTDIR/xrc/$FILE
 done;
 
-
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-
 rm -rf ~/.task ~/.gnupg ~/.password-store ~/bin 2> /dev/null
 ln -s $DOTDIR/bin/ ~/bin
 ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/task/ ~/.task
@@ -70,15 +66,20 @@ success "done"
 
 #==========================================================
 t1=$(get_ultra_rule_str ' Installing global npm packages ' 0 0)
-npm install -g eslint
-npm install -g jshint
-npm install -g eslint-plugin-react
-npm install -g tern
+
 npm install -g babel-eslint
-npm install -g stylelint
-npm install -g pm2 
-npm install -g nodeunit 
+npm install -g eslint
+npm install -g eslint-plugin-react
+npm install -g jshint
 npm install -g mocha 
+npm install -g nodeunit 
+npm install -g pm2 
+npm install -g stylelint
+npm install -g stylelint-config-recommended
+npm install -g stylelint-config-styled-components
+npm install -g stylelint-processor-styled-components
+npm install -g tern
+
 success "done"
 
 #==========================================================
@@ -114,6 +115,9 @@ success "done"
 t1=$(get_ultra_rule_str 'Installing vim plugins' 0 0)
 echo "$t1"
 
+rm -rf ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 if test $(which mvim)
 then
   mvim -v +PluginInstall +qall
@@ -129,12 +133,18 @@ else
 fi
 
 cd $DOTDIR/vim/
+rm -rf .tmp .backup .temp
 mkdir .tmp .backup .temp
 cd $DOTDIR/vim/bundle/YouCompleteMe/
 git submodule update 
 npm install
 git submodule sync
-python install.py
+python install.py --all
+cd $DOTDIR/YouCompleteMe/third_party/ycmd/third_party/tern_runtime
+npm install --production
+
+cd $DOTDIR/vim/bundle/tern_for_vim/
+npm install
 
 success "done"
 #==========================================================

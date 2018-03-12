@@ -28,9 +28,8 @@ function _load_bash_files() {
 #
 #
 #
-# source /usr/local/bin/virtualenvwrapper.sh
 source /usr/local/etc/profile.d/z.sh 
-#
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
