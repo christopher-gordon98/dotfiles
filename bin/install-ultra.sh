@@ -37,19 +37,12 @@ slimlinker $DOTDIR/tmux/
 slimlinker $DOTDIR/vifm/
 slimlinker $DOTDIR/vim/
 slimlinker $DOTDIR/ipython/
-slimlinker $DOTDIR/emacs.d
 slimlinker $DOTDIR/git/gitconfig
-
-ln -s $DOTDIR/tmux/.tmux.conf ~/.tmux.conf 
 
 for FILE in $(ls $DOTDIR/xrc/); 
 do
   slimlinker $DOTDIR/xrc/$FILE
 done;
-
-
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 
 rm -rf ~/.task ~/.gnupg ~/.password-store ~/bin 2> /dev/null
 ln -s $DOTDIR/bin/ ~/bin
@@ -63,21 +56,35 @@ success "done"
 t1=$(get_ultra_rule_str ' Installing homebrew packages ' 0 0)
 echo "$t1"
 cd $DOTDIR
+xcode-select --install
 brew update
 brew tap Homebrew/bundle
-brew bundle dump
-brew bundle
+brew bundle dump 2> /dev/null
+brew bundle 2> /dev/null
 cd -
 success "done"
 
 #==========================================================
 t1=$(get_ultra_rule_str ' Installing global npm packages ' 0 0)
-npm install -g eslint
-npm install -g jshint
-npm install -g eslint-plugin-react
-npm install -g tern
+
 npm install -g babel-eslint
+npm install -g eslint
+npm install -g eslint-plugin-react
+npm install -g jshint
+npm install -g mocha 
+npm install -g nodeunit 
+npm install -g pm2 
 npm install -g stylelint
+npm install -g stylelint-config-recommended
+npm install -g stylelint-config-styled-components
+npm install -g stylelint-processor-styled-components
+npm install -g tern
+
+success "done"
+
+#==========================================================
+t1=$(get_ultra_rule_str ' Installing ruby gems ' 0 0)
+gem install neovim 
 success "done"
 
 #==========================================================
@@ -92,20 +99,24 @@ while getopts ":l" opt; do
   esac
 done
 
-if [ "$LIGHTWVIM" -eq "$TREW" ] 
-  then
-    rm -rf ~/.vimrc ~/.nvimrc 2> /dev/null 
-    ln -s $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
-    ln -s $DOTDIR/vim/light_weight_vimrc.vim ~/.nvimrc
-  else
-    rm -rf ~/.vimrc ~/.nvimrc 2> /dev/null
-    ln -s $DOTDIR/vim/vimrc.vim ~/.vimrc
-    ln -s $DOTDIR/vim/vimrc.vim ~/.nvimrc
+ln -fs $DOTDIR/vim ~/.config/nvim
+
+if [ $FAST_MACHINE ]
+then
+  ln -fs $DOTDIR/vim/vimrc.vim ~/.vimrc
+  ln -fs $DOTDIR/vim/vimrc.vim  ~/.config/nvim/init.vim
+else
+  ln -fs $DOTDIR/vim/light_weight_vimrc.vim ~/.vimrc
+  ln -fs $DOTDIR/vim/light_weight_vimrc.vim ~/.config/nvim/init.vim
 fi
+
 success "done"
 #==========================================================
 t1=$(get_ultra_rule_str 'Installing vim plugins' 0 0)
 echo "$t1"
+
+rm -rf ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 if test $(which mvim)
 then
@@ -122,11 +133,18 @@ else
 fi
 
 cd $DOTDIR/vim/
+rm -rf .tmp .backup .temp
 mkdir .tmp .backup .temp
 cd $DOTDIR/vim/bundle/YouCompleteMe/
 git submodule update 
+npm install
 git submodule sync
-python install.py
+python install.py --all
+cd $DOTDIR/YouCompleteMe/third_party/ycmd/third_party/tern_runtime
+npm install --production
+
+cd $DOTDIR/vim/bundle/tern_for_vim/
+npm install
 
 success "done"
 #==========================================================
@@ -137,7 +155,7 @@ select opt in $OPTIONS; do
   if [ "$REPLY" = "1" ]; then
     t1=$(get_ultra_rule_str ' Keeping bash_profile but injecting source ' 0 0)
     echo "$t1"
-    cat $DOTDIR/shells/localenv-template.sh $DOTDIR/shells/local-source-bash.sh >> ~/.bash_profile
+    cat $DOTDIR/bash/bash_profile >> ~/.bash_profile
   elif [ "$REPLY" = "2" ]; then
     t1=$(get_ultra_rule_str ' replace bash_profile ' 0 0)
     echo "$t1"

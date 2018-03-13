@@ -3,6 +3,8 @@
 set +x
 exec 2>&1
 
+source $HOME/.localenv.sh
+
 function _load_bash_files() {
   subdirectory="$1"
   if [ -d "$HOME/.dotfiles/bash/${subdirectory}" ]
@@ -17,18 +19,17 @@ function _load_bash_files() {
   fi
 }
 
-_load_bash_files exports
-_load_bash_files libs
-_load_bash_files plugins
-_load_bash_files completions
-_load_bash_files aliases
-
-
-source $HOME/.localenv.sh
-
-source /usr/local/bin/virtualenvwrapper.sh
-source /usr/local/etc/profile.d/z.sh
 #
+ _load_bash_files exports
+ _load_bash_files libs
+ _load_bash_files plugins
+ _load_bash_files completions
+ _load_bash_files aliases
+#
+#
+#
+source /usr/local/etc/profile.d/z.sh 
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
@@ -84,7 +85,6 @@ set skip-completed-text on
 set input-meta on
 set output-meta on
 set convert-meta off
-set -o vi
 shopt -s lithist
 shopt -s cmdhist
 
@@ -92,4 +92,4 @@ export HH_CONFIG=hicolor         # get more colors
 # if this is interactive shell, then bind hh to Ctrl-r (for Vi mode check doc)
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hh -- \C-j"'; fi
 
-# eval "$(direnv hook bash)"
+eval "$(direnv hook bash)"

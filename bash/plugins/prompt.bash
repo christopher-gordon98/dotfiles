@@ -30,5 +30,5 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 source "$(brew --prefix git)/etc/bash_completion.d/git-prompt.sh"
 PROMPT_COMMAND='__git_ps1 "⦿ (\[\e[1;32m\]`basename \"$VIRTUAL_ENV\"`\[\e[0m\])[\W]" "\[\e[1;32m\]--❯ \[\e[0m\]"'
 else
-  export PS1="⦿ \H[\W](\e[0;32m\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\e[m) \e[0;32m--❯ \e[m "
+  export PS1="⦿ \H[\W](\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)) --❯ "
 fi
