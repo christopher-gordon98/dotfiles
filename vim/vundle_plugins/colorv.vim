@@ -3,4 +3,4 @@ if exists('g:vundle_installing_plugins')
   finish
 endif
 
-let g:colorv_preview_ftype = 'css,javascript,scss,stylus'
+let g:colorv_preview_ftype = 'css,javascript,scss,stylus,html,jsx'
